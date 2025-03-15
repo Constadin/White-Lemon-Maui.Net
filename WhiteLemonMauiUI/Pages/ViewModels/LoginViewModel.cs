@@ -92,9 +92,8 @@ namespace WhiteLemonMauiUI.Pages.ViewModels
 
                         await NavigationGuard.SafeNavigateAsyncGuard(async () =>
                         {
-                            //await Shell.Current.GoToAsync($"///{nameof(HomeViewPage)}", true);
+                            await Shell.Current.GoToAsync($"///{nameof(HomeViewPage)}", true);
 
-                            await Shell.Current.GoToAsync(nameof(RegisterViewPage));
                         });
                     }
                 }

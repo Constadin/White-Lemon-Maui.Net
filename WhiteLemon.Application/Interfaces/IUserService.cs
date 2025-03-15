@@ -15,7 +15,7 @@ namespace WhiteLemon.Application.Interfaces
         /// </summary>
         /// <param name="userDto">The user data for registration.</param>
         /// <returns>A <see cref="ServiceResult{UserDto}"/> containing the user data or error message.</returns>
-        Task<ServiceResult<ResponseUserDto>> RegisterUserAsync(RegisterUserDto userDto);
+        Task<ServiceResult<ResponseRegisterUserDto>> RegisterUserAsync(RegisterUserDto userDto);
 
         /// <summary>
         /// Logs in a user with the provided credentials.
@@ -24,6 +24,6 @@ namespace WhiteLemon.Application.Interfaces
         /// <param name="email">The user's email.</param>
         /// <param name="password">The user's password.</param>
         /// <returns>A <see cref="ServiceResult{UserDto}"/> containing the user data and authentication token or error message.</returns>
-        Task<ServiceResult<ResponseUserDto>> LoginUserAsync(LoginUserDto userDto);
+        Task<ServiceResult<ResponseLoginUserDto>> LoginUserAsync(LoginUserDto userDto);
     }
 }
