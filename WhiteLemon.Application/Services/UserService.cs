@@ -32,19 +32,19 @@ namespace WhiteLemon.Application.Services
         /// </summary>
         /// <param name="userDto">The data transfer object containing the user's registration details.</param>
         /// <returns>A service result indicating whether the registration was successful or not.</returns>
-        public async Task<ServiceResult<ResponseUserDto>> RegisterUserAsync(RegisterUserDto userDto)
+        public async Task<ServiceResult<ResponseRegisterUserDto>> RegisterUserAsync(RegisterUserDto userDto)
         {
             // Έλεγχος αν τα πεδία είναι άδεια ή λευκές αλυσίδες χαρακτήρων
             if (string.IsNullOrWhiteSpace(userDto.Email) || string.IsNullOrWhiteSpace(userDto.Password))
             {
-                return ServiceResult<ResponseUserDto>.FailureResult("Invalid user data.");
+                return ServiceResult<ResponseRegisterUserDto>.FailureResult("Invalid user data.");
             }
 
             var user = await this._userRepository.GetUserByEmailAsync(userDto.Email);
 
             if(user?.Email == userDto.Email)
             {
-                return ServiceResult<ResponseUserDto>.FailureResult("This user already exists.");
+                return ServiceResult<ResponseRegisterUserDto>.FailureResult("This user already exists.");
             }
             
             user= new User
@@ -63,10 +63,10 @@ namespace WhiteLemon.Application.Services
             await this._userRepository.AddRegisterAsync(user);
 
             // Δημιουργία και επιστροφή του ResponseUserDto
-            var userDtoResponse = new ResponseUserDto(user.Id, user.Name, user.Email, user.PhotoUrl);
+            var userDtoResponse = new ResponseRegisterUserDto(user.Id, user.Name, user.Email, user.PhotoUrl);
        
 
-            return ServiceResult<ResponseUserDto>.SuccessResult(userDtoResponse, "User registered successfully.");
+            return ServiceResult<ResponseRegisterUserDto>.SuccessResult(userDtoResponse, "User registered successfully.");
         }
 
         /// <summary>
@@ -76,14 +76,14 @@ namespace WhiteLemon.Application.Services
         /// <param name="email">The user's email address.</param>
         /// <param name="password">The user's password.</param>
         /// <returns>A service result containing the user's details and token if authentication is successful.</returns>
-        public async Task<ServiceResult<ResponseUserDto>> LoginUserAsync(LoginUserDto userDto)
+        public async Task<ServiceResult<ResponseLoginUserDto>> LoginUserAsync(LoginUserDto userDto)
         {
             // Βρίσκουμε τον χρήστη από τη βάση δεδομένων
             var user = await this._userRepository.GetUserByEmailAsync(userDto.Email!);
 
             if (user == null) // Αν ο χρήστης δεν υπάρχει, επιστρέφουμε αποτυχία
             {
-                return ServiceResult<ResponseUserDto>.FailureResult("Invalid user data.");
+                return ServiceResult<ResponseLoginUserDto>.FailureResult("Invalid user data.");
             }
                
             // Έλεγχος του κωδικού πρόσβασης με hashing και verification
@@ -91,13 +91,13 @@ namespace WhiteLemon.Application.Services
 
             if (passwordVerificationResult != PasswordVerificationResult.Success)
             {
-                return ServiceResult<ResponseUserDto>.FailureResult("Invalid user password.");
+                return ServiceResult<ResponseLoginUserDto>.FailureResult("Invalid user password.");
             }
 
             // Επιστρέφουμε τα στοιχεία του χρήστη σε περίπτωση επιτυχίας
-            var responseUserDto = new ResponseUserDto(user.Id, user.Email, user.Name, user.PhotoUrl);
+            var responseUserDto = new ResponseLoginUserDto(user.Id, user.Email, user.Name);
 
-            return ServiceResult<ResponseUserDto>.SuccessResult(responseUserDto, "User login successfully.");
+            return ServiceResult<ResponseLoginUserDto>.SuccessResult(responseUserDto, "User login successfully.");
         }
     }
 }

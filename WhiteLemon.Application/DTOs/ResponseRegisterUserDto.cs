@@ -4,6 +4,7 @@
     /// Data Transfer Object (DTO) for user response.
     /// Αντικείμενο μεταφοράς δεδομένων (DTO) για την aπόκριση χρήστη.
     /// </summary>
-    public record  ResponseUserDto(Guid UserId, string? Name, string? Email, string? photoUrl);
-  
+    public record ResponseRegisterUserDto(Guid UserId, string? Name, string? Email, string? photoUrl);
+
 }
+
