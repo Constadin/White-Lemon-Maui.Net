@@ -9,7 +9,7 @@ using WhiteLemonMauiUI.Users.Interfaces;
 
 namespace WhiteLemonMauiUI.Pages.ViewModels
 {
-    public class RegisterViewModel : BaseViewModel
+    public partial class RegisterViewModel : BaseViewModel
     {
         #region Fields
         private readonly IUserService _userService;
@@ -18,7 +18,7 @@ namespace WhiteLemonMauiUI.Pages.ViewModels
         private string? _password;
         private string? _message;
         private byte[]? _photoUser;
-        private string? _defaultUserImage = Const.DefaultUserImage;
+        private readonly string? _defaultUserImage = Const.DefaultUserImage;
         private string? _photoUrl;
         private string? _selectedImage;
         private bool _isPasswordHidden = true;
@@ -169,7 +169,7 @@ namespace WhiteLemonMauiUI.Pages.ViewModels
                     {
                         this.Message = result.Message;
                         this.UserName = result.Data.Name;
-                        this.SelectedImage = $"{ApiConfig.BaseAddress}{result.Data.photoUrl}" ?? Const.DefaultUserImage;
+                        this.SelectedImage = $"{ApiConfig.BaseAddress}{result.Data.PhotoUrl}" ?? Const.DefaultUserImage;
                         OnPropertyChanged(nameof(PhotoUrl)); // Ενημερώνουμε το UI
                         this.ShowDialog("Success", Message, "success");
 
