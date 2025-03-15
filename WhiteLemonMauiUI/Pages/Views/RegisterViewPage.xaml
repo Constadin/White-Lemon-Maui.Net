@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<base:BaseView
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:WhiteLemonMauiUI.Controls"
+    x:Class="WhiteLemonMauiUI.Pages.Views.RegisterViewPage"
+    xmlns:base="clr-namespace:WhiteLemonMauiUI.Helpers.Views"
+    xmlns:viewModel="clr-namespace:WhiteLemonMauiUI.Pages.ViewModels"
+    x:DataType="viewModel:RegisterViewModel"
+    Shell.FlyoutBehavior="Disabled"
+    Title="Register"
+    BackgroundColor="{DynamicResource InitializeColorStart}">
+
+
+
+    <ScrollView
+        Padding="50,0,50,0">
+        <Grid
+            RowDefinitions="5, Auto, 60, Auto"
+            HorizontalOptions="Fill">
+            <Grid
+                Grid.Row="1"
+                RowDefinitions="*, Auto, *, Auto,*, Auto"
+                HorizontalOptions="Fill"
+                RowSpacing="2"
+                Margin="0,10,0,0">
+                <Border
+                    Grid.Row="0"
+                    WidthRequest="100"
+                    HeightRequest="100"
+                    Stroke="purple"
+                    StrokeThickness="3"
+                    Margin="0,0,0,10">
+                    <Border.StrokeShape>
+                        <RoundRectangle
+                            CornerRadius="80,0,0,80" />
+                    </Border.StrokeShape>
+                    <Border
+                        WidthRequest="85"
+                        HeightRequest="87"
+                        StrokeThickness="5"
+                        Stroke="#c90ead"
+                        Padding="0"
+                        BackgroundColor="Purple">
+                        <Border.StrokeShape>
+                            <RoundRectangle
+                                CornerRadius="80,0,0,80" />
+                        </Border.StrokeShape>
+                        <Image
+                            Source="splash_icon.svg"
+                            Aspect="Fill"
+                            HeightRequest="80"
+                            WidthRequest="82"
+                            HorizontalOptions="End"
+                            VerticalOptions="Center" />
+                    </Border>
+                </Border>
+                <Label
+                    Grid.Row="2"
+                    Text="User registration"
+                    HorizontalTextAlignment="Center"
+                    VerticalTextAlignment="Center"
+                    FontAttributes="Bold"
+                    FontSize="25"
+                    TextColor="{DynamicResource TextColor}"
+                    Margin="5" />
+                <VerticalStackLayout
+                    Grid.Row="3"
+                    Spacing="8"
+                    HorizontalOptions="Fill">
+                    <HorizontalStackLayout
+                        HorizontalOptions="Center">
+                        <Border
+                            Stroke="purple"
+                            StrokeThickness="4"
+                            Padding="0">
+                            <Border.StrokeShape>
+                                <RoundRectangle
+                                    CornerRadius="50" />
+                            </Border.StrokeShape>
+                            <Grid>
+                                <Button
+                                    BackgroundColor="Transparent"
+                                    Command="{Binding TakePhotoCommand}" />
+
+                                <Image
+                                    Source="{Binding PhotoUrl}"
+                                    HeightRequest="55"
+                                    WidthRequest="55"
+                                    Aspect="AspectFill"
+                                    HorizontalOptions="Center"
+                                    VerticalOptions="Center" />
+                            </Grid>
+                        </Border>
+                    </HorizontalStackLayout>
+                    <Border
+                        BackgroundColor="White"
+                        StrokeThickness="3"
+                        Stroke="purple"
+                        Padding="5"
+                        HorizontalOptions="Fill"
+                        Margin="0,15,0,0">
+                        <Border.StrokeShape>
+                            <RoundRectangle
+                                CornerRadius="50" />
+                        </Border.StrokeShape>
+                        <controls:NoUnderlineEntry
+                            Placeholder="Username"
+                            PlaceholderColor="Black"
+                            HorizontalTextAlignment="Start"
+                            VerticalTextAlignment="Center"
+                            FontAttributes="Italic"
+                            FontSize="12"
+                            TextColor="purple"
+                            CharacterSpacing="2"
+                            BackgroundColor="Transparent"
+                            HorizontalOptions="Fill"
+                            Text="{Binding UserName, Mode=TwoWay}" />
+                    </Border>
+                    <Border
+                        BackgroundColor="White"
+                        StrokeThickness="3"
+                        Stroke="purple"
+                        Padding="5"
+                        HorizontalOptions="Fill">
+                        <Border.StrokeShape>
+                            <RoundRectangle
+                                CornerRadius="50" />
+                        </Border.StrokeShape>
+                        <controls:NoUnderlineEntry
+                            Placeholder="Email"
+                            PlaceholderColor="Black"
+                            HorizontalTextAlignment="Start"
+                            VerticalTextAlignment="Center"
+                            FontAttributes="Italic"
+                            FontSize="12"
+                            TextColor="purple"
+                            CharacterSpacing="2"
+                            BackgroundColor="Transparent"
+                            HorizontalOptions="Fill"
+                            Text="{Binding Email, Mode=TwoWay}" />
+                    </Border>
+                    <Border
+                        BackgroundColor="White"
+                        StrokeThickness="3"
+                        Stroke="purple"
+                        Padding="5"
+                        HorizontalOptions="Fill">
+                        <Border.StrokeShape>
+                            <RoundRectangle
+                                CornerRadius="50" />
+                        </Border.StrokeShape>
+                        <controls:NoUnderlineEntry
+                            Placeholder="Password"
+                            IsPassword="{Binding IsPasswordHidden}"
+                            PlaceholderColor="Black"
+                            HorizontalTextAlignment="Start"
+                            VerticalTextAlignment="Center"
+                            FontAttributes="Italic"
+                            FontSize="12"
+                            TextColor="purple"
+                            CharacterSpacing="2"
+                            BackgroundColor="Transparent"
+                            HorizontalOptions="Fill"
+                            Text="{Binding Password, Mode=TwoWay}" />
+                    </Border>
+                    <HorizontalStackLayout
+                        HorizontalOptions="End"
+                        VerticalOptions="Start"
+                        Margin="0,-10,0,0"
+                        Spacing="5">
+                        <Label
+                            Text="Hide"
+                            TextColor="{DynamicResource TextColor}"
+                            VerticalOptions="Center"
+                            FontSize="13" />
+                        <CheckBox
+                            Color="Purple"
+                            IsChecked="{Binding IsPasswordHidden, Mode=TwoWay}" />
+                    </HorizontalStackLayout>
+                </VerticalStackLayout>
+                <VerticalStackLayout
+                    Grid.Row="5"
+                    Margin="0,30,0,0"
+                    Spacing="10"
+                    VerticalOptions="Fill">
+                    <Button
+                        Margin="0"
+                        Text="Register"
+                        WidthRequest="250"
+                        BackgroundColor="purple"
+                        Style="{StaticResource welcomeBtnStyle}"
+                        Command="{Binding RegisterUserIcommand}" />
+
+                    <Label
+                        Text="Existing user ?"
+                        TextColor="{DynamicResource TextColor}"
+                        FontSize="13"
+                        HorizontalTextAlignment="Center" />
+
+                    <Button
+                        BackgroundColor="purple"
+                        Style="{StaticResource welcomeBtnStyle}"
+                        Margin="0"
+                        Text="Login"
+                        WidthRequest="250" />
+                </VerticalStackLayout>
+            </Grid>
+        </Grid>
+    </ScrollView>
+</base:BaseView>

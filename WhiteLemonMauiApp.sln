@@ -1,0 +1,56 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.12.35707.178
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WhiteLemon.API", "WhiteLemon.API\WhiteLemon.API.csproj", "{1FA94FD5-22A1-41F6-9265-BE8B9664543A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WhiteLemon.Domain", "WhiteLemon.Domain\WhiteLemon.Domain.csproj", "{ECA64232-1B04-426E-A6E0-7F7FCA2363CE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WhiteLemon.Infrastructure", "WhiteLemon.Infrastructure\WhiteLemon.Infrastructure.csproj", "{F6B52E37-EDEC-48BC-A683-7E86C8D9373D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WhiteLemon.Application", "WhiteLemon.Application\WhiteLemon.Application.csproj", "{8A5F6EB1-A5D3-4CA8-8804-3D021C8DFC2B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WhiteLemon.Shared", "WhiteLemon.Shared\WhiteLemon.Shared.csproj", "{334654A3-68B8-4BA5-AB35-7D89A7FC10F9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WhiteLemonMauiUI", "WhiteLemonMauiUI\WhiteLemonMauiUI.csproj", "{88DCBB6D-F0E8-42FF-84AE-2330D30A5B64}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1FA94FD5-22A1-41F6-9265-BE8B9664543A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1FA94FD5-22A1-41F6-9265-BE8B9664543A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1FA94FD5-22A1-41F6-9265-BE8B9664543A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1FA94FD5-22A1-41F6-9265-BE8B9664543A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ECA64232-1B04-426E-A6E0-7F7FCA2363CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ECA64232-1B04-426E-A6E0-7F7FCA2363CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ECA64232-1B04-426E-A6E0-7F7FCA2363CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ECA64232-1B04-426E-A6E0-7F7FCA2363CE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F6B52E37-EDEC-48BC-A683-7E86C8D9373D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F6B52E37-EDEC-48BC-A683-7E86C8D9373D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F6B52E37-EDEC-48BC-A683-7E86C8D9373D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F6B52E37-EDEC-48BC-A683-7E86C8D9373D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8A5F6EB1-A5D3-4CA8-8804-3D021C8DFC2B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8A5F6EB1-A5D3-4CA8-8804-3D021C8DFC2B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8A5F6EB1-A5D3-4CA8-8804-3D021C8DFC2B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8A5F6EB1-A5D3-4CA8-8804-3D021C8DFC2B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{334654A3-68B8-4BA5-AB35-7D89A7FC10F9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{334654A3-68B8-4BA5-AB35-7D89A7FC10F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{334654A3-68B8-4BA5-AB35-7D89A7FC10F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{334654A3-68B8-4BA5-AB35-7D89A7FC10F9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{88DCBB6D-F0E8-42FF-84AE-2330D30A5B64}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{88DCBB6D-F0E8-42FF-84AE-2330D30A5B64}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{88DCBB6D-F0E8-42FF-84AE-2330D30A5B64}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{88DCBB6D-F0E8-42FF-84AE-2330D30A5B64}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{88DCBB6D-F0E8-42FF-84AE-2330D30A5B64}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DEC80F08-9769-4C54-8271-D84547B610B6}
+	EndGlobalSection
+EndGlobal

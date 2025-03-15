@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="WhiteLemonMauiUI.Pages.Views.WelcomeViewPage"
+    Shell.NavBarIsVisible="False"
+    Shell.FlyoutBehavior="Disabled"
+    Title="Welcome"
+    BackgroundColor="#9307f7">
+
+    <Grid
+        RowDefinitions="*, Auto, *, Auto">
+        <Grid
+            Grid.Row="1"
+            RowDefinitions="Auto, Auto, Auto"
+            HorizontalOptions="Center"
+            RowSpacing="10">
+            <Image
+                Grid.Row="0"
+                Source="splash_icon.svg"
+                Aspect="AspectFill"
+                HeightRequest="150"
+                WidthRequest="150"
+                VerticalOptions="Start"
+                Margin="0,0,15,0" />
+            <Label
+                Grid.Row="1"
+                Text="Welcome..."
+                HorizontalTextAlignment="Center"
+                VerticalTextAlignment="Center"
+                FontAttributes="Italic"
+                FontSize="30"
+                TextColor="White" />
+            <Label
+                Grid.Row="2"
+                Text="to  White lemon"
+                HorizontalTextAlignment="Center"
+                VerticalTextAlignment="Center"
+                FontAttributes="Italic"
+                FontSize="20"
+                TextColor="White" />
+        </Grid>
+        <Button
+            Grid.Row="3"
+            Text="Get Started"
+            WidthRequest="250"
+            BackgroundColor="purple"
+            Style="{StaticResource welcomeBtnStyle}"
+            Clicked="GoToLoginPage" />
+    </Grid>
+</ContentPage>

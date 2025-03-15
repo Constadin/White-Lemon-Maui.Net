@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="WhiteLemonMauiUI.Pages.Views.ProfileViewPage"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    xmlns:controls="clr-namespace:WhiteLemonMauiUI.Controls"
+    Title="Profile"
+    BackgroundColor="{DynamicResource InitializeColorStart}">
+
+    <Shell.TitleView>
+        <Grid
+            ColumnDefinitions="Auto, 80,*, Auto"
+            Padding="0,0,15,0">
+            <Label
+                Grid.Column="0"
+                Text="Profile"
+                TextColor="White"
+                FontSize="20"
+                VerticalTextAlignment="Center" />
+
+            <Grid
+                ColumnDefinitions="Auto, *,Auto"
+                Grid.Column="3"
+                ColumnSpacing="0">
+                <Label
+                    Grid.Column="0"
+                    Text="settings"
+                    VerticalOptions="Center"
+                    FontAttributes="Italic"
+                    FontSize="15"
+                    TextColor="White" />
+                <Border
+                    Grid.Column="2"
+                    HeightRequest="35"
+                    WidthRequest="35"
+                    Margin="8"
+                    Stroke="MediumPurple"
+                    StrokeThickness="0.5">
+                    <Border.StrokeShape>
+                        <RoundRectangle
+                            CornerRadius="5" />
+                    </Border.StrokeShape>
+                    <Image
+                        Source="settings_regular_24.svg"
+                        Aspect="AspectFit"
+                        HeightRequest="25"
+                        WidthRequest="25"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center">
+                        <Image.Behaviors>
+                            <toolkit:IconTintColorBehavior
+                                TintColor="White" />
+                        </Image.Behaviors>
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer
+                                Tapped="GotoSettingsPage" />
+                        </Image.GestureRecognizers>
+                    </Image>
+                </Border>
+
+            </Grid>
+        </Grid>
+    </Shell.TitleView>
+    <Grid
+        RowDefinitions="Auto,Auto, *">
+        <BoxView
+            Grid.Row="0"
+            HeightRequest="4"
+            HorizontalOptions="Fill"
+            Margin="2">
+            <BoxView.Background>
+                <LinearGradientBrush
+                    StartPoint="0,0"
+                    EndPoint="1,0">
+                    <GradientStop
+                        Color="Transparent"
+                        Offset="0.0" />
+                    <GradientStop
+                        Color="Grey"
+                        Offset="0.5" />
+                    <GradientStop
+                        Color="Transparent"
+                        Offset="1.0" />
+                </LinearGradientBrush>
+            </BoxView.Background>
+        </BoxView>
+        <VerticalStackLayout
+            Background="Purple"
+            Grid.Row="1"
+            Padding="15,10,15,8"
+            Spacing="5"
+            Margin="0">
+            <Grid>
+                <Border
+                    HeightRequest="80"
+                    StrokeShape="RoundRectangle 50"
+                    WidthRequest="80"
+                    StrokeThickness="2">
+                    <Image
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center"
+                        Aspect="AspectFill"
+                        Source="woman_1.jpg">
+                    </Image>
+                </Border>
+                <Border
+                    Margin="0,0,-50,-5"
+                    BackgroundColor="White"
+                    HeightRequest="30"
+                    StrokeShape="RoundRectangle 50"
+                    StrokeThickness="2"
+                    Stroke="Purple"
+                    VerticalOptions="End"
+                    WidthRequest="30"
+                    ZIndex="99">
+                    <Image
+                        HeightRequest="20"
+                        HorizontalOptions="Center"
+                        Source="plus_large_24"
+                        VerticalOptions="Center"
+                        WidthRequest="20">
+                        <Image.Behaviors>
+                            <toolkit:IconTintColorBehavior
+                                TintColor="Purple" />
+                        </Image.Behaviors>
+                    </Image>
+                    <Border.GestureRecognizers>
+                        <TapGestureRecognizer
+                            Command="{Binding ChangePhotoCommand}" />
+                    </Border.GestureRecognizers>
+                </Border>
+            </Grid>
+            <Label
+                FontAttributes="Bold"
+                FontSize="18"
+                HorizontalOptions="Center"
+                Text="Nika Kara"
+                TextColor="White" />
+            <Label
+                FontSize="16"
+                HorizontalOptions="Center"
+                Text="email@kodman.gr"
+                TextColor="White" />
+            <BoxView
+                Margin="0,5" />
+            <Border
+                HeightRequest="30"
+                Stroke="White"
+                StrokeShape="RoundRectangle 15"
+                StrokeThickness="0.5">
+                <Grid
+                    ColumnDefinitions="*, *">
+                    <Border
+                        Grid.Column="0"
+                        BackgroundColor="Purple"
+                        StrokeThickness="0">
+                        <Label
+                            HorizontalOptions="Center"
+                            Text="My Posts"
+                            TextColor="White"
+                            VerticalOptions="Center"
+                            FontAttributes="Bold" />
+                        <Border.Triggers>
+                            <DataTrigger
+                                TargetType="Border"
+                                Value="True">
+                                <Setter
+                                    Property="BackgroundColor"
+                                    Value="Purple" />
+                                <Setter
+                                    TargetName="myPostsLabel"
+                                    Property="Label.TextColor"
+                                    Value="White" />
+                            </DataTrigger>
+                        </Border.Triggers>
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer />
+                        </Border.GestureRecognizers>
+                    </Border>
+                    <Border
+                        Grid.Column="1"
+                        BackgroundColor="White"
+                        StrokeThickness="0">
+                        <Label
+                            x:Name="bookmarkedLabel"
+                            HorizontalOptions="Center"
+                            Text="Bookmarked"
+                            TextColor="Purple"
+                            VerticalOptions="Center"
+                            FontAttributes="Bold" />
+                        <Border.Triggers>
+                            <DataTrigger
+                                TargetType="Border"
+                                Value="True">
+                                <Setter
+                                    Property="BackgroundColor"
+                                    Value="Purple" />
+                                <Setter
+                                    TargetName="bookmarkedLabel"
+                                    Property="Label.TextColor"
+                                    Value="White" />
+                            </DataTrigger>
+                        </Border.Triggers>
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer />
+                        </Border.GestureRecognizers>
+                    </Border>
+                </Grid>
+            </Border>
+        </VerticalStackLayout>
+    </Grid>
+</ContentPage>

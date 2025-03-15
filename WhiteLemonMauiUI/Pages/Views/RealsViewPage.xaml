@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="WhiteLemonMauiUI.Pages.Views.RealsViewPage"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    Title="RealsViewPage"
+    Shell.PresentationMode="ModalAnimated">
+    
+    <!--<AbsoluteLayout>
+        --><!-- Scrollable Content (Posts) --><!--
+        <ScrollView
+            VerticalScrollBarVisibility="Never"
+            AbsoluteLayout.LayoutBounds="0,0,1,1"
+            AbsoluteLayout.LayoutFlags="All">
+            <Grid
+                Padding="0"
+                HeightRequest="1500">
+                --><!-- Offset για το Sticky Header --><!--
+                <Image
+                    Source="motorcycle.jpg"
+                    Aspect="Fill"
+                    HeightRequest="350"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Start" />
+            </Grid>
+        </ScrollView>
+
+        --><!-- Sticky Header Custom --><!--
+        <Grid
+            ColumnDefinitions="Auto,Auto ,*"
+            BackgroundColor="Transparent"
+            HeightRequest="60"
+            Padding="20,10,20,20"
+            AbsoluteLayout.LayoutBounds="0,0,1,60"
+            AbsoluteLayout.LayoutFlags="WidthProportional">
+            <Image
+                Grid.Column="0"
+                Source="arrowleft_regular_24"
+                Aspect="AspectFit"
+                HeightRequest="40"
+                WidthRequest="40"
+                HorizontalOptions="Start"
+                VerticalOptions="Center">
+                <Image.Behaviors>
+                    <toolkit:IconTintColorBehavior
+                        TintColor="White" />
+                </Image.Behaviors>
+            </Image>
+            <Label
+                Grid.Column="1"
+                Text="Real"
+                TextColor="White"
+                Margin="10,0"
+                FontSize="22"
+                HorizontalTextAlignment="Center"
+                VerticalTextAlignment="Center" />
+            <Grid
+                Grid.Column="2"
+                Padding="12"
+                HorizontalOptions="End">
+                <Image
+                    Source="camera_add_regular_24.svg"
+                    Aspect="AspectFit"
+                    HeightRequest="30"
+                    WidthRequest="30"
+                    HorizontalOptions="End"
+                    VerticalOptions="Center">
+                    <Image.Behaviors>
+                        <toolkit:IconTintColorBehavior
+                            TintColor="White" />
+                    </Image.Behaviors>
+                </Image>
+            </Grid>
+        </Grid>
+    </AbsoluteLayout>--> 
+</ContentPage>

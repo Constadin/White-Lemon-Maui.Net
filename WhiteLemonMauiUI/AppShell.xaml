@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="WhiteLemonMauiUI.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:sys="clr-namespace:System;assembly=netstandard"
+    xmlns:pages="clr-namespace:WhiteLemonMauiUI.Pages.Views"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    Shell.ForegroundColor="White"
+    Shell.BackgroundColor="{x:DynamicResource FlyoutContentColor}"
+    Shell.FlyoutBackdrop="#90000000"
+    Shell.TitleColor="White"
+    Shell.NavBarHasShadow="True"
+    Shell.FlyoutWidth="150"
+    Shell.PresentationMode="Animated"
+    Shell.FlyoutBehavior="Disabled"
+    Shell.TabBarForegroundColor="Purple"
+    Shell.TabBarTitleColor="Purple"
+    Title="WhiteLemonMauiUI">
+
+    <!-- Start Page -->
+    <ShellContent
+        FlyoutItemIsVisible="False"
+        Route="WelcomeViewPage"
+        ContentTemplate="{DataTemplate pages:WelcomeViewPage}" />
+
+    <ShellContent
+        FlyoutItemIsVisible="False"
+        Route="LoginViewPage"
+        ContentTemplate="{DataTemplate pages:LoginViewPage}" />
+
+    <!-- Tab Items -->
+
+    <TabBar>
+
+        <ShellContent
+            Title="Home"
+            Icon="home_regular_24"
+            Route="HomeViewPage"
+            ContentTemplate="{DataTemplate pages:HomeViewPage}" />
+
+        <ShellContent
+            Title="Add Post"
+            Icon="add_post_regular_24"
+            Route="AddPostViewPage"
+            ContentTemplate="{DataTemplate pages:AddPostViewPage}" />
+
+        <ShellContent
+            Title="Discover"
+            Icon="add_post_regular_24"
+            Route="DiscoverPeopleViewPage"
+            ContentTemplate="{DataTemplate pages:DiscoverPeopleViewPage}" />
+
+
+        <ShellContent
+            Title="Profile"
+            Icon="profile_tab_regular_24"
+            Route="ProfileViewPage"
+            ContentTemplate="{DataTemplate pages:ProfileViewPage}" />
+
+    </TabBar>
+
+
+
+
+
+
+
+    <!--<MenuItem
+        Text="About"
+        IconImageSource="about_regular_24.svg" />
+
+    <MenuItem
+        Text="Help"
+        IconImageSource="help_regular_24.svg" />
+
+    <MenuItem
+        Text="LogOut"
+        IconImageSource="logout_regular_24.svg"
+        Clicked="OnLoginClicked" />-->
+
+</Shell>

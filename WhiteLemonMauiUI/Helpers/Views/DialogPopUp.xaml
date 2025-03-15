@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<toolkit:Popup
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="WhiteLemonMauiUI.Helpers.Views.DialogPopUp"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    CanBeDismissedByTappingOutsideOfPopup="False"
+    Color="Transparent"
+    VerticalOptions="Center">
+
+    <Border
+        StrokeThickness="0">
+        <Border.StrokeShape>
+            <RoundRectangle
+                CornerRadius="15" />
+        </Border.StrokeShape>
+        <VerticalStackLayout
+            BackgroundColor="{DynamicResource InitializeColorStart}"
+            Padding="0"
+            Spacing="15"
+            HorizontalOptions="Center"
+            VerticalOptions="Center"
+            WidthRequest="350">
+            <VerticalStackLayout
+                BackgroundColor="Purple"
+                Padding="5">
+                <Image
+                    x:Name="PopupIcon"
+                    Source="bell_regular_24"
+                    Aspect="AspectFit"
+                    HeightRequest="30"
+                    WidthRequest="30"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center">
+                    <Image.Behaviors>
+                        <toolkit:IconTintColorBehavior
+                            TintColor="White" />
+                    </Image.Behaviors>
+                </Image>
+            </VerticalStackLayout>
+            <ScrollView
+                MinimumHeightRequest="60"
+                MaximumHeightRequest="400">
+                <VerticalStackLayout>
+                    <Label
+                        x:Name="TitleLabel"
+                        FontSize="20"
+                        FontAttributes="Bold"
+                        HorizontalOptions="Center" />
+
+                    <Label
+                        x:Name="MessageLabel"
+                        FontSize="16"
+                        HorizontalTextAlignment="Center"
+                        VerticalTextAlignment="Center"
+                        Padding="20,0,20,0" />
+                </VerticalStackLayout>
+            </ScrollView>
+            <Button
+                Text="OK"
+                FontSize="15"
+                TextColor="White"
+                BackgroundColor="Purple"
+                Command="{Binding OkCommand}"
+                HorizontalOptions="Center"
+                Margin="0,20,0,10" />
+        </VerticalStackLayout>
+    </Border>
+</toolkit:Popup>

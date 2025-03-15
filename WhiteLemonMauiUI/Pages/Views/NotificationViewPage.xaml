@@ -1,0 +1,388 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="WhiteLemonMauiUI.Pages.Views.NotificationViewPage"
+    BackgroundColor="{DynamicResource InitializeColorStart}"
+    Title="Notifications">
+
+    <ScrollView>
+        <Grid
+            RowDefinitions="Auto, *, Auto, *,Auto,*">
+            <VerticalStackLayout
+                Padding="15"
+                Grid.Row="0">
+                <Label
+                    Text="Today"
+                    FontSize="18"
+                    HorizontalOptions="Start"
+                    Padding="20,0,0,0"
+                    Margin="-5,5"
+                    FontAttributes="Bold"
+                    TextColor="{x:DynamicResource TextColor}" />
+                <Grid
+                    Margin="10,10,5,5">
+                    <Grid.RowDefinitions>
+                        <RowDefinition
+                            Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition
+                            Width="Auto" />
+                        <ColumnDefinition
+                            Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <VerticalStackLayout
+                        Grid.Column="0"
+                        Spacing="2"
+                        HorizontalOptions="Center">
+                        <Border
+                            Stroke="Purple"
+                            StrokeThickness="3.5"
+                            HeightRequest="55"
+                            WidthRequest="55"
+                            HorizontalOptions="Center">
+                            <Border.StrokeShape>
+                                <RoundRectangle
+                                    CornerRadius="50" />
+                            </Border.StrokeShape>
+                            <Image
+                                Source="woman_1"
+                                Aspect="AspectFit"
+                                HeightRequest="60"
+                                WidthRequest="60"
+                                HorizontalOptions="Center"
+                                VerticalOptions="Center" />
+                        </Border>
+                        <Label
+                            Text="Nika Kara"
+                            FontSize="12"
+                            TextColor="{DynamicResource TextColor}"
+                            HorizontalTextAlignment="Center"
+                            VerticalTextAlignment="Center" />
+                    </VerticalStackLayout>
+                    <VerticalStackLayout
+                        Grid.Column="1">
+                        <Label
+                            x:Name="TextLabel"
+                            TextColor="{x:DynamicResource TextColor}"
+                            LineBreakMode="WordWrap"
+                            HorizontalOptions="Start"
+                            VerticalOptions="Center"
+                            Margin="20,0,0,0">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer
+                                    Tapped="ShowExpandedText1" />
+                            </Label.GestureRecognizers>
+                        </Label>
+                    </VerticalStackLayout>
+                </Grid>
+                <Grid
+                    Margin="10,10,5,5">
+                    <Grid.RowDefinitions>
+                        <RowDefinition
+                            Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition
+                            Width="Auto" />
+                        <ColumnDefinition
+                            Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <VerticalStackLayout
+                        Grid.Column="0"
+                        Spacing="2"
+                        HorizontalOptions="Center">
+                        <Border
+                            Stroke="Purple"
+                            StrokeThickness="3.5"
+                            HeightRequest="55"
+                            WidthRequest="55"
+                            HorizontalOptions="Center">
+                            <Border.StrokeShape>
+                                <RoundRectangle
+                                    CornerRadius="50" />
+                            </Border.StrokeShape>
+                            <Image
+                                Source="woman_1"
+                                Aspect="AspectFit"
+                                HeightRequest="60"
+                                WidthRequest="60"
+                                HorizontalOptions="Center"
+                                VerticalOptions="Center" />
+                        </Border>
+                        <Label
+                            Text="Nika Kara"
+                            FontSize="12"
+                            TextColor="{DynamicResource TextColor}"
+                            HorizontalTextAlignment="Center"
+                            VerticalTextAlignment="Center" />
+                    </VerticalStackLayout>
+                    <VerticalStackLayout
+                        Grid.Column="1">
+                        <Label
+                            x:Name="TextLabel2"
+                            TextColor="{x:DynamicResource TextColor}"
+                            LineBreakMode="WordWrap"
+                            HorizontalOptions="Start"
+                            VerticalOptions="Center"
+                            Margin="20,0,0,0">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer
+                                    Tapped="ShowExpandedText2" />
+                            </Label.GestureRecognizers>
+                        </Label>
+                    </VerticalStackLayout>
+                </Grid>
+            </VerticalStackLayout>
+            <VerticalStackLayout
+                Padding="15"
+                Grid.Row="2">
+                <Label
+                    Text="Yesterday"
+                    FontSize="18"
+                    HorizontalOptions="Start"
+                    Padding="20,0,0,0"
+                    Margin="-5,5"
+                    FontAttributes="Bold"
+                    TextColor="{x:DynamicResource TextColor}" />
+                <Grid
+                    Margin="10,10,5,5">
+                    <Grid.RowDefinitions>
+                        <RowDefinition
+                            Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition
+                            Width="Auto" />
+                        <ColumnDefinition
+                            Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <VerticalStackLayout
+                        Grid.Column="0"
+                        Spacing="2"
+                        HorizontalOptions="Center">
+                        <Border
+                            Stroke="Purple"
+                            StrokeThickness="3.5"
+                            HeightRequest="55"
+                            WidthRequest="55"
+                            HorizontalOptions="Center">
+                            <Border.StrokeShape>
+                                <RoundRectangle
+                                    CornerRadius="50" />
+                            </Border.StrokeShape>
+                            <Image
+                                Source="woman_1"
+                                Aspect="AspectFit"
+                                HeightRequest="60"
+                                WidthRequest="60"
+                                HorizontalOptions="Center"
+                                VerticalOptions="Center" />
+                        </Border>
+                        <Label
+                            Text="Nika Kara"
+                            FontSize="12"
+                            TextColor="{DynamicResource TextColor}"
+                            HorizontalTextAlignment="Center"
+                            VerticalTextAlignment="Center" />
+                    </VerticalStackLayout>
+                    <VerticalStackLayout
+                        Grid.Column="1">
+                        <Label
+                            TextColor="{x:DynamicResource TextColor}"
+                            LineBreakMode="WordWrap"
+                            HorizontalOptions="Start"
+                            VerticalOptions="Center"
+                            Margin="20,0,0,0">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer
+                                    Tapped="ShowExpandedText1" />
+                            </Label.GestureRecognizers>
+                        </Label>
+                    </VerticalStackLayout>
+                </Grid>
+                <Grid
+                    Margin="10,10,5,5">
+                    <Grid.RowDefinitions>
+                        <RowDefinition
+                            Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition
+                            Width="Auto" />
+                        <ColumnDefinition
+                            Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <VerticalStackLayout
+                        Grid.Column="0"
+                        Spacing="2"
+                        HorizontalOptions="Center">
+                        <Border
+                            Stroke="Purple"
+                            StrokeThickness="3.5"
+                            HeightRequest="55"
+                            WidthRequest="55"
+                            HorizontalOptions="Center">
+                            <Border.StrokeShape>
+                                <RoundRectangle
+                                    CornerRadius="50" />
+                            </Border.StrokeShape>
+                            <Image
+                                Source="woman_1"
+                                Aspect="AspectFit"
+                                HeightRequest="60"
+                                WidthRequest="60"
+                                HorizontalOptions="Center"
+                                VerticalOptions="Center" />
+                        </Border>
+                        <Label
+                            Text="Nika Kara"
+                            FontSize="12"
+                            TextColor="{DynamicResource TextColor}"
+                            HorizontalTextAlignment="Center"
+                            VerticalTextAlignment="Center" />
+                    </VerticalStackLayout>
+                    <VerticalStackLayout
+                        Grid.Column="1">
+                        <Label
+                            TextColor="{x:DynamicResource TextColor}"
+                            LineBreakMode="WordWrap"
+                            HorizontalOptions="Start"
+                            VerticalOptions="Center"
+                            Margin="20,0,0,0">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer
+                                    Tapped="ShowExpandedText2" />
+                            </Label.GestureRecognizers>
+                        </Label>
+                    </VerticalStackLayout>
+                </Grid>
+            </VerticalStackLayout>
+            <VerticalStackLayout
+                Padding="15"
+                Grid.Row="4">
+                <Label
+                    Text="Last 7 days"
+                    FontSize="18"
+                    HorizontalOptions="Start"
+                    Padding="20,0,0,0"
+                    Margin="-5,5"
+                    FontAttributes="Bold"
+                    TextColor="{x:DynamicResource TextColor}" />
+                <Grid
+                    Margin="10,10,5,5">
+                    <Grid.RowDefinitions>
+                        <RowDefinition
+                            Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition
+                            Width="Auto" />
+                        <ColumnDefinition
+                            Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <VerticalStackLayout
+                        Grid.Column="0"
+                        Spacing="2"
+                        HorizontalOptions="Center">
+                        <Border
+                            Stroke="Purple"
+                            StrokeThickness="3.5"
+                            HeightRequest="55"
+                            WidthRequest="55"
+                            HorizontalOptions="Center">
+                            <Border.StrokeShape>
+                                <RoundRectangle
+                                    CornerRadius="50" />
+                            </Border.StrokeShape>
+                            <Image
+                                Source="woman_1"
+                                Aspect="AspectFit"
+                                HeightRequest="60"
+                                WidthRequest="60"
+                                HorizontalOptions="Center"
+                                VerticalOptions="Center" />
+                        </Border>
+                        <Label
+                            Text="Nika Kara"
+                            FontSize="12"
+                            TextColor="{DynamicResource TextColor}"
+                            HorizontalTextAlignment="Center"
+                            VerticalTextAlignment="Center" />
+                    </VerticalStackLayout>
+                    <VerticalStackLayout
+                        Grid.Column="1">
+                        <Label
+                            TextColor="{x:DynamicResource TextColor}"
+                            LineBreakMode="WordWrap"
+                            HorizontalOptions="Start"
+                            VerticalOptions="Center"
+                            Margin="20,0,0,0">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer
+                                    Tapped="ShowExpandedText1" />
+                            </Label.GestureRecognizers>
+                        </Label>
+                    </VerticalStackLayout>
+                </Grid>
+                <Grid
+                    Margin="10,10,5,5">
+                    <Grid.RowDefinitions>
+                        <RowDefinition
+                            Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition
+                            Width="Auto" />
+                        <ColumnDefinition
+                            Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <VerticalStackLayout
+                        Grid.Column="0"
+                        Spacing="2"
+                        HorizontalOptions="Center">
+                        <Border
+                            Stroke="Purple"
+                            StrokeThickness="3.5"
+                            HeightRequest="55"
+                            WidthRequest="55"
+                            HorizontalOptions="Center">
+                            <Border.StrokeShape>
+                                <RoundRectangle
+                                    CornerRadius="50" />
+                            </Border.StrokeShape>
+                            <Image
+                                Source="woman_1"
+                                Aspect="AspectFit"
+                                HeightRequest="60"
+                                WidthRequest="60"
+                                HorizontalOptions="Center"
+                                VerticalOptions="Center" />
+                        </Border>
+                        <Label
+                            Text="Nika Kara"
+                            FontSize="12"
+                            TextColor="{DynamicResource TextColor}"
+                            HorizontalTextAlignment="Center"
+                            VerticalTextAlignment="Center" />
+                    </VerticalStackLayout>
+                    <VerticalStackLayout
+                        Grid.Column="1">
+                        <Label
+                            TextColor="{x:DynamicResource TextColor}"
+                            LineBreakMode="WordWrap"
+                            HorizontalOptions="Start"
+                            VerticalOptions="Center"
+                            Margin="20,0,0,0">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer
+                                    Tapped="ShowExpandedText2" />
+                            </Label.GestureRecognizers>
+                        </Label>
+                    </VerticalStackLayout>
+                </Grid>
+            </VerticalStackLayout>
+        </Grid>
+    </ScrollView>
+</ContentPage>

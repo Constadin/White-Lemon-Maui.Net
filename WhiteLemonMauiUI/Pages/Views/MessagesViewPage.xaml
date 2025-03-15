@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    xmlns:controls="clr-namespace:WhiteLemonMauiUI.Controls"
+    x:Class="WhiteLemonMauiUI.Pages.Views.MessagesViewPage"
+    BackgroundColor="{DynamicResource InitializeColorStart}"
+    Title="Nika Karra">
+
+    <Shell.TitleView>
+        <Grid
+            ColumnDefinitions="Auto, 80,*, Auto"
+            Padding="0,0,15,0">
+            <Label
+                Grid.Column="0"
+                Text="Nika Kara"
+                TextColor="White"
+                FontSize="20"
+                VerticalTextAlignment="Center" />
+
+            <Grid
+                ColumnDefinitions="Auto, *,Auto"
+                Grid.Column="3"
+                ColumnSpacing="0">
+                <Label
+                    Grid.Column="0"
+                    Text="friendships"
+                    VerticalOptions="Center"
+                    FontAttributes="Italic"
+                    FontSize="15"
+                    TextColor="White" />
+                <Border
+                    Grid.Column="2"
+                    HeightRequest="35"
+                    WidthRequest="35"
+                    Margin="8"
+                    Stroke="MediumPurple"
+                    StrokeThickness="0.5">
+                    <Border.StrokeShape>
+                        <RoundRectangle
+                            CornerRadius="5" />
+                    </Border.StrokeShape>
+                    <Image
+                        Source="friendship_regular_24"
+                        Aspect="AspectFit"
+                        HeightRequest="25"
+                        WidthRequest="25"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center">
+                        <Image.Behaviors>
+                            <toolkit:IconTintColorBehavior
+                                TintColor="White" />
+                        </Image.Behaviors>
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer
+                                Tapped="GotoFriendshipsPage" />
+                        </Image.GestureRecognizers>
+                    </Image>
+                </Border>
+
+            </Grid>
+        </Grid>
+    </Shell.TitleView>
+    <VerticalStackLayout>
+        <Label
+            Text="Messages"
+            FontSize="18"
+            HorizontalOptions="Start"
+            Padding="22,0,0,0"
+            Margin="-5,5"
+            FontAttributes="Bold"
+            TextColor="{x:DynamicResource TextColor}" />
+        <VerticalStackLayout>
+
+            <Grid
+                Margin="15,10,5,5">
+                <Grid.RowDefinitions>
+                    <RowDefinition
+                        Height="Auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition
+                        Width="Auto" />
+                    <ColumnDefinition
+                        Width="*" />
+                </Grid.ColumnDefinitions>
+                <VerticalStackLayout
+                    Grid.Column="0"
+                    Spacing="2"
+                    HorizontalOptions="Center">
+                    <Border
+                        Stroke="Purple"
+                        StrokeThickness="3.5"
+                        HeightRequest="55"
+                        WidthRequest="55"
+                        HorizontalOptions="Center">
+                        <Border.StrokeShape>
+                            <RoundRectangle
+                                CornerRadius="50" />
+                        </Border.StrokeShape>
+                        <Image
+                            Source="woman_1"
+                            Aspect="AspectFit"
+                            HeightRequest="60"
+                            WidthRequest="60"
+                            HorizontalOptions="Center"
+                            VerticalOptions="Center" />
+                    </Border>
+                </VerticalStackLayout>
+                <VerticalStackLayout
+                    Grid.Column="1">
+                    <Label
+                        Text="Nika Kara"
+                        FontSize="17"
+                        Padding="20,2,0,0"
+                        FontAttributes="Bold"
+                        TextColor="{DynamicResource TextColor}"
+                        HorizontalTextAlignment="Start"
+                        VerticalTextAlignment="Center" />
+                    <Label
+                        TextColor="{x:DynamicResource TextColor}"
+                        Text="Send yestarday"
+                        LineBreakMode="WordWrap"
+                        HorizontalOptions="Start"
+                        VerticalOptions="Center"
+                        FontAttributes="Italic"
+                        Margin="20,0,0,0" />
+                </VerticalStackLayout>
+            </Grid>
+        </VerticalStackLayout>
+    </VerticalStackLayout>
+</ContentPage>

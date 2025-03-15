@@ -1,0 +1,628 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="WhiteLemonMauiUI.Pages.Views.PostDetailsViewPage"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    xmlns:controls="clr-namespace:WhiteLemonMauiUI.Controls"
+    Title="Posts Details"
+    BackgroundColor="{DynamicResource InitializeColorStart}">
+
+    <Shell.TitleView>
+        <Grid
+            Padding="3"
+            ColumnDefinitions="*,Auto, Auto"
+            BackgroundColor="Purple">
+
+            <Border
+                Grid.Column="1"
+                HeightRequest="35"
+                WidthRequest="35"
+                Stroke="MediumPurple"
+                StrokeThickness="0.5"
+                Margin="8">
+                <Border.StrokeShape>
+                    <RoundRectangle
+                        CornerRadius="5" />
+                </Border.StrokeShape>
+                <Image
+                    Source="edit_regular_24"
+                    Aspect="AspectFit"
+                    HeightRequest="25"
+                    WidthRequest="25"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center">
+                    <Image.Behaviors>
+                        <toolkit:IconTintColorBehavior
+                            TintColor="White" />
+                    </Image.Behaviors>
+                </Image>
+            </Border>
+            <Border
+                Grid.Column="3"
+                HeightRequest="35"
+                WidthRequest="35"
+                Stroke="MediumPurple"
+                StrokeThickness="0.5"
+                Margin="8">
+                <Border.StrokeShape>
+                    <RoundRectangle
+                        CornerRadius="5" />
+                </Border.StrokeShape>
+                <Image
+                    Source="delete_regular_24"
+                    Aspect="AspectFit"
+                    HeightRequest="36"
+                    WidthRequest="36"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center">
+                    <Image.Behaviors>
+                        <toolkit:IconTintColorBehavior
+                            TintColor="white" />
+                    </Image.Behaviors>
+                </Image>
+            </Border>
+        </Grid>
+    </Shell.TitleView>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition
+                Height="*" />
+            <RowDefinition
+                Height="Auto" />
+        </Grid.RowDefinitions>
+        <ScrollView
+            Grid.Row="0">
+            <Grid
+                RowDefinitions="Auto,*, Auto">
+                <VerticalStackLayout
+                    Grid.Row="0">
+                    <Grid
+                        RowDefinitions="Auto,*">
+                        <Grid
+                            Grid.Row="0">
+                            <Grid
+                                RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto"
+                                Padding="0,8"
+                                VerticalOptions="Start">
+                                <Grid
+                                    Grid.Row="0"
+                                    ColumnDefinitions="40, Auto,*">
+                                    <Border
+                                        Stroke="Purple"
+                                        StrokeThickness="2"
+                                        Grid.Column="0"
+                                        HeightRequest="50"
+                                        WidthRequest="50"
+                                        Margin="30,0,0,5">
+                                        <Border.StrokeShape>
+                                            <RoundRectangle
+                                                CornerRadius="50" />
+                                        </Border.StrokeShape>
+                                        <Image
+                                            Source="woman_1"
+                                            Aspect="AspectFit"
+                                            HeightRequest="60"
+                                            WidthRequest="60"
+                                            HorizontalOptions="Center"
+                                            VerticalOptions="Center" />
+                                    </Border>
+                                    <Grid
+                                        Grid.Column="1"
+                                        ColumnDefinitions="Auto, *, Auto"
+                                        ColumnSpacing="10">
+                                        <Label
+                                            Grid.Column="0"
+                                            Text="Nika Kara"
+                                            FontSize="18"
+                                            TextColor="{DynamicResource TextColor}"
+                                            VerticalOptions="Start"
+                                            Padding="38,0,0,0" />
+                                        <Label
+                                            Grid.Column="0"
+                                            Text="04 Jan 2025"
+                                            FontSize="13"
+                                            TextColor="{DynamicResource TextColor}"
+                                            FontAttributes="Italic"
+                                            VerticalOptions="End"
+                                            HorizontalTextAlignment="Center"
+                                            Padding="35,0,0,8" />
+                                    </Grid>
+                                </Grid>
+                                <Grid
+                                    Grid.Row="1"
+                                    Padding="0,0">
+                                    <Image
+                                        Source="motorcycle.jpg"
+                                        Aspect="Fill" />
+                                </Grid>
+                                <Label
+                                    Grid.Row="2"
+                                    Padding="18,0,0,0"
+                                    Text="Some random post text will go here..."
+                                    FontSize="17"
+                                    TextColor="{x:DynamicResource TextColor}" />
+                                <BoxView
+                                    Grid.Row="3"
+                                    HeightRequest="2"
+                                    HorizontalOptions="Fill"
+                                    Margin="10">
+                                    <BoxView.Background>
+                                        <LinearGradientBrush
+                                            StartPoint="0,0"
+                                            EndPoint="1,0">
+                                            <GradientStop
+                                                Color="Transparent"
+                                                Offset="0.0" />
+                                            <GradientStop
+                                                Color="Grey"
+                                                Offset="0.5" />
+                                            <GradientStop
+                                                Color="Transparent"
+                                                Offset="1.0" />
+                                        </LinearGradientBrush>
+                                    </BoxView.Background>
+                                </BoxView>
+                                <Grid
+                                    Grid.Row="4"
+                                    ColumnDefinitions="Auto, *, Auto"
+                                    Padding="10,0,15,0"
+                                    HorizontalOptions="Start"
+                                    Margin="8,0,0,0">
+                                    <Grid
+                                        ColumnDefinitions="Auto, *,Auto, *, Auto, *, Auto"
+                                        Grid.Column="2"
+                                        ColumnSpacing="8">
+                                        <Grid
+                                            Grid.Column="0">
+                                            <Image
+                                                Grid.Column="0"
+                                                Source="heart_regular_24"
+                                                Aspect="AspectFit"
+                                                HeightRequest="35"
+                                                WidthRequest="33"
+                                                HorizontalOptions="Start"
+                                                VerticalOptions="Center">
+                                                <Image.Behaviors>
+                                                    <toolkit:IconTintColorBehavior
+                                                        TintColor="red" />
+                                                </Image.Behaviors>
+                                            </Image>
+                                            <Label
+                                                Grid.Column="0"
+                                                Text="like"
+                                                FontSize="13"
+                                                TextColor="{x:DynamicResource TextColor}"
+                                                FontAttributes="Italic"
+                                                VerticalOptions="Center"
+                                                Padding="35,8,0,0" />
+                                        </Grid>
+                                        <Grid
+                                            Grid.Column="2">
+                                            <Image
+                                                Grid.Column="0"
+                                                Source="share_regular_24"
+                                                Aspect="AspectFit"
+                                                HeightRequest="30"
+                                                WidthRequest="30"
+                                                HorizontalOptions="Start"
+                                                VerticalOptions="Center">
+                                                <Image.Behaviors>
+                                                    <toolkit:IconTintColorBehavior
+                                                        TintColor="purple" />
+                                                </Image.Behaviors>
+                                            </Image>
+                                            <Label
+                                                Grid.Column="0"
+                                                Text="share"
+                                                FontSize="13"
+                                                TextColor="{x:DynamicResource TextColor}"
+                                                FontAttributes="Italic"
+                                                VerticalOptions="Center"
+                                                Padding="30,8,0,0" />
+                                        </Grid>
+                                        <Grid
+                                            Grid.Column="4">
+                                            <Image
+                                                Grid.Column="0"
+                                                Source="bookmarks_regular_24"
+                                                Aspect="AspectFit"
+                                                HeightRequest="26"
+                                                WidthRequest="30"
+                                                HorizontalOptions="Start"
+                                                VerticalOptions="Center">
+                                                <Image.Behaviors>
+                                                    <toolkit:IconTintColorBehavior
+                                                        TintColor="purple" />
+                                                </Image.Behaviors>
+                                            </Image>
+                                            <Label
+                                                Grid.Column="0"
+                                                Text="save"
+                                                FontSize="13"
+                                                TextColor="{x:DynamicResource TextColor}"
+                                                FontAttributes="Italic"
+                                                VerticalOptions="Center"
+                                                Padding="30,8,0,0" />
+                                        </Grid>
+                                        <Grid
+                                            Grid.Column="6">
+                                            <Image
+                                                Grid.Column="0"
+                                                Source="comments_regular_24"
+                                                Aspect="AspectFit"
+                                                HeightRequest="35"
+                                                WidthRequest="25"
+                                                HorizontalOptions="Start"
+                                                VerticalOptions="Center">
+                                                <Image.Behaviors>
+                                                    <toolkit:IconTintColorBehavior
+                                                        TintColor="purple" />
+                                                </Image.Behaviors>
+                                            </Image>
+                                            <Label
+                                                Grid.Column="0"
+                                                Text="Comments"
+                                                FontSize="13"
+                                                TextColor="{x:DynamicResource TextColor}"
+                                                FontAttributes="Italic"
+                                                VerticalOptions="Center"
+                                                Padding="28,8,0,0" />
+                                        </Grid>
+                                    </Grid>
+                                </Grid>
+                                <BoxView
+                                    Grid.Row="5"
+                                    HeightRequest="8"
+                                    HorizontalOptions="Fill"
+                                    Margin="10">
+                                    <BoxView.Background>
+                                        <LinearGradientBrush
+                                            StartPoint="0,0"
+                                            EndPoint="1,0">
+                                            <GradientStop
+                                                Color="Transparent"
+                                                Offset="0.0" />
+                                            <GradientStop
+                                                Color="LightGrey"
+                                                Offset="0.5" />
+                                            <GradientStop
+                                                Color="Transparent"
+                                                Offset="1.0" />
+                                        </LinearGradientBrush>
+                                    </BoxView.Background>
+                                </BoxView>
+                            </Grid>
+                        </Grid>
+                        <Border
+                            Stroke="Transparent"
+                            Grid.Row="1">
+                            <VerticalStackLayout
+                                x:Name="comments"
+                                Grid.Row="1"
+                                Padding="10">
+                                <Grid
+                                    ColumnDefinitions="40,*"
+                                    ColumnSpacing="5"
+                                    Margin="0,0,0,5">
+                                    <Border
+                                        Stroke="Purple"
+                                        StrokeThickness="2"
+                                        Grid.Column="0"
+                                        HeightRequest="50"
+                                        WidthRequest="50"
+                                        Margin="10,0,0,5"
+                                        VerticalOptions="Start">
+                                        <Border.StrokeShape>
+                                            <RoundRectangle
+                                                CornerRadius="50" />
+                                        </Border.StrokeShape>
+                                        <Image
+                                            Source="woman_1"
+                                            Aspect="AspectFit"
+                                            HeightRequest="60"
+                                            WidthRequest="60"
+                                            HorizontalOptions="Center"
+                                            VerticalOptions="Center" />
+                                    </Border>
+                                    <Border
+                                        Grid.Column="2"
+                                        StrokeThickness="0"
+                                        Margin="10,0,0,0">
+                                        <Border.StrokeShape>
+                                            <RoundRectangle
+                                                CornerRadius="10" />
+                                        </Border.StrokeShape>
+                                        <Grid
+                                            BackgroundColor="Purple"
+                                            RowDefinitions="Auto,Auto"
+                                            ColumnDefinitions="Auto, *, Auto"
+                                            Padding="0,5,0,5">
+                                            <Label
+                                                Grid.Row="0"
+                                                Grid.Column="0"
+                                                Text="Nika Kara"
+                                                FontSize="19"
+                                                TextColor="White"
+                                                Padding="20,0,0,0"
+                                                VerticalTextAlignment="Center" />
+                                            <Label
+                                                Grid.Row="0"
+                                                Grid.Column="1"
+                                                Text="04 Jan 2025"
+                                                FontSize="14"
+                                                TextColor="White"
+                                                FontAttributes="Italic"
+                                                VerticalTextAlignment="Center"
+                                                HorizontalTextAlignment="End"
+                                                Padding="0,0,20,0" />
+                                            <Label
+                                                Grid.Row="1"
+                                                Grid.Column="0"
+                                                Grid.ColumnSpan="2"
+                                                Margin="15"
+                                                TextColor="White"
+                                                Text="hcjhdasd,nc,znxc,znxc,nd,nc,znxc,znxc,nzx,cnzxhcjhda"
+                                                LineBreakMode="WordWrap"
+                                                HorizontalOptions="Fill"
+                                                VerticalOptions="Start" />
+                                        </Grid>
+                                    </Border>
+                                </Grid>
+                                <Grid
+                                    ColumnDefinitions="40,*"
+                                    ColumnSpacing="5">
+                                    <Border
+                                        Stroke="Purple"
+                                        StrokeThickness="2"
+                                        Grid.Column="0"
+                                        HeightRequest="50"
+                                        WidthRequest="50"
+                                        Margin="10,0,0,5"
+                                        VerticalOptions="Start">
+                                        <Border.StrokeShape>
+                                            <RoundRectangle
+                                                CornerRadius="50" />
+                                        </Border.StrokeShape>
+                                        <Image
+                                            Source="woman_1"
+                                            Aspect="AspectFit"
+                                            HeightRequest="60"
+                                            WidthRequest="60"
+                                            HorizontalOptions="Center"
+                                            VerticalOptions="Center" />
+                                    </Border>
+                                    <Border
+                                        Grid.Column="2"
+                                        StrokeThickness="0"
+                                        Margin="10,0,0,0">
+                                        <Border.StrokeShape>
+                                            <RoundRectangle
+                                                CornerRadius="10" />
+                                        </Border.StrokeShape>
+                                        <Grid
+                                            BackgroundColor="Purple"
+                                            RowDefinitions="Auto,Auto"
+                                            ColumnDefinitions="Auto, *, Auto"
+                                            Padding="0,5,0,5">
+                                            <Label
+                                                Grid.Row="0"
+                                                Grid.Column="0"
+                                                Text="Nika Kara"
+                                                FontSize="19"
+                                                TextColor="White"
+                                                Padding="20,0,0,0"
+                                                VerticalTextAlignment="Center" />
+                                            <Label
+                                                Grid.Row="0"
+                                                Grid.Column="1"
+                                                Text="04 Jan 2025"
+                                                FontSize="14"
+                                                TextColor="White"
+                                                FontAttributes="Italic"
+                                                VerticalTextAlignment="Center"
+                                                HorizontalTextAlignment="End"
+                                                Padding="0,0,20,0" />
+                                            <Label
+                                                Grid.Row="1"
+                                                Grid.Column="0"
+                                                Grid.ColumnSpan="2"
+                                                Margin="15"
+                                                TextColor="White"
+                                                Text="hcjhdasd,nc,znxc,znxc,nzx,cnzx hcjhdasd,,nzx,cnzx hcjhdasd,nc,znxc,znxc,nzx,cnzxhcjhda,nzx,cnzx hcjhdasd,nc,znxc,znxc,nzx,cnzxhcjhda,nzx,cnzx hcjhdasd,nc,znxc,znxc,nzx,cnzxhcjhdanc,znxc,znxc,nzx,cnzxhcjhda"
+                                                LineBreakMode="WordWrap"
+                                                HorizontalOptions="Fill"
+                                                VerticalOptions="Start" />
+                                        </Grid>
+                                    </Border>
+                                </Grid>
+                                <Grid
+                                    ColumnDefinitions="40,*"
+                                    ColumnSpacing="5">
+                                    <Border
+                                        Stroke="Purple"
+                                        StrokeThickness="2"
+                                        Grid.Column="0"
+                                        HeightRequest="50"
+                                        WidthRequest="50"
+                                        Margin="10,0,0,5"
+                                        VerticalOptions="Start">
+                                        <Border.StrokeShape>
+                                            <RoundRectangle
+                                                CornerRadius="50" />
+                                        </Border.StrokeShape>
+                                        <Image
+                                            Source="woman_1"
+                                            Aspect="AspectFit"
+                                            HeightRequest="60"
+                                            WidthRequest="60"
+                                            HorizontalOptions="Center"
+                                            VerticalOptions="Center" />
+                                    </Border>
+                                    <Border
+                                        Grid.Column="2"
+                                        StrokeThickness="0"
+                                        Margin="10,0,0,0">
+                                        <Border.StrokeShape>
+                                            <RoundRectangle
+                                                CornerRadius="10" />
+                                        </Border.StrokeShape>
+                                        <Grid
+                                            BackgroundColor="Purple"
+                                            RowDefinitions="Auto,Auto"
+                                            ColumnDefinitions="Auto, *, Auto"
+                                            Padding="0,5,0,5">
+                                            <Label
+                                                Grid.Row="0"
+                                                Grid.Column="0"
+                                                Text="Nika Kara"
+                                                FontSize="19"
+                                                TextColor="White"
+                                                Padding="20,0,0,0"
+                                                VerticalTextAlignment="Center" />
+                                            <Label
+                                                Grid.Row="0"
+                                                Grid.Column="1"
+                                                Text="04 Jan 2025"
+                                                FontSize="14"
+                                                TextColor="White"
+                                                FontAttributes="Italic"
+                                                VerticalTextAlignment="Center"
+                                                HorizontalTextAlignment="End"
+                                                Padding="0,0,20,0" />
+                                            <Label
+                                                Grid.Row="1"
+                                                Grid.Column="0"
+                                                Grid.ColumnSpan="2"
+                                                Margin="15"
+                                                TextColor="White"
+                                                Text="hcjhdasd,nc,znxc,znxc,nzx,cnzx hcjhdasd,,nzx,cnzx hcjhdasd,nc,znxc,znxc,nzx,cnzxhcjhda,nzx,cnzx hcjhdasd,nc,znxc,znxc,nzx,cnzxhcjhda,nzx,cnzx hcjhdasd,nc,znxc,znxc,nzx,cnzxhcjhdanc,znxc,znxc,nzx,cnzxhcjhda"
+                                                LineBreakMode="WordWrap"
+                                                HorizontalOptions="Fill"
+                                                VerticalOptions="Start" />
+                                        </Grid>
+                                    </Border>
+                                </Grid>
+                                <Grid
+                                    ColumnDefinitions="40,*"
+                                    ColumnSpacing="5">
+                                    <Border
+                                        Stroke="Purple"
+                                        StrokeThickness="2"
+                                        Grid.Column="0"
+                                        HeightRequest="50"
+                                        WidthRequest="50"
+                                        Margin="10,0,0,5"
+                                        VerticalOptions="Start">
+                                        <Border.StrokeShape>
+                                            <RoundRectangle
+                                                CornerRadius="50" />
+                                        </Border.StrokeShape>
+                                        <Image
+                                            Source="woman_1"
+                                            Aspect="AspectFit"
+                                            HeightRequest="60"
+                                            WidthRequest="60"
+                                            HorizontalOptions="Center"
+                                            VerticalOptions="Center" />
+                                    </Border>
+                                    <Border
+                                        Grid.Column="2"
+                                        StrokeThickness="0"
+                                        Margin="10,0,0,0">
+                                        <Border.StrokeShape>
+                                            <RoundRectangle
+                                                CornerRadius="10" />
+                                        </Border.StrokeShape>
+                                        <Grid
+                                            BackgroundColor="Purple"
+                                            RowDefinitions="Auto,Auto"
+                                            ColumnDefinitions="Auto, *, Auto"
+                                            Padding="0,5,0,5">
+                                            <Label
+                                                Grid.Row="0"
+                                                Grid.Column="0"
+                                                Text="Nika Kara"
+                                                FontSize="19"
+                                                TextColor="White"
+                                                Padding="20,0,0,0"
+                                                VerticalTextAlignment="Center" />
+                                            <Label
+                                                Grid.Row="0"
+                                                Grid.Column="1"
+                                                Text="04 Jan 2025"
+                                                FontSize="14"
+                                                TextColor="White"
+                                                FontAttributes="Italic"
+                                                VerticalTextAlignment="Center"
+                                                HorizontalTextAlignment="End"
+                                                Padding="0,0,20,0" />
+                                            <Label
+                                                Grid.Row="1"
+                                                Grid.Column="0"
+                                                Grid.ColumnSpan="2"
+                                                Margin="15"
+                                                TextColor="White"
+                                                Text="hcjhdasd,nc,znxc,znxc,nzx,cnzx h,nzx,cnzxhcjhdanc,znxc,znxc,nzx,cnzxhcjhda"
+                                                LineBreakMode="WordWrap"
+                                                HorizontalOptions="Fill"
+                                                VerticalOptions="Start" />
+                                        </Grid>
+                                    </Border>
+                                </Grid>
+                            </VerticalStackLayout>
+                        </Border>
+                    </Grid>
+                </VerticalStackLayout>
+            </Grid>
+        </ScrollView>
+        <Grid
+            Grid.Row="1"
+            BackgroundColor="Purple"
+            ColumnDefinitions="*, Auto">
+            <Border
+                Grid.Column="0"
+                Margin="10,5"
+                BackgroundColor="LightGrey"
+                StrokeShape="RoundRectangle 10"
+                StrokeThickness="3">
+                <controls:NoUnderlineEntry
+                    Placeholder="Enter comment..."
+                    PlaceholderColor="Grey"
+                    TextColor="Black"
+                    ClearButtonVisibility="WhileEditing"
+                    CursorPosition="5"
+                    FontSize="15"
+                    FontAttributes="Italic"
+                    CharacterSpacing="2"
+                    Margin="0"
+                    HeightRequest="42" />
+            </Border>
+            <Border
+                Grid.Column="1"
+                HeightRequest="35"
+                WidthRequest="35"
+                Stroke="MediumPurple"
+                StrokeThickness="0.5"
+                Margin="0,0,10,0">
+                <Border.StrokeShape>
+                    <RoundRectangle
+                        CornerRadius="5" />
+                </Border.StrokeShape>
+                <Image
+                    Source="arrow_right_big_24"
+                    Aspect="AspectFit"
+                    HorizontalOptions="Center"
+                    HeightRequest="22"
+                    WidthRequest="22"
+                    VerticalOptions="Center">
+                    <Image.Behaviors>
+                        <toolkit:IconTintColorBehavior
+                            TintColor="White" />
+                    </Image.Behaviors>
+                </Image>
+            </Border>
+        </Grid>
+    </Grid>
+</ContentPage>

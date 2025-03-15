@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="WhiteLemonMauiUI.Resources.Themes.Light">
+
+    <Color x:Key="Primary">White</Color>
+    <Color x:Key="Secondary">brown</Color>
+    <Color x:Key="Tertiary">#2B0B98</Color>
+    <Color x:Key="InitializeColorStart">White</Color>
+    <Color x:Key="TextColor">Black</Color>
+    <Color x:Key="StatusBarBackground">White</Color>
+    <Color x:Key="ToolbarColor">Purple</Color>
+    <Color x:Key="MenuLinesColor">Purple</Color>
+    <Color x:Key="PageBackgroundColor">White</Color>
+    <Color x:Key="BorderColor">Black</Color>
+    <Color x:Key="FlyoutBackgrountColor">White</Color>
+    <Color x:Key="FlyoutContentColor">Purple</Color>
+
+    
+
+
+    <SolidColorBrush x:Key="PrimaryBrush" Color="{StaticResource Primary}"/>
+    <SolidColorBrush x:Key="SecondaryBrush" Color="{StaticResource Secondary}"/>
+    <SolidColorBrush x:Key="TertiaryBrush" Color="{StaticResource Tertiary}"/>
+    <SolidColorBrush x:Key="PageBgBrush" Color="{StaticResource InitializeColorStart}" />
+    <SolidColorBrush x:Key="StatusBarBgBrush" Color="{StaticResource StatusBarBackground}" />
+    
+<Style x:Key="welcomeBtnStyle" TargetType="Button">
+    <Setter Property="BackgroundColor" Value="#c90ead" />
+    <Setter Property="TextColor" Value="White" />
+    <Setter Property="FontSize" Value="15" />
+    <Setter Property="Margin" Value="0,0,0,30" />
+    <Setter Property="MinimumHeightRequest" Value="10" />
+    <Setter Property="BorderColor" Value="White" />
+    <Setter Property="BorderWidth" Value="1" />
+    <Setter Property="CornerRadius" Value="8" />
+    <Setter Property="Padding" Value="14,10" />
+    <Setter Property="MinimumWidthRequest" Value="44" />
+    <Setter Property="MinimumHeightRequest" Value="44" />
+    <Setter Property="MaximumWidthRequest" Value="330" />    
+ </Style>
+
+        
+
+</ResourceDictionary>

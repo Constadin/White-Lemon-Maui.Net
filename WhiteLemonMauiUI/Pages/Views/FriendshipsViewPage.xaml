@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    xmlns:controls="clr-namespace:WhiteLemonMauiUI.Controls"
+    x:Class="WhiteLemonMauiUI.Pages.Views.FriendshipsViewPage"
+    BackgroundColor="{DynamicResource InitializeColorStart}"
+    Title="Friendships">
+
+    <Shell.TitleView>
+        <Grid
+            ColumnDefinitions="Auto, 80,*, Auto"
+            Padding="0,0,15,0">
+            <Label
+                Grid.Column="0"
+                Text="Friendships"
+                TextColor="White"
+                FontSize="20"
+                VerticalTextAlignment="Center" />
+
+            <Grid
+                ColumnDefinitions="Auto, *,Auto"
+                Grid.Column="3"
+                ColumnSpacing="0">
+                <Label
+                    Grid.Column="0"
+                    Text="discover"
+                    VerticalOptions="Center"
+                    FontAttributes="Italic"
+                    FontSize="15"
+                    TextColor="White" />
+                <Border
+                    Grid.Column="2"
+                    HeightRequest="35"
+                    WidthRequest="35"
+                    Margin="8"
+                    Stroke="MediumPurple"
+                    StrokeThickness="0.5">
+                    <Border.StrokeShape>
+                        <RoundRectangle
+                            CornerRadius="5" />
+                    </Border.StrokeShape>
+                    <Image
+                        Source="discover_people_regular_24.svg"
+                        Aspect="AspectFit"
+                        HeightRequest="25"
+                        WidthRequest="25"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center">
+                        <Image.Behaviors>
+                            <toolkit:IconTintColorBehavior
+                                TintColor="White" />
+                        </Image.Behaviors>
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer
+                                Tapped="GotoDiscoverPeoplePage" />
+                        </Image.GestureRecognizers>
+                    </Image>
+                </Border>
+
+            </Grid>
+        </Grid>
+    </Shell.TitleView>
+    <VerticalStackLayout>
+        <Label 
+            Text="Frienship Page!"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+    </VerticalStackLayout>
+</ContentPage>

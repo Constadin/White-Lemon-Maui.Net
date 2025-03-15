@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="WhiteLemonMauiUI.Pages.Views.SettingsViewPage"
+    xmlns:controls="clr-namespace:WhiteLemonMauiUI.Controls"
+    Shell.NavBarIsVisible="True"
+    Title="Settings"
+    BackgroundColor="{DynamicResource InitializeColorStart}">
+
+
+
+    <ScrollView>
+        <Grid
+            Padding="10"
+            RowSpacing="0">
+            <Grid.RowDefinitions>
+                <RowDefinition
+                    Height="Auto" />
+                <RowDefinition
+                    Height="Auto" />
+                <RowDefinition
+                    Height="Auto" />
+                <RowDefinition
+                    Height="Auto" />
+                <RowDefinition
+                    Height="Auto" />
+                <RowDefinition
+                    Height="Auto" />
+                <RowDefinition
+                    Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <Label
+                Grid.Row="0"
+                Text="Application Settings"
+                FontSize="18"
+                TextColor="Black"
+                BackgroundColor="LightGrey"
+                Padding="5,10,0,10" />
+
+            <Grid
+                Grid.Row="1">
+                <Label
+                    Text="Dark Mode"
+                    FontSize="16"
+                    VerticalOptions="Center"
+                    TextColor="{DynamicResource TextColor}"
+                    Padding="10,10,0,10" />
+                <Switch
+                    VerticalOptions="Center"
+                    ThumbColor="{DynamicResource TextColor}"
+                    OnColor="{DynamicResource AccentColor}"
+                    IsToggled="{Binding IsDarkMode, Mode=TwoWay}" />
+            </Grid>
+            <Grid
+                Grid.Row="2">
+                <Label
+                    Text="Enable Notifications"
+                    FontSize="16"
+                    VerticalOptions="Center"
+                    TextColor="{DynamicResource TextColor}"
+                    Padding="10,0,0,0" />
+                <Switch
+                    IsToggled="{Binding AreNotificationsEnabled, Mode=TwoWay}"
+                    VerticalOptions="Center"
+                    ThumbColor="{DynamicResource TextColor}"
+                    OnColor="{DynamicResource AccentColor}" />
+            </Grid>
+            <Grid
+                Grid.Row="3">
+                <Label
+                    Text="Language"
+                    FontSize="16"
+                    TextColor="{DynamicResource TextColor}"
+                    Padding="10,0,0,0"
+                    VerticalOptions="Center"
+                    HorizontalOptions="Start" />
+                <Picker
+                    SelectedItem="{Binding SelectedLanguage, Mode=TwoWay}"
+                    Title="Select Language"
+                    FontSize="15"
+                    TextColor="{DynamicResource TextColor}"
+                    HorizontalOptions="End"
+                    BackgroundColor="Transparent">
+
+                    <Picker.ItemsSource>
+                        <x:Array
+                            Type="{x:Type x:String}">
+                            <x:String>English</x:String>
+                            <x:String>Greek</x:String>
+                        </x:Array>
+                    </Picker.ItemsSource>
+
+                </Picker>
+            </Grid>
+
+            <Button
+                Grid.Row="4"
+                Margin="20"
+                Text="Clear Cache"
+                WidthRequest="150"
+                BackgroundColor="purple"
+                Style="{StaticResource welcomeBtnStyle}"
+                Command="{Binding ClearCacheCommand}" />
+
+
+            <StackLayout
+                Grid.Row="5">
+                <Label
+                    Text="More Info Support"
+                    FontSize="18"
+                    TextColor="Black"
+                    BackgroundColor="LightGrey"
+                    Padding="5,10,0,10" />
+                <Grid
+                    VerticalOptions="Fill"
+                    HorizontalOptions="Fill">
+                    <Label
+                        Text="Help"
+                        FontSize="16"
+                        TextColor="{DynamicResource TextColor}"
+                        Padding="10,10,0,10" />
+                    <controls:TintColorImage
+                        Source="arrow_right_big_24"
+                        HeightRequest="17"
+                        WidthRequest="17"
+                        HorizontalOptions="End"
+                        Margin="0,0,20,0" />
+                    <Grid.GestureRecognizers>
+                        <TapGestureRecognizer
+                            Tapped="GotoHelpPage">
+                        </TapGestureRecognizer>
+                    </Grid.GestureRecognizers>
+                </Grid>
+                <Grid
+                    VerticalOptions="Fill"
+                    HorizontalOptions="Fill">
+                    <Label
+                        Text="About"
+                        TextColor="{DynamicResource TextColor}"
+                        FontSize="16"
+                        Padding="10,10,0,10" />
+                    <controls:TintColorImage
+                        Source="arrow_right_big_24"
+                        HeightRequest="17"
+                        WidthRequest="17"
+                        HorizontalOptions="End"
+                        Margin="0,0,20,0" />
+                    <Grid.GestureRecognizers>
+                        <TapGestureRecognizer
+                            Tapped="GotoAboutPage">
+                        </TapGestureRecognizer>
+                    </Grid.GestureRecognizers>
+                </Grid>
+                <Grid
+                    VerticalOptions="Fill"
+                    HorizontalOptions="Fill">
+                    <Label
+                        Text="Support"
+                        TextColor="{DynamicResource TextColor}"
+                        FontSize="16"
+                        Padding="10,10,0,10" />
+                    <controls:TintColorImage
+                        Source="arrow_right_big_24"
+                        HeightRequest="17"
+                        WidthRequest="17"
+                        HorizontalOptions="End"
+                        Margin="0,0,20,0" />
+                    <Grid.GestureRecognizers>
+                        <TapGestureRecognizer
+                            Tapped="GotoSupportPage">
+                        </TapGestureRecognizer>
+                    </Grid.GestureRecognizers>
+                </Grid>
+                <Grid
+                    VerticalOptions="Fill"
+                    HorizontalOptions="Fill">
+                    <Label
+                        Text="Privacy Policy"
+                        TextColor="{DynamicResource TextColor}"
+                        FontSize="16"
+                        Padding="10,10,0,10" />
+                    <controls:TintColorImage
+                        Source="arrow_right_big_24"
+                        HeightRequest="17"
+                        WidthRequest="17"
+                        HorizontalOptions="End"
+                        Margin="0,0,20,0" />
+                    <Grid.GestureRecognizers>
+                        <TapGestureRecognizer
+                            Tapped="GotoPrivacyPolicyPage">
+                        </TapGestureRecognizer>
+                    </Grid.GestureRecognizers>
+                </Grid>
+            </StackLayout>
+
+            <StackLayout
+                Grid.Row="6">
+                <Label
+                    Text="Acount"
+                    FontSize="18"
+                    TextColor="Black"
+                    BackgroundColor="LightGrey"
+                    Padding="5,10,0,10" />
+                <Grid
+                    VerticalOptions="Fill"
+                    HorizontalOptions="Fill">
+                    <Label
+                        Text="Log Out"
+                        FontSize="16"
+                        Padding="10,10,0,10"
+                        TextColor="Red" />
+                    <Grid.GestureRecognizers>
+                        <TapGestureRecognizer
+                            Tapped="GoToLoginPage">
+                        </TapGestureRecognizer>
+                    </Grid.GestureRecognizers>
+                </Grid>
+            </StackLayout>
+        </Grid>
+    </ScrollView>
+</ContentPage>

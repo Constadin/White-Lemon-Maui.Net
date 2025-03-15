@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<base:BaseView
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="WhiteLemonMauiUI.Pages.Views.LoginViewPage"
+    xmlns:controls="clr-namespace:WhiteLemonMauiUI.Controls"
+    xmlns:viewModel="clr-namespace:WhiteLemonMauiUI.Pages.ViewModels"
+    xmlns:base="clr-namespace:WhiteLemonMauiUI.Helpers.Views"
+    x:DataType="viewModel:LoginViewModel"
+    Shell.NavBarIsVisible="False"
+    Shell.FlyoutBehavior="Disabled"
+    Title="Login"
+    BackgroundColor="#9307f7">
+
+    <Grid
+        RowDefinitions="Auto, Auto">
+        <Grid
+            Grid.Row="0"
+            RowDefinitions="*, Auto, *, Auto"
+            HorizontalOptions="Center"
+            RowSpacing="2"
+            Margin="0,80,0,0">
+            <Image
+                Grid.Row="0"
+                Source="splash_icon.svg"
+                Aspect="AspectFill"
+                HeightRequest="150"
+                WidthRequest="150"
+                VerticalOptions="Start"
+                HorizontalOptions="Center"
+                Margin="0,0,20,0" />
+            <Label
+                Grid.Row="1"
+                Text="White lemon"
+                HorizontalTextAlignment="Center"
+                VerticalTextAlignment="Center"
+                FontAttributes="Italic"
+                FontSize="23"
+                TextColor="White" />
+            <Label
+                Grid.Row="2"
+                Text="Log in to your account"
+                HorizontalTextAlignment="Center"
+                VerticalOptions="Start"
+                VerticalTextAlignment="Center"
+                FontAttributes="Italic"
+                FontSize="16"
+                TextColor="White"
+                Margin="2,0,0,50" />
+            <StackLayout
+                Grid.Row="3"
+                Spacing="10">
+                <Border
+                    BackgroundColor="White"
+                    StrokeThickness="4"
+                    Stroke="Purple"
+                    Padding="5">
+                    <Border.StrokeShape>
+                        <RoundRectangle
+                            CornerRadius="50" />
+                    </Border.StrokeShape>
+
+                    <controls:NoUnderlineEntry
+                        Placeholder="Email"
+                        PlaceholderColor="Purple"
+                        HorizontalTextAlignment="Start"
+                        VerticalTextAlignment="Center"
+                        FontAttributes="Italic"
+                        FontSize="12"
+                        TextColor="Purple"
+                        WidthRequest="300"
+                        CharacterSpacing="4"
+                        BackgroundColor="Transparent"
+                        Text="{Binding Email}" />
+                </Border>
+                <Border
+                    BackgroundColor="White"
+                    StrokeThickness="4"
+                    Stroke="Purple"
+                    Padding="5">
+                    <Border.StrokeShape>
+                        <RoundRectangle
+                            CornerRadius="50" />
+                    </Border.StrokeShape>
+                    <controls:NoUnderlineEntry
+                        Placeholder="Password"
+                        PlaceholderColor="Purple"
+                        IsPassword="{Binding IsPasswordHidden}"
+                        HorizontalTextAlignment="Start"
+                        VerticalTextAlignment="Center"
+                        FontAttributes="Italic"
+                        FontSize="12"
+                        TextColor="Purple"
+                        WidthRequest="300"
+                        CharacterSpacing="4"
+                        BackgroundColor="Transparent"
+                        Text="{Binding Password}" />
+                </Border>
+                <HorizontalStackLayout
+                    HorizontalOptions="End"
+                    VerticalOptions="Start"
+                    Margin="0,-10,0,0"
+                    Spacing="5">
+                    <Label
+                        Text="Hide"
+                        TextColor="White"
+                        VerticalOptions="Center"
+                        FontSize="13" />
+                    <CheckBox
+                        Color="White"
+                        IsChecked="{Binding IsPasswordHidden, Mode=TwoWay}" />
+                </HorizontalStackLayout>
+            </StackLayout>
+        </Grid>
+        <VerticalStackLayout
+            Grid.Row="1"
+            HorizontalOptions="Center"
+            VerticalOptions="Start"
+            Margin="30">
+            <Button
+                Margin="10"
+                Text="Login"
+                MinimumWidthRequest="200"
+                BackgroundColor="purple"
+                Style="{StaticResource welcomeBtnStyle}"
+                Command="{Binding LoginUserIcommand}" />
+            <Label
+                Text="New user ?"
+                TextColor="White"
+                FontSize="13"
+                HorizontalTextAlignment="Center" />
+            <Button
+                Margin="10"
+                Text="Register"
+                MinimumWidthRequest="200"
+                BackgroundColor="purple"
+                Style="{StaticResource welcomeBtnStyle}"
+                Command="{Binding ToRegisterPageIcommand}" />
+        </VerticalStackLayout>
+    </Grid>
+</base:BaseView>
