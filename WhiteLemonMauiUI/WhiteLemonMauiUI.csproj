@@ -50,7 +50,7 @@
 		<MauiIcon Include="Resources\AppIcon\appicon.svg" Color="#9307f7" TintColor="White" />
 
 		<!-- Splash Screen -->
-		<MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#9307f7" BaseSize="128,128" />
+		<MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#9307f7" TintColor="White" BaseSize="128,128" />
 
 		<!-- Images -->
 		<MauiImage Include="Resources\Images\*" />
@@ -66,6 +66,7 @@
 	<ItemGroup>
 		<PackageReference Include="CommunityToolkit.Maui" Version="11.1.0" />
 		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.0" />
+		<PackageReference Include="FFImageLoading.Maui" Version="1.2.7" />
 		<PackageReference Include="Microsoft.AspNetCore.Http" Version="2.3.0" />
 		<PackageReference Include="Microsoft.AspNetCore.Http.Features" Version="5.0.17" />
 		<PackageReference Include="Microsoft.Maui.Controls" Version="9.0.30" />
@@ -82,6 +83,7 @@
 
 	<ItemGroup>
 	  <Folder Include="Helpers\Viewmodels\" />
+	  <Folder Include="Pages\ContentViews\" />
 	</ItemGroup>
 
 	<ItemGroup>

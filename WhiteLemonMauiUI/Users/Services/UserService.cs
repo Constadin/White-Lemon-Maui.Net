@@ -32,7 +32,7 @@ namespace WhiteLemonMauiUI.Users.Services
         /// </summary>
         /// <param name="model">Το μοντέλο εγγραφής χρήστη που περιέχει τα δεδομένα του χρήστη.</param>
         /// <returns>Αποτέλεσμα τύπου <see cref="ServiceResult{ResponseUserDto}"/> που περιέχει τα αποτελέσματα της εγγραφής.</returns>
-        public async Task<ServiceResult<ResponseRegisterUserVMDto>> RegisterUserAsync(RegisterUserRequest model)
+        public async Task<ServiceResult<ResponseRegisterUserDto>> RegisterUserAsync(RegisterUserRequest model)
         {
 
             try
@@ -48,18 +48,18 @@ namespace WhiteLemonMauiUI.Users.Services
                 {
                     // Συγκέντρωση μηνυμάτων σφάλματος επικύρωσης
                     var errorMessages = string.Join(", ", validationResults.Select(v => v.ErrorMessage));
-                    return ServiceResult<ResponseRegisterUserVMDto>.FailureResult(default, errorMessages);
+                    return ServiceResult<ResponseRegisterUserDto>.FailureResult(default, errorMessages);
                 }
 
                   
                 // Κλήση στο API με το MultipartFormDataContent
-                var response = await _apiService.PostAsync<ServiceResult<ResponseRegisterUserVMDto>>(
+                var response = await _apiService.PostAsync<ServiceResult<ResponseRegisterUserDto>>(
                     $"{ApiConfig.BaseAddress}/api/user/register", model);
 
                 // Έλεγχος της απάντησης
                 if (!response.Success || response.Data == null)
                 {
-                    return ServiceResult<ResponseRegisterUserVMDto>.FailureResult(default, response.ErrorMessage);
+                    return ServiceResult<ResponseRegisterUserDto>.FailureResult(default, response.ErrorMessage);
                 }
 
                 // Επιστροφή των δεδομένων του χρήστη από την απάντηση
@@ -69,18 +69,18 @@ namespace WhiteLemonMauiUI.Users.Services
             catch (HttpRequestException ex)
             {
                 // Αν παρουσιαστεί σφάλμα κατά τη διάρκεια της κλήσης του API
-                return ServiceResult<ResponseRegisterUserVMDto>.FailureResult(
+                return ServiceResult<ResponseRegisterUserDto>.FailureResult(
                     default, $"Network error occurred. Unable to connect to the server.{ex.Message}");
             }
             catch (Exception ex)
             {
                 // Γενικότερο σφάλμα, επιστρέφουμε μήνυμα σφάλματος
-                return ServiceResult<ResponseRegisterUserVMDto>.FailureResult(
+                return ServiceResult<ResponseRegisterUserDto>.FailureResult(
                     default, $"An error occurred: {ex.Message}");
             }
         }
 
-        public async Task<ServiceResult<ResponseLoginUserVMDto>> LoginUserAsync(LoginUserRequest model)
+        public async Task<ServiceResult<ResponseLoginUserDto>> LoginUserAsync(LoginUserRequest model)
         {
             try
             {
@@ -95,17 +95,17 @@ namespace WhiteLemonMauiUI.Users.Services
                 {
                     // Συγκέντρωση μηνυμάτων σφάλματος επικύρωσης
                     var errorMessages = string.Join(", ", validationResults.Select(v => v.ErrorMessage));
-                    return ServiceResult<ResponseLoginUserVMDto>.FailureResult(default, errorMessages);
+                    return ServiceResult<ResponseLoginUserDto>.FailureResult(default, errorMessages);
                 }
 
                 // Κλήση στο API για Login χρήστη
-                var result = await this._apiService.PostAsync< ServiceResult<ResponseLoginUserVMDto >> (
+                 var result = await this._apiService.PostAsync< ServiceResult<ResponseLoginUserDto>> (
                     $"{ApiConfig.BaseAddress}/api/user/login", model);
 
                 // Έλεγχος αν το πρώτο ServiceResult είναι επιτυχές και αν το Data δεν είναι null
                 if (!result.Success || result.Data == null)
                 {
-                    return ServiceResult<ResponseLoginUserVMDto>.FailureResult(default, result.ErrorMessage);
+                    return ServiceResult<ResponseLoginUserDto>.FailureResult(default, result.ErrorMessage);
                 }
 
                 // Επιστρέφουμε τα δεδομένα του χρήστη από το ServiceResult
@@ -114,13 +114,51 @@ namespace WhiteLemonMauiUI.Users.Services
             catch (HttpRequestException ex)
             {
                 // Αν παρουσιαστεί σφάλμα κατά τη διάρκεια της κλήσης του API
-                return ServiceResult<ResponseLoginUserVMDto>.FailureResult(
+                return ServiceResult<ResponseLoginUserDto>.FailureResult(
                     default, $"Network error occurred. Unable to connect to the server.{ex.Message}");
             }
             catch (Exception ex)
             {
                 // Γενικότερο σφάλμα, επιστρέφουμε μήνυμα σφάλματος
-                return ServiceResult<ResponseLoginUserVMDto>.FailureResult(
+                return ServiceResult<ResponseLoginUserDto>.FailureResult(
+                    default, $"An error occurred: {ex.Message}");
+            }
+
+        }
+
+        public async Task<ServiceResult<ResponsePreloadDataDto>> PreloadDataUserAsync(Guid currentUser, int preloadLimit)
+        {
+            try
+            {
+                var requestData = new
+                {
+                    UserId = currentUser,  // Το `currentUser` είναι το Guid του χρήστη
+                    limit = preloadLimit   // Ο αριθμός περιορισμού
+                };
+
+                // Κλήση στο API για Login χρήστη
+                var result = await this._apiService.PostAsync<ServiceResult<ResponsePreloadDataDto>>(
+                    $"{ApiConfig.BaseAddress}/api/user/preloadData", requestData);
+
+                // Έλεγχος αν το πρώτο ServiceResult είναι επιτυχές και αν το Data δεν είναι null
+                if (!result.Success || result.Data == null)
+                {
+                    return ServiceResult<ResponsePreloadDataDto>.FailureResult(default, result.ErrorMessage);
+                }
+
+                // Επιστρέφουμε τα δεδομένα του χρήστη από το ServiceResult
+                return result.Data;
+            }
+            catch (HttpRequestException ex)
+            {
+                // Αν παρουσιαστεί σφάλμα κατά τη διάρκεια της κλήσης του API
+                return ServiceResult<ResponsePreloadDataDto>.FailureResult(
+                    default, $"Network error occurred. Unable to connect to the server.{ex.Message}");
+            }
+            catch (Exception ex)
+            {
+                // Γενικότερο σφάλμα, επιστρέφουμε μήνυμα σφάλματος
+                return ServiceResult<ResponsePreloadDataDto>.FailureResult(
                     default, $"An error occurred: {ex.Message}");
             }
 

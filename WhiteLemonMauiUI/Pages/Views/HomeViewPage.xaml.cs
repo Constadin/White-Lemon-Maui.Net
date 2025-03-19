@@ -1,19 +1,35 @@
-﻿namespace WhiteLemonMauiUI.Pages.Views
+﻿using WhiteLemonMauiUI.Helpers.Views;
+using WhiteLemonMauiUI.Pages.ViewModels;
+
+namespace WhiteLemonMauiUI.Pages.Views
 {
-    public partial class HomeViewPage : ContentPage
-    {
-        public HomeViewPage()
+    public partial class HomeViewPage : BaseView
+    {  
+        private HomePageViewModel _homePageViewModel;
+        public HomeViewPage(HomePageViewModel homePageViewModel)
         {
 
             InitializeComponent();
+            this._homePageViewModel = homePageViewModel;
+            this.BindingContext = this._homePageViewModel;
         }
 
-        protected override void OnAppearing()
+        protected  override void OnAppearing()
         {
             base.OnAppearing();
             ThemeManager.Initialize();
+
+            this._homePageViewModel.OnAppearing();
+
+            //await Task.Delay(1500);
         }
 
+        protected override void OnDisappearing()
+        {
+            base.OnDisappearing();
+
+            this._homePageViewModel.OnDisappearing();
+        }
 
         private async void GotoPostDetailsPage(object sender, TappedEventArgs e)
         {

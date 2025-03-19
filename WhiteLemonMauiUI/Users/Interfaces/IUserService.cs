@@ -14,8 +14,10 @@ namespace WhiteLemonMauiUI.Users.Interfaces
         /// </summary>
         /// <param name="model">Το μοντέλο εγγραφής χρήστη που περιέχει τα δεδομένα του χρήστη.</param>
         /// <returns>Αποτέλεσμα τύπου <see cref="ServiceResult{ResponseUserDto}"/> που περιέχει τα αποτελέσματα της εγγραφής.</returns>
-        Task<ServiceResult<ResponseRegisterUserVMDto>> RegisterUserAsync(RegisterUserRequest model);
+        Task<ServiceResult<ResponseRegisterUserDto>> RegisterUserAsync(RegisterUserRequest model);
 
-        Task<ServiceResult<ResponseLoginUserVMDto>> LoginUserAsync(LoginUserRequest model);
+        Task<ServiceResult<ResponseLoginUserDto>> LoginUserAsync(LoginUserRequest model);
+        Task<ServiceResult<ResponsePreloadDataDto>> PreloadDataUserAsync(Guid currentUser, int preloadLimit);
+
     }
 }

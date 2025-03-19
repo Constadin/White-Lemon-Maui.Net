@@ -6,5 +6,5 @@ namespace WhiteLemonMauiUI.Users.ModelsDto
     /// Data Transfer Object (DTO) that represents the response data for a user.
     /// Αντικείμενο μεταφοράς δεδομένων (DTO) που αντιπροσωπεύει τα δεδομένα απάντησης για έναν χρήστη.
     /// </summary>
-    public record ResponseRegisterUserVMDto(Guid UserId, string? Name, string? Email, string? PhotoUrl);
+    public record ResponseRegisterUserDto(Guid UserId, string? Name, string? Email, string? PhotoUrl);
 }

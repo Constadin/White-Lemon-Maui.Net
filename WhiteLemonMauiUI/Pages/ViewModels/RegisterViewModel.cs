@@ -9,7 +9,7 @@ using WhiteLemonMauiUI.Users.Interfaces;
 
 namespace WhiteLemonMauiUI.Pages.ViewModels
 {
-    public partial class RegisterViewModel : BaseViewModel
+    public class RegisterViewModel : BaseViewModel
     {
         #region Fields
         private readonly IUserService _userService;
@@ -73,15 +73,7 @@ namespace WhiteLemonMauiUI.Pages.ViewModels
         public string? SelectedImage
         {
             get => this._selectedImage;
-            set
-            {
-                if (this._selectedImage != value)
-                {
-                    this._selectedImage = value;
-                    OnPropertyChanged(nameof(SelectedImage));
-                   
-                }
-            }
+            set => SetPropertyValue(ref this._selectedImage, value);
         }
 
         public string? PhotoUrl => string.IsNullOrEmpty(SelectedImage) ? _defaultUserImage : SelectedImage;
@@ -89,13 +81,16 @@ namespace WhiteLemonMauiUI.Pages.ViewModels
 
         #region Lifecycle Methods
 
-        public async Task OnAppearing()
+        public void OnAppearing()
         {
-            this.ClearViewModel();
-            await Task.Delay(10);
             //this.PhotoUrl = $"{ApiConfig.BaseAddress}/Uploads/cbe92c82-17c0-4ca0-ab83-f6942ee875f9.png" ?? null;
         }
 
+        public void OnDisappearing()
+        {
+            this.ClearViewModel();
+            //this.PhotoUrl = $"{ApiConfig.BaseAddress}/Uploads/cbe92c82-17c0-4ca0-ab83-f6942ee875f9.png" ?? null;
+        }
         public void ClearViewModel()
         {
             UserName = null;
@@ -104,8 +99,6 @@ namespace WhiteLemonMauiUI.Pages.ViewModels
             Message = null;
             PhotoUser = null;
             SelectedImage = null;
-            OnPropertyChanged(nameof(PhotoUrl)); // Ενημερώνουμε το UI
-
         }
 
         //string imageUrl = "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.6jWd6_OzRDY5fXlzN0tcxAHaJ4%26pid%3DApi&f=1&ipt=1237bf924f7aacae9eb65af90179bba1da4470bd997e096ecc7e3bab49dce7e2&ipo=images";
@@ -116,12 +109,16 @@ namespace WhiteLemonMauiUI.Pages.ViewModels
 
             if (MediaPicker.Default.IsCaptureSupported)
             {
+                // Take a photo
                 // Λήψη φωτογραφίας
+
                 FileResult? photo = await MediaPicker.Default.CapturePhotoAsync();
 
                 if (photo != null)
                 {
+                    // Read the photo as a byte array
                     // Διαβάζουμε τη φωτογραφία ως byte array
+
                     var stream = await photo.OpenReadAsync();
 
                     using (var memoryStream = new MemoryStream())
@@ -129,20 +126,19 @@ namespace WhiteLemonMauiUI.Pages.ViewModels
                         await stream.CopyToAsync(memoryStream);
                         this.PhotoUser = memoryStream.ToArray();
 
-                        // Εάν θέλουμε να την κωδικοποιήσουμε σε Base64, το κάνουμε εδώ
+                        // Encode it in Base64
+                        // Την κωδικοποιήσουμε σε Base64
+
                         var base64Photo = Convert.ToBase64String(this.PhotoUser);
 
-                        // Για παράδειγμα, μπορούμε να το αποθηκεύσουμε στο PhotoUrl αν θέλουμε να το στείλουμε ως string
                         this.SelectedImage = base64Photo;
                     }
                 }
             }
         }
 
-
         public async Task RegisterAsync()
         {
-
             try
             {
                 this.ShowActivityIndicatorPopup();
@@ -151,10 +147,12 @@ namespace WhiteLemonMauiUI.Pages.ViewModels
 
                 string? finalDefaultUserImage = this.PhotoUrl;
 
-                if (PhotoUrl == Const.DefaultUserImage)
+                if (this.PhotoUrl == Const.DefaultUserImage)
                 {
+                    // If it's the default image, convert it to Base64
                     // Αν είναι η προεπιλεγμένη εικόνα, το μετατρέπουμε σε Base64
-                   finalDefaultUserImage = await ConvertImage.ConvertDefaultUserImageUrlToBase64(Const.DefaultUserImageUrl);
+
+                    finalDefaultUserImage = await ConvertImage.ConvertDefaultUserImageUrlToBase64(Const.DefaultUserImageUrl);
                 }
 
                 var registerUserRequest = UserMapper.ToRegisterUserRequest(UserName, Email, Password, finalDefaultUserImage);
@@ -170,14 +168,16 @@ namespace WhiteLemonMauiUI.Pages.ViewModels
                         this.Message = result.Message;
                         this.UserName = result.Data.Name;
                         this.SelectedImage = $"{ApiConfig.BaseAddress}{result.Data.PhotoUrl}" ?? Const.DefaultUserImage;
-                        OnPropertyChanged(nameof(PhotoUrl)); // Ενημερώνουμε το UI
+
+                        OnPropertyChanged(nameof(PhotoUrl));
+
                         this.ShowDialog("Success", Message, "success");
 
                         await Task.Yield();
 
                         await NavigationGuard.SafeNavigateAsyncGuard(async () =>
                         {
-                            await Task.Delay(5000);
+                            await Task.Delay(4000);
 
                             await Shell.Current.GoToAsync($"///{nameof(LoginViewPage)}", animate: true);
                         });

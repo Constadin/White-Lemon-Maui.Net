@@ -90,5 +90,66 @@ namespace WhiteLemon.Infrastructure.Repositories
                 await this._context.SaveChangesAsync();
             }
         }
+
+        /// <summary>
+        /// Gets a list of users along with the ID of their most liked post.
+        /// Επιστρέφει μια λίστα χρηστών μαζί με το ID του πιο δημοφιλούς τους post.
+        /// </summary>
+        /// <param name="limit">The maximum number of users to return.</param>
+        /// <returns>A list of tuples containing a user and the ID of their most liked post (if any), limited by the specified 'limit'.</returns>
+        public async Task<List<(User, Guid?)>> GetUsersWithTopPostAsync(int limit)
+        {
+            var topUsers = await _context.Set<User>()
+                .Select(user => new
+                {
+                    User = user, // Αποθηκεύουμε το αντικείμενο του χρήστη
+
+                    // Βρίσκουμε το ID του post του χρήστη που έχει τα περισσότερα likes
+                    MostLikedPostId = (Guid?)user.Posts
+                        .OrderByDescending(post => post.Likes.Count()) // Ταξινομούμε τα posts κατά φθίνουσα σειρά likes
+                        .Select(post => post.Id) // Επιλέγουμε μόνο το ID του post
+                        .FirstOrDefault() // Παίρνουμε το πρώτο στοιχείο της λίστας (το post με τα περισσότερα likes)
+                })
+                .OrderByDescending(userWithPost =>
+                    userWithPost.User.Posts.Sum(post => post.Likes.Count())) // Ταξινομούμε τους χρήστες κατά συνολικό αριθμό likes στα posts τους
+                        .Take(limit) // Περιορίζουμε το αποτέλεσμα σε 'limit' χρήστες
+                        .ToListAsync(); // Εκτελούμε το query στη βάση δεδομένων
+
+            // Μετατρέπουμε τη λίστα ώστε να επιστρέψουμε ένα Tuple (User, MostLikedPostId)
+            return topUsers
+                    .Select(u => (u.User, u.MostLikedPostId == Guid.Empty ? (Guid?)null : u.MostLikedPostId))
+                    .ToList();
+
+
+        }
+
+        /// <summary>
+        /// Gets a list of users who are not friends with the current user.
+        /// Επιστρέφει μια λίστα χρηστών που δεν είναι φίλοι με τον τρέχοντα χρήστη.
+        /// </summary>
+        /// <param name="currentUserId">Το ID του χρήστη που έχει κάνει login.</param>
+        /// <param name="limit">Πόσους χρήστες να επιστρέψει.</param>
+        /// <returns>Λίστα χρηστών που δεν είναι φίλοι με τον logged-in χρήστη.</returns>
+        public async Task<List<User>> GetUsersNotFriendsAsync(Guid currentUserId, int limit)
+        {
+            return await _context.Set<User>()
+                .Where(u => u.Id != currentUserId) // Εξαιρούμε τον εαυτό του
+                .Where(u => !_context.Friendships.Any(f =>
+                    (f.RequesterId == currentUserId && f.RequestedId == u.Id) ||
+                    (f.RequestedId == currentUserId && f.RequesterId == u.Id))) // Εξαιρούμε όσους είναι ήδη φίλοι
+                .OrderByDescending(u => u.CreatedAt) // Ταξινόμηση με βάση την ημερομηνία εγγραφής
+                .Take(limit) // Περιορισμός στον αριθμό των χρηστών
+                .ToListAsync();
+
+            //limit = limit / 2;
+
+            //return await _context.Set<User>()
+            //  .Where(u => u.Id != currentUserId)
+            //  .OrderBy(u => u.CreatedAt)  // Βρίσκουμε τους πιο πρόσφατους χρήστες
+            //  .Take(limit)
+            //  .ToListAsync();
+        }
+
+
     }
 }

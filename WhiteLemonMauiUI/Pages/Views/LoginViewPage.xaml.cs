@@ -1,4 +1,3 @@
-using CommunityToolkit.Maui.Views;
 using WhiteLemonMauiUI.Helpers.Views;
 using WhiteLemonMauiUI.Pages.ViewModels;
 
@@ -6,7 +5,7 @@ namespace WhiteLemonMauiUI.Pages.Views;
 
 public partial class LoginViewPage : BaseView
 {
-    LoginViewModel _loginViewModel; 
+    private LoginViewModel _loginViewModel;
     public LoginViewPage(LoginViewModel loginViewModel)
     {
         InitializeComponent();
@@ -14,21 +13,18 @@ public partial class LoginViewPage : BaseView
         this.BindingContext = this._loginViewModel;
 
     }
-
     protected override void OnAppearing()
     {
         base.OnAppearing();
 
         ThemeManager.Initialize();
 
-        this._loginViewModel.ClearViewModel();
+        this._loginViewModel.OnAppearing();
     }
-
-
-    // Unsubscribe from the event when the page is disappearing
-    protected override void OnDisappearing()
+    protected  override void OnDisappearing()
     {
         base.OnDisappearing();
-       
+
+        this._loginViewModel.OnDisappearing();
     }
 }

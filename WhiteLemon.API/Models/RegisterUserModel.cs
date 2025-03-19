@@ -6,7 +6,6 @@ namespace WhiteLemon.API.Models
     /// Model for user registration, containing the necessary fields: name, email, and password.
     /// Μοντέλο για την εγγραφή χρήστη, το οποίο περιέχει τα απαιτούμενα πεδία: όνομα, email και κωδικό πρόσβασης.
     /// </summary>
-    public record RegisterUserModel(string Name, string Email, string Password, string? photoUser)
-    {
-    }
+    public record RegisterUserModel(string Name, string Email, string Password, string? photoUser);
+   
 }

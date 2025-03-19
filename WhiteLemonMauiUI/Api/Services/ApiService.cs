@@ -1,4 +1,6 @@
-﻿using System.Net.Http.Json;
+﻿using System.Diagnostics;
+using System.Net.Http.Json;
+using WhiteLemon.Shared.Constants;
 using WhiteLemonMauiUI.Api.Interfaces;
 
 namespace WhiteLemonMauiUI.Api.Services
@@ -16,9 +18,9 @@ namespace WhiteLemonMauiUI.Api.Services
         /// Αρχικοποιεί μια νέα περίπτωση της κλάσης <see cref="ApiService"/>.
         /// </summary>
         /// <param name="httpClient">The HTTP client used for making requests.</param>
-        public ApiService(HttpClient httpClient)
+        public ApiService(IHttpClientFactory httpClientFactory)
         {
-            this._httpClient = httpClient ?? throw new ArgumentNullException(nameof(httpClient));
+            this._httpClient = httpClientFactory.CreateClient(Const.NameOfCliendApi);
         }
 
         /// <summary>
@@ -93,8 +95,18 @@ namespace WhiteLemonMauiUI.Api.Services
             }
             catch (HttpRequestException httpEx)
             {
-                // Επιστρέφει αποτυχία σε περίπτωση HTTP εξαίρεσης
-                return ServiceResult<T>.FailureResult(default, $"HTTP Error: {httpEx.Message}");
+                // Καταγραφή του σφάλματος με περισσότερες πληροφορίες
+                var errorMessage = $"HTTP Error: {httpEx.Message}";
+
+                // Μπορείς να προσθέσεις περισσότερες πληροφορίες όπως την URL ή τα headers
+                if (httpEx.InnerException != null)
+                {
+                    errorMessage += $"\nInner Exception: {httpEx.InnerException.Message}";
+                }
+
+                // Εδώ μπορείς να καταγράψεις τα αίτια του λάθους σε αρχείο ή σε κονσόλα
+                Debug.WriteLine(errorMessage);  // Μπορείς να το αντικαταστήσεις με Log
+                return ServiceResult<T>.FailureResult(default, errorMessage);
             }
             catch (Exception ex)
             {

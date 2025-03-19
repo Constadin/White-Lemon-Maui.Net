@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage
+<base:BaseView
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     x:Class="WhiteLemonMauiUI.Pages.Views.ProfileViewPage"
     xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
     xmlns:controls="clr-namespace:WhiteLemonMauiUI.Controls"
+    xmlns:viewModel="clr-namespace:WhiteLemonMauiUI.Pages.ViewModels"
+    xmlns:base="clr-namespace:WhiteLemonMauiUI.Helpers.Views"
     Title="Profile"
     BackgroundColor="{DynamicResource InitializeColorStart}">
 
@@ -58,10 +60,10 @@
                         </Image.GestureRecognizers>
                     </Image>
                 </Border>
-
             </Grid>
         </Grid>
     </Shell.TitleView>
+
     <Grid
         RowDefinitions="Auto,Auto, *">
         <BoxView
@@ -98,10 +100,10 @@
                     WidthRequest="80"
                     StrokeThickness="2">
                     <Image
+                        Source="{Binding PhotoUrl, Mode=TwoWay}"
                         HorizontalOptions="Center"
                         VerticalOptions="Center"
-                        Aspect="AspectFill"
-                        Source="woman_1.jpg">
+                        Aspect="AspectFill">
                     </Image>
                 </Border>
                 <Border
@@ -135,12 +137,12 @@
                 FontAttributes="Bold"
                 FontSize="18"
                 HorizontalOptions="Center"
-                Text="Nika Kara"
+                Text="{Binding UserName, Mode=TwoWay}"
                 TextColor="White" />
             <Label
                 FontSize="16"
                 HorizontalOptions="Center"
-                Text="email@kodman.gr"
+                Text="{Binding Email, Mode=TwoWay}"
                 TextColor="White" />
             <BoxView
                 Margin="0,5" />
@@ -210,4 +212,4 @@
             </Border>
         </VerticalStackLayout>
     </Grid>
-</ContentPage>
+</base:BaseView>

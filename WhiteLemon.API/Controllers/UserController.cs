@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Hosting.Server;
+using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System.Diagnostics;
 using WhiteLemon.API.Interfaces;
@@ -6,6 +7,7 @@ using WhiteLemon.API.Models;
 using WhiteLemon.API.Services;
 using WhiteLemon.Application.DTOs;
 using WhiteLemon.Application.Interfaces;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace WhiteLemon.API.Controllers
 {
@@ -99,25 +101,29 @@ namespace WhiteLemon.API.Controllers
             return ErrorResponseFactory.CreateErrorResponse(this, registrationResul);
         }
 
-        //private IActionResult GetErrorResponse(string errorMessage)
-        //{
-        //    // Εδώ μπορούμε να προσθέσουμε ελέγχους για διαφορετικούς κωδικούς σφάλματος
-        //    if (errorMessage.Contains("Invalid credentials"))
-        //    {
-        //        return Unauthorized(errorMessage);  // 401 Unauthorized
-        //    }
-        //    else if (errorMessage.Contains("Server error"))
-        //    {
-        //        return StatusCode(500, "Server error occurred. Please try again later.");  // 500 Internal Server Error
-        //    }
-        //    else if (errorMessage.Contains("Bad request"))
-        //    {
-        //        return BadRequest(errorMessage);  // 400 Bad Request
-        //    }
-        //    else
-        //    {
-        //        return StatusCode(500, "An unknown error occurred. Please try again later.");  // 500 Internal Server Error
-        //    }
-        //}
+
+        /// <summary>
+        /// Endpoint for preloading data.  GET /api/users/preloadData
+        /// </summary>
+        /// <returns></returns>
+        [HttpPost("preloadData")]
+        public async Task<IActionResult> GetPreloadData([FromBody] PreloadDataRequest request)
+        {
+            try
+            {
+                Guid currentUserId = request.UserId;
+
+                int preloadLimit = request.limit;
+
+                var preloadResponse = await this._userService.PreloadDataAsync(currentUserId, preloadLimit);
+
+                return Ok(preloadResponse); // Επιστρέφουμε το αποτέλεσμα
+            }
+            catch (Exception ex)
+            {
+                // Χειρισμός λαθών (π.χ. αν αποτύχει η κλήση της βάσης δεδομένων)
+                return ErrorResponseFactory.CreateErrorResponse(this, ex);
+            }
+        }
     }
 }

@@ -1,4 +1,6 @@
-﻿namespace WhiteLemonMauiUI.Api.ApiConfigMaui
+﻿using Microsoft.Maui.Devices;
+
+namespace WhiteLemonMauiUI.Api.ApiConfigMaui
 {
     public class ApiConfig
     {
@@ -6,17 +8,42 @@
         {
             get
             {
-                var platform = DeviceInfo.Platform.ToString();
-                switch (platform)
+                var platform = DeviceInfo.Platform;
+                var model = DeviceInfo.Model;
+                var deviceType = DeviceInfo.DeviceType;
+
+                if (platform == DevicePlatform.Android)
                 {
-                    case nameof(DevicePlatform.Android):
+                    // Έλεγχος αν είναι emulator
+                    if (deviceType == DeviceType.Virtual)
+                    {
                         return "http://10.0.2.2:5241"; // Διεύθυνση για Android Emulator
-                    case nameof(DevicePlatform.iOS):
-                        return "https://localhost:5241"; // Διεύθυνση για iOS Simulator
-                    default:
-                        return "https://localhost:5241"; // Default για Windows, Mac, κτλ.
+                    }
+                    else
+                    {
+                        return "http://192.168.1.3:5241"; // Αντικατέστησε με την IP του PC σου
+                    }
                 }
+                else if (platform == DevicePlatform.iOS)
+                {
+                    return "https://localhost:5241"; // Διεύθυνση για iOS Simulator
+                }
+
+                return "https://localhost:5241"; // Default για Windows, Mac, κτλ.
             }
+            //get
+            //{
+            //    var platform = DeviceInfo.Platform.ToString();
+            //    switch (platform)
+            //    {
+            //        case nameof(DevicePlatform.Android):
+            //            return "http://10.0.2.2:5241"; // Διεύθυνση για Android Emulator
+            //        case nameof(DevicePlatform.iOS):
+            //            return "https://localhost:5241"; // Διεύθυνση για iOS Simulator
+            //        default:
+            //            return "https://localhost:5241"; // Default για Windows, Mac, κτλ.
+            //    }
+            //}
         }
     }
 }

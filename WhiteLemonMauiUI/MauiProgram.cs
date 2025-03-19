@@ -1,5 +1,7 @@
 ﻿using CommunityToolkit.Maui;
+using FFImageLoading.Maui;
 using Microsoft.Extensions.Logging;
+using WhiteLemon.Shared.Constants;
 using WhiteLemonMauiUI.Api.ApiConfigMaui;
 using WhiteLemonMauiUI.Pages.ViewModels;
 
@@ -13,6 +15,7 @@ namespace WhiteLemonMauiUI
             builder
                 .UseMauiApp<App>()
                 .UseMauiCommunityToolkit()
+                .UseFFImageLoading()
                 .ConfigureFonts(fonts =>
                 {
                     //fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
@@ -23,29 +26,39 @@ namespace WhiteLemonMauiUI
                     fonts.AddFont("PlayfairDisplay-Medium.ttf", "PlayfairDisplayMedium");
                 });
 
-            
+            // Registering ViewModels
+            // Εγγραφή ViewModels
+
             builder.Services.AddSingleton<RegisterViewModel>();
             builder.Services.AddSingleton<LoginViewModel>();
+            builder.Services.AddSingleton<HomePageViewModel>();
+            builder.Services.AddSingleton<DiscoverPeopleViewModel>();
+            builder.Services.AddSingleton<ProfileViewModel>();
 
+            // Add HttpClient with Custom Handler
+            // Προσθήκη HttpClient με Custom Handler
 
-            // Adding HttpClient with custom handler for SSL issues
-            builder.Services.AddSingleton(sp =>
+            builder.Services.AddHttpClient(Const.NameOfCliendApi, client =>
             {
-                var httpClientHandler = new HttpClientHandler
-                {
-                    // Ignore SSL validation, only useful in a dev environment.
-                    ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => true
-                };
+                client.BaseAddress = new Uri(ApiConfig.BaseAddress); // API Base URL
+                client.Timeout = TimeSpan.FromSeconds(30); // Timeout για τις κλήσεις
+            })
+            .ConfigurePrimaryHttpMessageHandler(() =>
+            {
+                return new HttpClientHandler
 
-                return new HttpClient(httpClientHandler)
-                {
-                    BaseAddress = new Uri(ApiConfig.BaseAddress), // Setting the API base URL
-                    Timeout = TimeSpan.FromSeconds(30) // Setting timeout for requests
+                {   // Ignore SSL validation (for DEV environment)
+                    // Αγνόηση SSL validation (για DEV περιβάλλον)
+
+                    ServerCertificateCustomValidationCallback = (message, cert, chain, errors) => true
                 };
             });
 
             // Registering other UI-related services
+            // Καταχώρηση άλλων υπηρεσιών 
+
             builder.Services.RegisterUiServices();
+            
 
 #if DEBUG
             builder.Logging.AddDebug();
@@ -54,6 +67,8 @@ namespace WhiteLemonMauiUI
             return builder.Build();
         }
 
+
+        //devtunnels.ms
         private static void ConfigureRefit(IServiceCollection services)
         {
             var baseApiUrl = "https://05rgtd5d-7091.euw.devtunnels.ms";
