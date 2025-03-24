@@ -32,6 +32,11 @@ namespace WhiteLemonMauiUI.Helpers.Views
         /// </summary>
         public Command OkCommand { get; }
 
+
+        public bool ShowOkButton => !(PopupType.ToLower() == "success" || PopupType.ToLower() == "notification");
+
+
+
         /// <summary>
         /// Constructor for the DialogPopUp. Initializes title, message, and popup type.
         /// Κατασκευαστής για το DialogPopUp. Αρχικοποιεί τον τίτλο, το μήνυμα και τον τύπο του popup.
@@ -43,22 +48,33 @@ namespace WhiteLemonMauiUI.Helpers.Views
         {
             InitializeComponent();
 
-    
+
             this.TitleText = title;
             this.MessageText = message;
             this.PopupType = popupType;
 
-    
+
             TitleLabel.Text = TitleText;
             MessageLabel.Text = MessageText;
 
-     
+
             SetPopupIcon();
 
-     
+
             OkCommand = new Command(() => Close());
 
-            this.BindingContext = this;
+            BindingContext = this;
+
+            AutoClose();
+        }
+
+        private async void AutoClose()
+        {
+            if (PopupType.ToLower() == "success" || PopupType.ToLower() == "notification")
+            {
+                await Task.Delay(2000);
+                Close();
+            }
         }
 
         /// <summary>
@@ -69,23 +85,23 @@ namespace WhiteLemonMauiUI.Helpers.Views
         {
             string iconSource = string.Empty;
 
-         
+
             switch (PopupType.ToLower())
             {
                 case "warning":
-                    iconSource = "warning_regular_24.svg"; 
+                    iconSource = "warning_regular_24.svg";
                     break;
                 case "error":
                     iconSource = "error_regular_24.svg";
                     break;
                 case "success":
-                    iconSource = "success_regular_24.svg"; 
+                    iconSource = "success_regular_24.svg";
                     break;
                 case "notification":
-                    iconSource = "notification_regular_24.svg"; 
+                    iconSource = "notification_regular_24.svg";
                     break;
                 default:
-                    iconSource = ""; 
+                    iconSource = "";
                     break;
             }
 

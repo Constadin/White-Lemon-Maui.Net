@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
-using WhiteLemonMauiUI.Users.ModelsDto;
+﻿using WhiteLemonMauiUI.Users.ModelsDto;
 
 namespace WhiteLemonMauiUI.Mappers
 {
@@ -7,7 +6,7 @@ namespace WhiteLemonMauiUI.Mappers
     {
         public static RegisterUserRequest ToRegisterUserRequest(string? userName, string? email, string? password, string? photoUser)
         {
-          
+
             return new RegisterUserRequest()
             {
                 Name = userName ?? string.Empty,
@@ -25,5 +24,9 @@ namespace WhiteLemonMauiUI.Mappers
                 Email = email ?? string.Empty,
                 Password = password ?? string.Empty
             };
+
+        public static PostDto ToAddPostUserRequest(Guid id, Guid userId, string title, string content, DateTime createdAt, DateTime? modifiedOn, List<PostImageDto> postImages) =>
+                    new(id, userId, title, content, createdAt, modifiedOn, postImages ?? new List<PostImageDto>());
+
     }
 }

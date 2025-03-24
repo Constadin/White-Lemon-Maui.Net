@@ -1,7 +1,6 @@
 ﻿using Android.App;
 using Android.Content.PM;
 using Android.OS;
-using Android.Views;
 
 namespace WhiteLemonMauiUI
 {
@@ -14,7 +13,7 @@ namespace WhiteLemonMauiUI
 
             RequestedOrientation = ScreenOrientation.Portrait;
 
-           // Window.SetFlags(WindowManagerFlags.LayoutNoLimits, WindowManagerFlags.LayoutNoLimits);
+            // Window.SetFlags(WindowManagerFlags.LayoutNoLimits, WindowManagerFlags.LayoutNoLimits);
 
         }
     }

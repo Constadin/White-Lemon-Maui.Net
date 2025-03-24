@@ -60,23 +60,4 @@
 
     </TabBar>
 
-
-
-
-
-
-
-    <!--<MenuItem
-        Text="About"
-        IconImageSource="about_regular_24.svg" />
-
-    <MenuItem
-        Text="Help"
-        IconImageSource="help_regular_24.svg" />
-
-    <MenuItem
-        Text="LogOut"
-        IconImageSource="logout_regular_24.svg"
-        Clicked="OnLoginClicked" />-->
-
 </Shell>

@@ -1,4 +1,3 @@
-using Microsoft.Extensions.FileProviders;
 using WhiteLemon.API.ConfigApi;
 using WhiteLemon.API.Endpoints;
 
@@ -11,11 +10,11 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.AddBuilderDependencies();
 
-//builder.WebHost.ConfigureKestrel(options =>
-//{
-//    options.ListenAnyIP(7091); // HTTPs
-//    options.ListenAnyIP(5049); // HTTP
-//});
+builder.WebHost.ConfigureKestrel(options =>
+{   
+    options.ListenAnyIP(5241); // HTTP
+});
+
 
 // Build the application
 

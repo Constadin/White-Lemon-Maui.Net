@@ -46,11 +46,11 @@
 
 	
 	<ItemGroup>
-		<!-- App Icon -->
+		 <!--App Icon--> 
 		<MauiIcon Include="Resources\AppIcon\appicon.svg" Color="#9307f7" TintColor="White" />
 
-		<!-- Splash Screen -->
-		<MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#9307f7" BaseSize="128,128" />
+		 <!--Splash Screen--> 
+		<MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#9307f7" TintColor="White" BaseSize="128,128" />
 
 		<!-- Images -->
 		<MauiImage Include="Resources\Images\*" />
@@ -63,9 +63,17 @@
 		<MauiAsset Include="Resources\Raw\**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)" />
 	</ItemGroup>
 
+	
+
+	
+	<ItemGroup>
+	  <AndroidResource Remove="Platforms\Android\Resources\values\styles.xml" />
+	</ItemGroup>
+
 	<ItemGroup>
 		<PackageReference Include="CommunityToolkit.Maui" Version="11.1.0" />
 		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.0" />
+		<PackageReference Include="FFImageLoading.Maui" Version="1.2.7" />
 		<PackageReference Include="Microsoft.AspNetCore.Http" Version="2.3.0" />
 		<PackageReference Include="Microsoft.AspNetCore.Http.Features" Version="5.0.17" />
 		<PackageReference Include="Microsoft.Maui.Controls" Version="9.0.30" />
@@ -78,6 +86,9 @@
 	  <MauiXaml Update="Helpers\Views\DialogPopUp.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Pages\ComponetViews\ButtomSheetComponet.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	</ItemGroup>
 
 	<ItemGroup>
@@ -88,4 +99,10 @@
 	  <ProjectReference Include="..\WhiteLemon.Shared\WhiteLemon.Shared.csproj" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <Compile Update="Pages\ComponetViews\ButtomSheetComponet.xaml.cs">
+	    <DependentUpon>ButtomSheetComponet.xaml</DependentUpon>
+	  </Compile>
+	</ItemGroup>
+	
 </Project>

@@ -2,10 +2,10 @@ namespace WhiteLemonMauiUI.Pages.Views;
 
 public partial class HelpViewPage : ContentPage
 {
-	public HelpViewPage()
-	{
-		InitializeComponent();
-	}
+    public HelpViewPage()
+    {
+        InitializeComponent();
+    }
     protected override void OnAppearing()
     {
         base.OnAppearing();

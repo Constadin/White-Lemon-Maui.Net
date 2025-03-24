@@ -1,145 +1,241 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage
+<base:BaseView
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     x:Class="WhiteLemonMauiUI.Pages.Views.AddPostViewPage"
     xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
     xmlns:controls="clr-namespace:WhiteLemonMauiUI.Controls"
+    xmlns:ff="clr-namespace:FFImageLoading.Maui;assembly=FFImageLoading.Maui"
+    xmlns:viewModel="clr-namespace:WhiteLemonMauiUI.Pages.ViewModels"
+    xmlns:base="clr-namespace:WhiteLemonMauiUI.Helpers.Views"
+    xmlns:model="clr-namespace:WhiteLemonMauiUI.Users.ModelsDto"
     Title="Add Post"
     BackgroundColor="{DynamicResource InitializeColorStart}">
-
-
     <Grid
-        RowDefinitions="320,Auto, Auto,*">
+        RowDefinitions="280,Auto, *,Auto,Auto"
+        BackgroundColor="#1f1f1f">
         <Grid
             Grid.Row="0"
-            Padding="10">
-            <Border
-                Padding="0,4"
-                BackgroundColor="Purple"
-                StrokeThickness="0">
-                <Border.StrokeShape>
-                    <RoundRectangle
-                        CornerRadius="12" />
-                </Border.StrokeShape>
-                <Border
-                    Margin="10,0"
-                    BackgroundColor="LightGrey"
-                    StrokeShape="RoundRectangle 10"
-                    StrokeThickness="3">
-                    <Editor
-                        Placeholder="Enter comment..."
-                        PlaceholderColor="Grey"
-                        TextColor="Black"
-                        Margin="10"
-                        CursorPosition="5"
-                        FontSize="15"
-                        FontAttributes="Italic"
-                        HeightRequest="313"
-                        CharacterSpacing="2" />
-                </Border>
-            </Border>
+            Padding="0,10"
+            BackgroundColor="Black">
+            <CollectionView
+                ItemsSource="{Binding PhotoUrlImages}"
+                HorizontalScrollBarVisibility="Never"
+                Margin="10"
+                HorizontalOptions="Center">
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout
+                        Orientation="Horizontal" />
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <ff:CachedImage
+                            Source="{Binding}"
+                            Aspect="AspectFit"
+                            HeightRequest="250"
+                            WidthRequest="150"
+                            HorizontalOptions="Center"
+                            VerticalOptions="Center"
+                            DownsampleToViewSize="True"
+                            CacheDuration="00:05:00"
+                            Margin="5" />
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
         </Grid>
-        <BoxView
-            Grid.Row="1"
-            HeightRequest="8"
-            HorizontalOptions="Fill"
-            Margin="0,0,0,10">
-            <BoxView.Background>
-                <LinearGradientBrush
-                    StartPoint="0,0"
-                    EndPoint="1,0">
-                    <GradientStop
-                        Color="Transparent"
-                        Offset="0.0" />
-                    <GradientStop
-                        Color="LightGrey"
-                        Offset="0.5" />
-                    <GradientStop
-                        Color="Transparent"
-                        Offset="1.0" />
-                </LinearGradientBrush>
-            </BoxView.Background>
-        </BoxView>
-        <VerticalStackLayout
-            Grid.Row="2">
-            <Grid
-                RowDefinitions="*,Auto,*,Auto"
-                Padding="6,0"
-                VerticalOptions="Start">
-                <Grid
-                    Grid.Row="1"
-                    Padding="10,0">
-                    <Image
-                        Source="motorcycle.jpg"
-                        Aspect="Fill" />
-                </Grid>
-                <Border
-                    Grid.Row="2"
-                    HeightRequest="40"
-                    WidthRequest="40"
-                    Margin="8"
-                    Stroke="Purple"
-                    StrokeThickness="3">
-                    <Border.StrokeShape>
-                        <RoundRectangle
-                            CornerRadius="5" />
-                    </Border.StrokeShape>
 
-                    <controls:TintColorImage
-                        Source="delete_regular_24"
-                        Aspect="AspectFit"
-                        HeightRequest="40"
-                        WidthRequest="40"
-                        HorizontalOptions="Center"
-                        VerticalOptions="Center" />
-                </Border>
-                <BoxView
-                    Grid.Row="4"
-                    HeightRequest="2"
-                    HorizontalOptions="Fill"
-                    Margin="10">
-                    <BoxView.Background>
-                        <LinearGradientBrush
-                            StartPoint="0,0"
-                            EndPoint="1,0">
-                            <GradientStop
-                                Color="Transparent"
-                                Offset="0.0" />
-                            <GradientStop
-                                Color="Grey"
-                                Offset="0.5" />
-                            <GradientStop
-                                Color="Transparent"
-                                Offset="1.0" />
-                        </LinearGradientBrush>
-                    </BoxView.Background>
-                </BoxView>
-            </Grid>
+
+        <VerticalStackLayout
+            Grid.Row="1">
+            <Label
+                Text="Recent use"
+                FontSize="17"
+                HorizontalOptions="Start"
+                Padding="20,0,0,0"
+                Margin="0,30,0,0"
+                FontAttributes="Italic"
+                TextColor="White" />
+            <BoxView
+                HeightRequest="4"
+                Margin="5">
+                <BoxView.Background>
+                    <LinearGradientBrush
+                        StartPoint="0,0"
+                        EndPoint="1,0">
+                        <GradientStop
+                            Color="Transparent"
+                            Offset="0.0" />
+                        <GradientStop
+                            Color="Grey"
+                            Offset="0.5" />
+                        <GradientStop
+                            Color="Transparent"
+                            Offset="1.0" />
+                    </LinearGradientBrush>
+                </BoxView.Background>
+            </BoxView>
         </VerticalStackLayout>
+
+
+        <CollectionView
+            Grid.Row="2"
+            ItemsSource="{Binding SelectedPostImages}"
+            HorizontalScrollBarVisibility="Never"
+            Margin="10">
+            <CollectionView.ItemsLayout>
+                <GridItemsLayout
+                    Orientation="Vertical"
+                    Span="3" />
+            </CollectionView.ItemsLayout>
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <VerticalStackLayout
+                        HorizontalOptions="Center"
+                        Padding="5"
+                        BackgroundColor="black"
+                        Margin="3">
+                        <ff:CachedImage
+                            Source="{Binding}"
+                            Aspect="AspectFit"
+                            HeightRequest="150"
+                            WidthRequest="150"
+                            HorizontalOptions="Center"
+                            VerticalOptions="Center"
+                            DownsampleToViewSize="True"
+                            CacheDuration="00:05:00" />
+                    </VerticalStackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+
         <Grid
             Grid.Row="3"
             BackgroundColor="Purple"
-            ColumnDefinitions="Auto,*,Auto"
+            ColumnDefinitions="Auto,*,Auto,*,Auto,*,Auto"
             Padding="10,3"
-            HeightRequest="60"
+            HeightRequest="55"
             VerticalOptions="End">
             <Button
                 Grid.Column="0"
                 Margin="5"
-                Text="Add Photo"
-                WidthRequest="120"
+                Text="Add"
+                WidthRequest="80"
                 FontSize="12"
                 BackgroundColor="Purple"
-                Style="{StaticResource welcomeBtnStyle}" />
+                Style="{StaticResource welcomeBtnStyle}"
+                Command="{Binding ChoosePhotoCommand}" />
             <Button
                 Grid.Column="2"
                 Margin="5"
-                Text="Post"
-                WidthRequest="120"
+                Text="Title"
+                WidthRequest="80"
                 FontSize="12"
                 BackgroundColor="Purple"
-                Style="{StaticResource welcomeBtnStyle}" />
+                Style="{StaticResource welcomeBtnStyle}"
+                Command="{Binding SetTitleCommand}" />
+            <Button
+                Grid.Column="4"
+                Margin="5"
+                Text="Content"
+                WidthRequest="80"
+                FontSize="12"
+                BackgroundColor="Purple"
+                Style="{StaticResource welcomeBtnStyle}"
+                Command="{Binding SetContentCommand}" />
+            <Button
+                Grid.Column="6"
+                Margin="5"
+                Text="Delete"
+                WidthRequest="80"
+                FontSize="12"
+                BackgroundColor="Purple"
+                Style="{StaticResource welcomeBtnStyle}"
+                Command="{Binding DeletePhotoCommand}" />
+        </Grid>
+
+
+        <Grid
+            Grid.Row="4"
+            BackgroundColor="Purple"
+            Padding="0,0,0,10"
+            ColumnDefinitions="Auto,*, Auto">
+            <Border
+                Grid.Column="0"
+                HeightRequest="35"
+                WidthRequest="35"
+                Stroke="MediumPurple"
+                StrokeThickness="0.5"
+                Margin="10,0,10,0">
+                <Border.StrokeShape>
+                    <RoundRectangle
+                        CornerRadius="5" />
+                </Border.StrokeShape>
+                <Image
+                    Source="reset_regular_24"
+                    Aspect="AspectFit"
+                    HorizontalOptions="Center"
+                    HeightRequest="30"
+                    WidthRequest="30"
+                    VerticalOptions="Center">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer
+                            Command="{Binding ResetCommand}" />
+                    </Image.GestureRecognizers>
+                    <Image.Behaviors>
+                        <toolkit:IconTintColorBehavior
+                            TintColor="White" />
+                    </Image.Behaviors>
+                </Image>
+            </Border>
+            <Border
+                Grid.Column="1"
+                Margin="10,5"
+                BackgroundColor="LightGrey"
+                StrokeShape="RoundRectangle 10"
+                StrokeThickness="3">
+                <controls:NoUnderlineEntry
+                    Text="{Binding PostMessage, Mode=TwoWay}"
+                    Placeholder="Enter title or content"
+                    PlaceholderColor="Grey"
+                    TextColor="Black"
+                    ClearButtonVisibility="WhileEditing"
+                    CursorPosition="5"
+                    FontSize="13"
+                    FontAttributes="Italic"
+                    CharacterSpacing="2"
+                    Margin="0"
+                    HeightRequest="42"
+                    IsEnabled="{Binding IsEntryEnabled}" />
+            </Border>
+            <Border
+                Grid.Column="2"
+                HeightRequest="35"
+                WidthRequest="35"
+                Stroke="MediumPurple"
+                StrokeThickness="0.5"
+                Margin="0,0,10,0">
+                <Border.StrokeShape>
+                    <RoundRectangle
+                        CornerRadius="5" />
+                </Border.StrokeShape>
+                <Image
+                    Source="arrow_right_big_24"
+                    Aspect="AspectFit"
+                    HorizontalOptions="Center"
+                    HeightRequest="22"
+                    WidthRequest="22"
+                    VerticalOptions="Center">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer
+                            Command="{Binding AddPostICommand}" />
+                    </Image.GestureRecognizers>
+                    <Image.Behaviors>
+                        <toolkit:IconTintColorBehavior
+                            TintColor="White" />
+                    </Image.Behaviors>
+                </Image>
+            </Border>
         </Grid>
     </Grid>
-</ContentPage>
+</base:BaseView>

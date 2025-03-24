@@ -47,7 +47,7 @@ namespace WhiteLemonMauiUI.Validators
 
             // Έλεγχος μεγέθους αρχείου
             // Check the file size
-            if (file.Length > this._maxFileSize)
+            if (file.Length > _maxFileSize)
             {
                 return new ValidationResult(FormatErrorMessage("File size"));
             }
@@ -65,7 +65,7 @@ namespace WhiteLemonMauiUI.Validators
             {
                 "File not found" => "File not found",
                 "Invalid file format. Only .jpg and .png are allowed." => "Invalid file format. Only .jpg and .png are allowed.",
-                "File size" => $"File size exceeds the limit of {this._maxFileSize / 1024 / 1024} MB.",
+                "File size" => $"File size exceeds the limit of {_maxFileSize / 1024 / 1024} MB.",
                 _ => $"Error in the file. {name}"  // Γενικό μήνυμα σφάλματος για άλλες περιπτώσεις
                 // General error message for other cases
             };

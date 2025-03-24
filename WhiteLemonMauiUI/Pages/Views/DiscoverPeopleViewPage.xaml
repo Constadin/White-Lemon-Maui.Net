@@ -1,418 +1,95 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage
+<base:BaseView
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     x:Class="WhiteLemonMauiUI.Pages.Views.DiscoverPeopleViewPage"
+    xmlns:viewModel="clr-namespace:WhiteLemonMauiUI.Pages.ViewModels"
+    xmlns:ff="clr-namespace:FFImageLoading.Maui;assembly=FFImageLoading.Maui"
+    xmlns:base="clr-namespace:WhiteLemonMauiUI.Helpers.Views"
     BackgroundColor="{DynamicResource InitializeColorStart}"
     Title="Discover People">
 
     <ScrollView
         VerticalScrollBarVisibility="Never"
-        Orientation="Vertical">
-        
-        <VerticalStackLayout>
+        Orientation="Vertical"
+        Padding="15,5,15,0">
+        <Grid
+            RowDefinitions="Auto,*, Auto">
             <Label
+                Grid.Row="0"
                 Text="Suggested for you"
-                FontSize="18"
+                FontSize="17"
                 HorizontalOptions="Start"
-                Padding="22,0,0,0"
+                Padding="20,0,0,0"
                 Margin="-5,5"
                 FontAttributes="Bold"
                 TextColor="{x:DynamicResource TextColor}" />
-
-            <VerticalStackLayout
-                Spacing="10"
-                Padding="10">
-                <HorizontalStackLayout
-                    HorizontalOptions="Center"
-                    Spacing="10">
-                    <Border
-                        StrokeThickness="0">
-                        <Border.StrokeShape>
-                            <RoundRectangle
-                                CornerRadius="10" />
-                        </Border.StrokeShape>
-                        <VerticalStackLayout
-                            Spacing="2"
-                            HorizontalOptions="Center"
-                            BackgroundColor="Purple"
-                            Padding="10,20"
-                            HeightRequest="250">
-                            <Border
-                                Stroke="White"
-                                StrokeThickness="3.5"
-                                HeightRequest="150"
-                                WidthRequest="150"
-                                HorizontalOptions="Center">
-                                <Border.StrokeShape>
-                                    <RoundRectangle
-                                        CornerRadius="100" />
-                                </Border.StrokeShape>
-                                <Image
-                                    Source="woman_1"
-                                    Aspect="AspectFit"
-                                    HeightRequest="200"
-                                    WidthRequest="200"
-                                    HorizontalOptions="Center"
-                                    VerticalOptions="Center" />
-                            </Border>
-                            <Label
-                                Text="Nika Kara"
-                                FontSize="13"
-                                FontAttributes="Bold"
-                                TextColor="White"
-                                HorizontalTextAlignment="Center"
-                                VerticalTextAlignment="Center" />
-                            <Button
-                                Text="friendship"
-                                WidthRequest="105"
-                                Margin="2"
-                                FontSize="13"
-                                BackgroundColor="purple"
-                                Style="{StaticResource welcomeBtnStyle}" />
-                        </VerticalStackLayout>
-                    </Border>
-
-                    <Border
-                        StrokeThickness="0">
-                        <Border.StrokeShape>
-                            <RoundRectangle
-                                CornerRadius="10" />
-                        </Border.StrokeShape>
-                        <VerticalStackLayout
-                            Spacing="2"
-                            HorizontalOptions="Center"
-                            BackgroundColor="Purple"
-                            Padding="10,20"
-                            HeightRequest="250">
-                            <Border
-                                Stroke="White"
-                                StrokeThickness="3.5"
-                                HeightRequest="150"
-                                WidthRequest="150"
-                                HorizontalOptions="Center">
-                                <Border.StrokeShape>
-                                    <RoundRectangle
-                                        CornerRadius="100" />
-                                </Border.StrokeShape>
-                                <Image
-                                    Source="woman_1"
-                                    Aspect="AspectFit"
-                                    HeightRequest="200"
-                                    WidthRequest="200"
-                                    HorizontalOptions="Center"
-                                    VerticalOptions="Center" />
-                            </Border>
-                            <Label
-                                Text="Nika Kara"
-                                FontSize="13"
-                                FontAttributes="Bold"
-                                TextColor="White"
-                                HorizontalTextAlignment="Center"
-                                VerticalTextAlignment="Center" />
-                            <Button
-                                Text="friendship"
-                                WidthRequest="105"
-                                Margin="2"
-                                FontSize="13"
-                                BackgroundColor="purple"
-                                Style="{StaticResource welcomeBtnStyle}" />
-                        </VerticalStackLayout>
-                    </Border>
-                </HorizontalStackLayout>
- 
-                <HorizontalStackLayout
-                    HorizontalOptions="Center"
-                    Spacing="10">
-                    <Border
-                        StrokeThickness="0">
-                        <Border.StrokeShape>
-                            <RoundRectangle
-                                CornerRadius="10" />
-                        </Border.StrokeShape>
-                        <VerticalStackLayout
-                            Spacing="2"
-                            HorizontalOptions="Center"
-                            BackgroundColor="Purple"
-                            Padding="10,20"
-                            HeightRequest="250">
-                            <Border
-                                Stroke="White"
-                                StrokeThickness="3.5"
-                                HeightRequest="150"
-                                WidthRequest="150"
-                                HorizontalOptions="Center">
-                                <Border.StrokeShape>
-                                    <RoundRectangle
-                                        CornerRadius="100" />
-                                </Border.StrokeShape>
-                                <Image
-                                    Source="woman_1"
-                                    Aspect="AspectFit"
-                                    HeightRequest="200"
-                                    WidthRequest="200"
-                                    HorizontalOptions="Center"
-                                    VerticalOptions="Center" />
-                            </Border>
-                            <Label
-                                Text="Nika Kara"
-                                FontSize="13"
-                                FontAttributes="Bold"
-                                TextColor="White"
-                                HorizontalTextAlignment="Center"
-                                VerticalTextAlignment="Center" />
-                            <Button
-                                Text="friendship"
-                                WidthRequest="105"
-                                Margin="2"
-                                FontSize="13"
-                                BackgroundColor="purple"
-                                Style="{StaticResource welcomeBtnStyle}" />
-                        </VerticalStackLayout>
-                    </Border>
-
-                    <Border
-                        StrokeThickness="0">
-                        <Border.StrokeShape>
-                            <RoundRectangle
-                                CornerRadius="10" />
-                        </Border.StrokeShape>
-                        <VerticalStackLayout
-                            Spacing="2"
-                            HorizontalOptions="Center"
-                            BackgroundColor="Purple"
-                            Padding="10,20"
-                            HeightRequest="250">
-                            <Border
-                                Stroke="White"
-                                StrokeThickness="3.5"
-                                HeightRequest="150"
-                                WidthRequest="150"
-                                HorizontalOptions="Center">
-                                <Border.StrokeShape>
-                                    <RoundRectangle
-                                        CornerRadius="100" />
-                                </Border.StrokeShape>
-                                <Image
-                                    Source="woman_1"
-                                    Aspect="AspectFit"
-                                    HeightRequest="200"
-                                    WidthRequest="200"
-                                    HorizontalOptions="Center"
-                                    VerticalOptions="Center" />
-                            </Border>
-                            <Label
-                                Text="Nika Kara"
-                                FontSize="13"
-                                FontAttributes="Bold"
-                                TextColor="White"
-                                HorizontalTextAlignment="Center"
-                                VerticalTextAlignment="Center" />
-                            <Button
-                                Text="friendship"
-                                WidthRequest="105"
-                                Margin="2"
-                                FontSize="13"
-                                BackgroundColor="purple"
-                                Style="{StaticResource welcomeBtnStyle}" />
-                        </VerticalStackLayout>
-                    </Border>
-                </HorizontalStackLayout>
-                <HorizontalStackLayout
-                    HorizontalOptions="Center"
-                    Spacing="10">
-                    <Border
-                        StrokeThickness="0">
-                        <Border.StrokeShape>
-                            <RoundRectangle
-                                CornerRadius="10" />
-                        </Border.StrokeShape>
-                        <VerticalStackLayout
-                            Spacing="2"
-                            HorizontalOptions="Center"
-                            BackgroundColor="Purple"
-                            Padding="10,20"
-                            HeightRequest="250">
-                            <Border
-                                Stroke="White"
-                                StrokeThickness="3.5"
-                                HeightRequest="150"
-                                WidthRequest="150"
-                                HorizontalOptions="Center">
-                                <Border.StrokeShape>
-                                    <RoundRectangle
-                                        CornerRadius="100" />
-                                </Border.StrokeShape>
-                                <Image
-                                    Source="woman_1"
-                                    Aspect="AspectFit"
-                                    HeightRequest="200"
-                                    WidthRequest="200"
-                                    HorizontalOptions="Center"
-                                    VerticalOptions="Center" />
-                            </Border>
-                            <Label
-                                Text="Nika Kara"
-                                FontSize="13"
-                                FontAttributes="Bold"
-                                TextColor="White"
-                                HorizontalTextAlignment="Center"
-                                VerticalTextAlignment="Center" />
-                            <Button
-                                Text="friendship"
-                                WidthRequest="105"
-                                Margin="2"
-                                FontSize="13"
-                                BackgroundColor="purple"
-                                Style="{StaticResource welcomeBtnStyle}" />
-                        </VerticalStackLayout>
-                    </Border>
-
-                    <Border
-                        StrokeThickness="0">
-                        <Border.StrokeShape>
-                            <RoundRectangle
-                                CornerRadius="10" />
-                        </Border.StrokeShape>
-                        <VerticalStackLayout
-                            Spacing="2"
-                            HorizontalOptions="Center"
-                            BackgroundColor="Purple"
-                            Padding="10,20"
-                            HeightRequest="250">
-                            <Border
-                                Stroke="White"
-                                StrokeThickness="3.5"
-                                HeightRequest="150"
-                                WidthRequest="150"
-                                HorizontalOptions="Center">
-                                <Border.StrokeShape>
-                                    <RoundRectangle
-                                        CornerRadius="100" />
-                                </Border.StrokeShape>
-                                <Image
-                                    Source="woman_1"
-                                    Aspect="AspectFit"
-                                    HeightRequest="200"
-                                    WidthRequest="200"
-                                    HorizontalOptions="Center"
-                                    VerticalOptions="Center" />
-                            </Border>
-                            <Label
-                                Text="Nika Kara"
-                                FontSize="13"
-                                FontAttributes="Bold"
-                                TextColor="White"
-                                HorizontalTextAlignment="Center"
-                                VerticalTextAlignment="Center" />
-                            <Button
-                                Text="friendship"
-                                WidthRequest="105"
-                                Margin="2"
-                                FontSize="13"
-                                BackgroundColor="purple"
-                                Style="{StaticResource welcomeBtnStyle}" />
-                        </VerticalStackLayout>
-                    </Border>
-                </HorizontalStackLayout>
-                <HorizontalStackLayout
-                    HorizontalOptions="Center"
-                    Spacing="10">
-                    <Border
-                        StrokeThickness="0">
-                        <Border.StrokeShape>
-                            <RoundRectangle
-                                CornerRadius="10" />
-                        </Border.StrokeShape>
-                        <VerticalStackLayout
-                            Spacing="2"
-                            HorizontalOptions="Center"
-                            BackgroundColor="Purple"
-                            Padding="10,20"
-                            HeightRequest="250">
-                            <Border
-                                Stroke="White"
-                                StrokeThickness="3.5"
-                                HeightRequest="150"
-                                WidthRequest="150"
-                                HorizontalOptions="Center">
-                                <Border.StrokeShape>
-                                    <RoundRectangle
-                                        CornerRadius="100" />
-                                </Border.StrokeShape>
-                                <Image
-                                    Source="woman_1"
-                                    Aspect="AspectFit"
-                                    HeightRequest="200"
-                                    WidthRequest="200"
-                                    HorizontalOptions="Center"
-                                    VerticalOptions="Center" />
-                            </Border>
-                            <Label
-                                Text="Nika Kara"
-                                FontSize="13"
-                                FontAttributes="Bold"
-                                TextColor="White"
-                                HorizontalTextAlignment="Center"
-                                VerticalTextAlignment="Center" />
-                            <Button
-                                Text="friendship"
-                                WidthRequest="105"
-                                Margin="2"
-                                FontSize="13"
-                                BackgroundColor="purple"
-                                Style="{StaticResource welcomeBtnStyle}" />
-                        </VerticalStackLayout>
-                    </Border>
-
-                    <Border
-                        StrokeThickness="0">
-                        <Border.StrokeShape>
-                            <RoundRectangle
-                                CornerRadius="10" />
-                        </Border.StrokeShape>
-                        <VerticalStackLayout
-                            Spacing="2"
-                            HorizontalOptions="Center"
-                            BackgroundColor="Purple"
-                            Padding="10,20"
-                            HeightRequest="250">
-                            <Border
-                                Stroke="White"
-                                StrokeThickness="3.5"
-                                HeightRequest="150"
-                                WidthRequest="150"
-                                HorizontalOptions="Center">
-                                <Border.StrokeShape>
-                                    <RoundRectangle
-                                        CornerRadius="100" />
-                                </Border.StrokeShape>
-                                <Image
-                                    Source="woman_1"
-                                    Aspect="AspectFit"
-                                    HeightRequest="200"
-                                    WidthRequest="200"
-                                    HorizontalOptions="Center"
-                                    VerticalOptions="Center" />
-                            </Border>
-                            <Label
-                                Text="Nika Kara"
-                                FontSize="13"
-                                FontAttributes="Bold"
-                                TextColor="White"
-                                HorizontalTextAlignment="Center"
-                                VerticalTextAlignment="Center" />
-                            <Button
-                                Text="friendship"
-                                WidthRequest="105"
-                                Margin="2"
-                                FontSize="13"
-                                BackgroundColor="purple"
-                                Style="{StaticResource welcomeBtnStyle}" />
-                        </VerticalStackLayout>
-                    </Border>
-                </HorizontalStackLayout>
-            </VerticalStackLayout>
-        </VerticalStackLayout>
+            <CollectionView
+                Grid.Row="1"
+                ItemsSource="{Binding DiscoverPeopleUsers}"
+                HorizontalScrollBarVisibility="Never"
+                Margin="0">
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout
+                        Orientation="Vertical"
+                        Span="2" />
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Border
+                            StrokeThickness="0"
+                            Stroke="Silver"
+                            Margin="5"
+                            BackgroundColor="Purple">
+                            <Border.StrokeShape>
+                                <RoundRectangle
+                                    CornerRadius="10" />
+                            </Border.StrokeShape>
+                            <VerticalStackLayout
+                                Spacing="2"
+                                HorizontalOptions="Center"
+                                BackgroundColor="Purple"
+                                Padding="10,20"
+                                HeightRequest="230">
+                                <Border
+                                    Stroke="White"
+                                    StrokeThickness="3.5"
+                                    HeightRequest="120"
+                                    WidthRequest="120"
+                                    HorizontalOptions="Center">
+                                    <Border.StrokeShape>
+                                        <RoundRectangle
+                                            CornerRadius="100" />
+                                    </Border.StrokeShape>
+                                    <ff:CachedImage
+                                        Source="{Binding PhotoUrl, Mode=OneWay}"
+                                        Aspect="AspectFill"
+                                        HeightRequest="120"
+                                        WidthRequest="120"
+                                        HorizontalOptions="Center"
+                                        VerticalOptions="Center"
+                                        DownsampleToViewSize="True"
+                                        CacheDuration="00:05:00"/>
+                                </Border>
+                                <Label
+                                    Text="{Binding Name, Mode=OneWay}"
+                                    FontSize="13"
+                                    FontAttributes="Bold"
+                                    TextColor="White"
+                                    HorizontalTextAlignment="Center"
+                                    VerticalTextAlignment="Center" />
+                                <Button
+                                    Text="friendship"
+                                    WidthRequest="105"
+                                    Margin="2"
+                                    FontSize="13"
+                                    BackgroundColor="purple"
+                                    Style="{StaticResource welcomeBtnStyle}" />
+                            </VerticalStackLayout>
+                        </Border>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </Grid>
     </ScrollView>
-</ContentPage>
+</base:BaseView>

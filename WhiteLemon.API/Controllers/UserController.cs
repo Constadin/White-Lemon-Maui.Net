@@ -1,9 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Newtonsoft.Json;
-using System.Diagnostics;
 using WhiteLemon.API.Interfaces;
 using WhiteLemon.API.Models;
-using WhiteLemon.API.Services;
 using WhiteLemon.Application.DTOs;
 using WhiteLemon.Application.Interfaces;
 
@@ -66,10 +63,10 @@ namespace WhiteLemon.API.Controllers
 
             string photoUrl = result.Value.PhotoUrl;
 
-            var registrationResul = await this._userService.RegisterUserAsync(new RegisterUserDto(model.Name, model.Email, model.Password, photoUrl, photoPath));
+            var registrationResult = await this._userService.RegisterUserAsync(new RegisterUserDto(model.Name, model.Email, model.Password, photoUrl, photoPath));
 
 
-            return ErrorResponseFactory.CreateErrorResponse(this, registrationResul);
+            return ErrorResponseFactory.CreateErrorResponse(this, registrationResult);
         }
 
         /// <summary>
@@ -99,25 +96,81 @@ namespace WhiteLemon.API.Controllers
             return ErrorResponseFactory.CreateErrorResponse(this, registrationResul);
         }
 
-        //private IActionResult GetErrorResponse(string errorMessage)
-        //{
-        //    // Εδώ μπορούμε να προσθέσουμε ελέγχους για διαφορετικούς κωδικούς σφάλματος
-        //    if (errorMessage.Contains("Invalid credentials"))
-        //    {
-        //        return Unauthorized(errorMessage);  // 401 Unauthorized
-        //    }
-        //    else if (errorMessage.Contains("Server error"))
-        //    {
-        //        return StatusCode(500, "Server error occurred. Please try again later.");  // 500 Internal Server Error
-        //    }
-        //    else if (errorMessage.Contains("Bad request"))
-        //    {
-        //        return BadRequest(errorMessage);  // 400 Bad Request
-        //    }
-        //    else
-        //    {
-        //        return StatusCode(500, "An unknown error occurred. Please try again later.");  // 500 Internal Server Error
-        //    }
-        //}
+
+        /// <summary>
+        /// Endpoint for preloading data.  GET /api/users/preloadData
+        /// Εντολή για προφόρτωση δεδομένων.  GET /api/users/preloadData
+        /// </summary>
+        /// <returns></returns>
+        [HttpPost("preload-data")]
+        public async Task<IActionResult> GetPreloadData([FromBody] PreloadDataRequest request)
+        {
+            try
+            {
+                Guid currentUserId = request.UserId;
+
+                int preloadLimit = request.Limit;
+
+                var preloadResponse = await this._userService.PreloadDataAsync(currentUserId, preloadLimit);
+
+                return ErrorResponseFactory.CreateErrorResponse(this, preloadResponse);
+            }
+            catch (Exception ex)
+            {
+
+                return ErrorResponseFactory.CreateErrorResponse(this, ex);
+            }
+        }
+
+        /// <summary>
+        /// Endpoint for adding a new post. 
+        /// Εντολή για προσθήκη νέας ανάρτησης.  
+        /// </summary>
+        /// <returns></returns>
+        [HttpPost("add-post")]
+        public async Task<IActionResult> AddPost([FromBody] PostModel model)
+        {
+            if (model == null)
+            {
+                return ErrorResponseFactory.CreateErrorResponse(this, "Invalid post data.");
+            }
+
+            List<PostImageModel> postImages = new List<PostImageModel>();
+
+            List<PostImageDto> postImageDtos = new List<PostImageDto>();
+
+            if (model.PostImages != null && model.PostImages.Any())
+            {
+
+                foreach (var image in model.PostImages)
+                {
+                    byte[] photoBytes;
+
+                    try
+                    {
+                        photoBytes = Convert.FromBase64String(image.ImageUrl);
+                    }
+                    catch (FormatException)
+                    {
+                        return ErrorResponseFactory.CreateErrorResponse(this, "Invalid photo data format.");
+                    }
+
+                    var result = await this._photoUploadService.SavePhotoAsync(photoBytes, "Posts");
+
+                    string photoPath = result.Value.PhotoPath;
+
+                    string photoUrl = result.Value.PhotoUrl;
+
+                    postImages.Add(new PostImageModel(Guid.NewGuid(), model.Id, photoUrl));
+                }
+
+                postImageDtos.AddRange(postImages.Select(psI => new PostImageDto(psI.Id, psI.PostId, psI.ImageUrl)).ToList());
+            }
+
+            var postedResult = await this._userService.AddPostAsync(new PostDto(model.Id, model.UserId, model.Title, model.Content, model.CreatedAt, model.ModifiedOn, postImageDtos));
+
+            return ErrorResponseFactory.CreateErrorResponse(this, postedResult);
+        }
+
     }
 }

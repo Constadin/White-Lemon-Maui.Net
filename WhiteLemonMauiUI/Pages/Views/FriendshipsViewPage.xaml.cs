@@ -1,3 +1,5 @@
+using System.Diagnostics;
+
 namespace WhiteLemonMauiUI.Pages.Views;
 
 public partial class FriendshipsViewPage : ContentPage
@@ -16,11 +18,14 @@ public partial class FriendshipsViewPage : ContentPage
 
     private async void GotoDiscoverPeoplePage(object sender, TappedEventArgs e)
     {
+        var stopwatch = Stopwatch.StartNew();
 
         await NavigationGuard.SafeNavigateAsyncGuard(async () =>
         {
-            await Shell.Current.GoToAsync($"{nameof(DiscoverPeopleViewPage)}?explicitNav=true", true);
+            await Shell.Current.GoToAsync($"{nameof(DiscoverPeopleViewPage)}?explicitNav=true", false);
         });
 
+        stopwatch.Stop();
+        Console.WriteLine($"Navigation to EmptyPage took: {stopwatch.ElapsedMilliseconds}ms");
     }
 }

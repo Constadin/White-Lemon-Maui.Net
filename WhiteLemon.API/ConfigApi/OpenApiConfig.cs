@@ -1,12 +1,8 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.FileProviders;
-using Scalar.AspNetCore;
+﻿using Microsoft.Extensions.FileProviders;
 using WhiteLemon.API.Interfaces;
 using WhiteLemon.API.Services;
 using WhiteLemon.Application;
 using WhiteLemon.Infrastructure;
-using WhiteLemon.Infrastructure.Data;
 
 namespace WhiteLemon.API.ConfigApi
 {
@@ -38,6 +34,7 @@ namespace WhiteLemon.API.ConfigApi
             if (app.Environment.IsDevelopment())
             {
                 app.MapOpenApi();
+
                 //app.MapScalarApiReference(options =>
                 //{
                 //    options.Title = "White Lemon API";
@@ -54,9 +51,17 @@ namespace WhiteLemon.API.ConfigApi
             app.UseStaticFiles(new StaticFileOptions
             {
                 FileProvider = new PhysicalFileProvider(
-                Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "Uploads")),
+                    Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "Uploads")),
                 RequestPath = "/Uploads"
             });
+
+            app.UseStaticFiles(new StaticFileOptions
+            {
+                FileProvider = new PhysicalFileProvider(
+                    Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "Posts")),
+                RequestPath = "/Posts"
+            });
+
 
         }
 

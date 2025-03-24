@@ -20,8 +20,10 @@ namespace WhiteLemonMauiUI
         public static IServiceCollection RegisterUiServices(this IServiceCollection services)
         {
             // Registering services for dependency injection
+
             services.AddScoped<IApiService, ApiService>();
             services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IDataSourceService, DataSourceService>();
 
             return services;
         }

@@ -71,7 +71,7 @@
                         WidthRequest="300"
                         CharacterSpacing="4"
                         BackgroundColor="Transparent"
-                        Text="{Binding Email}" />
+                        Text="{Binding Email, Mode=TwoWay}" />
                 </Border>
                 <Border
                     BackgroundColor="White"
@@ -85,7 +85,7 @@
                     <controls:NoUnderlineEntry
                         Placeholder="Password"
                         PlaceholderColor="Purple"
-                        IsPassword="{Binding IsPasswordHidden}"
+                        IsPassword="{Binding IsPasswordHidden, Mode=TwoWay}"
                         HorizontalTextAlignment="Start"
                         VerticalTextAlignment="Center"
                         FontAttributes="Italic"
@@ -94,7 +94,7 @@
                         WidthRequest="300"
                         CharacterSpacing="4"
                         BackgroundColor="Transparent"
-                        Text="{Binding Password}" />
+                        Text="{Binding Password, Mode=TwoWay}" />
                 </Border>
                 <HorizontalStackLayout
                     HorizontalOptions="End"
@@ -112,6 +112,8 @@
                 </HorizontalStackLayout>
             </StackLayout>
         </Grid>
+        
+        
         <VerticalStackLayout
             Grid.Row="1"
             HorizontalOptions="Center"

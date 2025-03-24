@@ -17,7 +17,6 @@ namespace WhiteLemon.Application
 
             services.AddScoped<IUserService, UserService>();
 
-
             services.AddScoped<IPasswordHasher<User>, PasswordHasher<User>>();
 
             return services;

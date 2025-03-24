@@ -1,8 +1,11 @@
-﻿<ContentPage
+﻿<base:BaseView
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     x:Class="WhiteLemonMauiUI.Pages.Views.HomeViewPage"
     xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    xmlns:ff="clr-namespace:FFImageLoading.Maui;assembly=FFImageLoading.Maui"
+    xmlns:viewModel="clr-namespace:WhiteLemonMauiUI.Pages.ViewModels"
+    xmlns:base="clr-namespace:WhiteLemonMauiUI.Helpers.Views"
     Title="Home"
     BackgroundColor="{DynamicResource InitializeColorStart}">
 
@@ -11,13 +14,13 @@
         <Grid
             ColumnDefinitions="Auto, 80,*, Auto"
             Padding="10,0,15,0">
+
             <Label
                 Grid.Column="0"
                 Text="Posts"
                 TextColor="White"
                 FontSize="20"
                 VerticalTextAlignment="Center" />
-
             <Grid
                 ColumnDefinitions="Auto, *,Auto"
                 Grid.Column="3"
@@ -59,6 +62,8 @@
                             HorizontalOptions="Center" />
                     </Grid>
                 </Border>
+
+
                 <Border
                     Grid.Column="2"
                     HeightRequest="35"
@@ -88,234 +93,102 @@
                         </Image.GestureRecognizers>
                     </Image>
                 </Border>
-
             </Grid>
         </Grid>
     </Shell.TitleView>
 
-    <Grid>
-        <ScrollView
-            VerticalScrollBarVisibility="Never">
 
-            <VerticalStackLayout>
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition
-                            Height="Auto" />
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition
-                            Width="*" />
-                    </Grid.ColumnDefinitions>
-                    <ScrollView
-                        HorizontalScrollBarVisibility="Never"
-                        Orientation="Horizontal">
-                        <HorizontalStackLayout
-                            Spacing="10"
-                            Padding="10">
-                            <VerticalStackLayout
-                                Spacing="2"
-                                HorizontalOptions="Center">
-                                <Border
-                                    Stroke="Purple"
-                                    StrokeThickness="3.5"
-                                    HeightRequest="70"
-                                    WidthRequest="70"
-                                    HorizontalOptions="Center">
-                                    <Border.StrokeShape>
-                                        <RoundRectangle
-                                            CornerRadius="50" />
-                                    </Border.StrokeShape>
-                                    <Image
-                                        Source="woman_1"
-                                        Aspect="AspectFit"
-                                        HeightRequest="80"
-                                        WidthRequest="80"
-                                        HorizontalOptions="Center"
-                                        VerticalOptions="Center" />
-                                </Border>
-                                <Label
-                                    Text="Nika Kara"
-                                    FontSize="12"
-                                    TextColor="{DynamicResource TextColor}"
-                                    HorizontalTextAlignment="Center"
-                                    VerticalTextAlignment="Center" />
-                            </VerticalStackLayout>
-                            <VerticalStackLayout
-                                Spacing="2"
-                                HorizontalOptions="Center">
-                                <Border
-                                    Stroke="Purple"
-                                    StrokeThickness="3.5"
-                                    HeightRequest="70"
-                                    WidthRequest="70"
-                                    HorizontalOptions="Center">
-                                    <Border.StrokeShape>
-                                        <RoundRectangle
-                                            CornerRadius="50" />
-                                    </Border.StrokeShape>
-                                    <Image
-                                        Source="woman_1"
-                                        Aspect="AspectFit"
-                                        HeightRequest="80"
-                                        WidthRequest="80"
-                                        HorizontalOptions="Center"
-                                        VerticalOptions="Center" />
-                                </Border>
-                                <Label
-                                    Text="Nika Kara"
-                                    FontSize="12"
-                                    TextColor="{DynamicResource TextColor}"
-                                    HorizontalTextAlignment="Center"
-                                    VerticalTextAlignment="Center" />
-                            </VerticalStackLayout>
-
-                            <VerticalStackLayout
-                                Spacing="2"
-                                HorizontalOptions="Center">
-                                <Border
-                                    Stroke="Purple"
-                                    StrokeThickness="3.5"
-                                    HeightRequest="70"
-                                    WidthRequest="70"
-                                    HorizontalOptions="Center">
-                                    <Border.StrokeShape>
-                                        <RoundRectangle
-                                            CornerRadius="50" />
-                                    </Border.StrokeShape>
-                                    <Image
-                                        Source="woman_1"
-                                        Aspect="AspectFit"
-                                        HeightRequest="80"
-                                        WidthRequest="80"
-                                        HorizontalOptions="Center"
-                                        VerticalOptions="Center" />
-                                </Border>
-                                <Label
-                                    Text="Nika Kara"
-                                    FontSize="12"
-                                    TextColor="{DynamicResource TextColor}"
-                                    HorizontalTextAlignment="Center"
-                                    VerticalTextAlignment="Center" />
-                            </VerticalStackLayout>
-
-                            <VerticalStackLayout
-                                Spacing="2"
-                                HorizontalOptions="Center">
-                                <Border
-                                    Stroke="Purple"
-                                    StrokeThickness="3.5"
-                                    HeightRequest="70"
-                                    WidthRequest="70"
-                                    HorizontalOptions="Center">
-                                    <Border.StrokeShape>
-                                        <RoundRectangle
-                                            CornerRadius="50" />
-                                    </Border.StrokeShape>
-                                    <Image
-                                        Source="woman_1"
-                                        Aspect="AspectFit"
-                                        HeightRequest="80"
-                                        WidthRequest="80"
-                                        HorizontalOptions="Center"
-                                        VerticalOptions="Center" />
-                                </Border>
-                                <Label
-                                    Text="Nika Kara"
-                                    FontSize="12"
-                                    TextColor="{DynamicResource TextColor}"
-                                    HorizontalTextAlignment="Center"
-                                    VerticalTextAlignment="Center" />
-                            </VerticalStackLayout>
-
-                            <VerticalStackLayout
-                                Spacing="2"
-                                HorizontalOptions="Center">
-                                <Border
-                                    Stroke="Purple"
-                                    StrokeThickness="3.5"
-                                    HeightRequest="70"
-                                    WidthRequest="70"
-                                    HorizontalOptions="Center">
-                                    <Border.StrokeShape>
-                                        <RoundRectangle
-                                            CornerRadius="50" />
-                                    </Border.StrokeShape>
-                                    <Image
-                                        Source="woman_1"
-                                        Aspect="AspectFit"
-                                        HeightRequest="80"
-                                        WidthRequest="80"
-                                        HorizontalOptions="Center"
-                                        VerticalOptions="Center" />
-                                </Border>
-                                <Label
-                                    Text="Nika Kara"
-                                    FontSize="12"
-                                    TextColor="{DynamicResource TextColor}"
-                                    HorizontalTextAlignment="Center"
-                                    VerticalTextAlignment="Center" />
-                            </VerticalStackLayout>
-
-                            <VerticalStackLayout
-                                Spacing="2"
-                                HorizontalOptions="Center">
-                                <Border
-                                    Stroke="Purple"
-                                    StrokeThickness="3.5"
-                                    HeightRequest="70"
-                                    WidthRequest="70"
-                                    HorizontalOptions="Center">
-                                    <Border.StrokeShape>
-                                        <RoundRectangle
-                                            CornerRadius="50" />
-                                    </Border.StrokeShape>
-                                    <Image
-                                        Source="woman_1"
-                                        Aspect="AspectFit"
-                                        HeightRequest="80"
-                                        WidthRequest="80"
-                                        HorizontalOptions="Center"
-                                        VerticalOptions="Center" />
-                                </Border>
-                                <Label
-                                    Text="Nika Kara"
-                                    FontSize="12"
-                                    TextColor="{DynamicResource TextColor}"
-                                    HorizontalTextAlignment="Center"
-                                    VerticalTextAlignment="Center" />
-                            </VerticalStackLayout>
-
-                        </HorizontalStackLayout>
-                    </ScrollView>
-                </Grid>
-                
+    <ScrollView
+        VerticalScrollBarVisibility="Never">
+        <VerticalStackLayout
+            HeightRequest="1000">
+            <Grid
+                RowDefinitions="Auto,*">
                 <Label
+                    Grid.Row="0"
+                    Text="Top Rated Posts"
+                    FontSize="17"
+                    HorizontalOptions="Start"
+                    Padding="20,0,0,0"
+                    Margin="-5,5"
+                    FontAttributes="Bold"
+                    TextColor="{x:DynamicResource TextColor}" />
+                <CollectionView
+                    Grid.Row="1"
+                    ItemsSource="{Binding TopRatedUsers}"
+                    HorizontalScrollBarVisibility="Never"
+                    Margin="5">
+                    <CollectionView.ItemsLayout>
+                        <LinearItemsLayout
+                            Orientation="Horizontal" />
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <VerticalStackLayout
+                                Spacing="2"
+                                Padding="0"
+                                HorizontalOptions="Center"
+                                MaximumWidthRequest="80"
+                                Margin="5">
+                                <Border
+                                    Stroke="Purple"
+                                    StrokeThickness="3.5"
+                                    HeightRequest="70"
+                                    WidthRequest="70"
+                                    HorizontalOptions="Center">
+                                    <Border.StrokeShape>
+                                        <RoundRectangle
+                                            CornerRadius="50" />
+                                    </Border.StrokeShape>
+                                    <ff:CachedImage
+                                        Source="{Binding FullPhotoUrl, Mode=OneWay}"
+                                        Aspect="AspectFill"
+                                        HeightRequest="80"
+                                        WidthRequest="80"
+                                        HorizontalOptions="Center"
+                                        VerticalOptions="Center"
+                                        DownsampleToViewSize="True"
+                                        CacheDuration="00:05:00" />
+                                </Border>
+                                <Label
+                                    Text="{Binding Name}"
+                                    FontSize="12"
+                                    TextColor="{DynamicResource TextColor}"
+                                    HorizontalTextAlignment="Center"
+                                    VerticalTextAlignment="Center"
+                                    LineBreakMode="CharacterWrap" />
+                            </VerticalStackLayout>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </Grid>
+
+            <Grid
+                RowDefinitions="Auto,*">
+                <Label
+                    Grid.Row="0"
                     Text="Suggested for you"
-                    FontSize="18"
+                    FontSize="17"
                     HorizontalOptions="Start"
                     Padding="20,0,0,0"
                     Margin="-5,5"
                     FontAttributes="Bold"
                     TextColor="{x:DynamicResource TextColor}" />
 
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition
-                            Height="Auto" />
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition
-                            Width="*" />
-                    </Grid.ColumnDefinitions>
-                    <ScrollView
-                        HorizontalScrollBarVisibility="Never"
-                        Orientation="Horizontal">
-                        <HorizontalStackLayout
-                            Spacing="10"
-                            Padding="10">
+                <CollectionView
+                    Grid.Row="1"
+                    ItemsSource="{Binding SuggestedUsers}"
+                    HorizontalScrollBarVisibility="Never"
+                    Margin="5">
+                    <CollectionView.ItemsLayout>
+                        <LinearItemsLayout
+                            Orientation="Horizontal" />
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
                             <Border
-                                StrokeThickness="0">
+                                StrokeThickness="0"
+                                Margin="5">
                                 <Border.StrokeShape>
                                     <RoundRectangle
                                         CornerRadius="10" />
@@ -325,27 +198,31 @@
                                     HorizontalOptions="Center"
                                     BackgroundColor="Purple"
                                     Padding="10,20"
-                                    HeightRequest="250">
+                                    HeightRequest="230"
+                                    WidthRequest="160">
                                     <Border
                                         Stroke="White"
                                         StrokeThickness="3.5"
-                                        HeightRequest="150"
-                                        WidthRequest="150"
+                                        HeightRequest="120"
+                                        WidthRequest="120"
                                         HorizontalOptions="Center">
                                         <Border.StrokeShape>
                                             <RoundRectangle
                                                 CornerRadius="100" />
                                         </Border.StrokeShape>
-                                        <Image
-                                            Source="woman_1"
-                                            Aspect="AspectFit"
-                                            HeightRequest="200"
-                                            WidthRequest="200"
+                                        <ff:CachedImage
+                                            Source="{Binding PhotoUrl, Mode=OneWay}"
+                                            Aspect="AspectFill"
+                                            HeightRequest="120"
+                                            WidthRequest="120"
                                             HorizontalOptions="Center"
-                                            VerticalOptions="Center" />
+                                            VerticalOptions="Center"
+                                            DownsampleToViewSize="True"
+                                            CacheDuration="00:05:00"
+                                            />
                                     </Border>
                                     <Label
-                                        Text="Nika Kara"
+                                        Text="{Binding Name}"
                                         FontSize="13"
                                         FontAttributes="Bold"
                                         TextColor="White"
@@ -360,1054 +237,246 @@
                                         Style="{StaticResource welcomeBtnStyle}" />
                                 </VerticalStackLayout>
                             </Border>
-                            <Border
-                                StrokeThickness="0">
-                                <Border.StrokeShape>
-                                    <RoundRectangle
-                                        CornerRadius="10" />
-                                </Border.StrokeShape>
-                                <VerticalStackLayout
-                                    Spacing="2"
-                                    HorizontalOptions="Center"
-                                    BackgroundColor="Purple"
-                                    Padding="10,20"
-                                    HeightRequest="250">
-                                    <Border
-                                        Stroke="White"
-                                        StrokeThickness="3.5"
-                                        HeightRequest="150"
-                                        WidthRequest="150"
-                                        HorizontalOptions="Center">
-                                        <Border.StrokeShape>
-                                            <RoundRectangle
-                                                CornerRadius="100" />
-                                        </Border.StrokeShape>
-                                        <Image
-                                            Source="woman_1"
-                                            Aspect="AspectFit"
-                                            HeightRequest="200"
-                                            WidthRequest="200"
-                                            HorizontalOptions="Center"
-                                            VerticalOptions="Center" />
-                                    </Border>
-                                    <Label
-                                        Text="Nika Kara"
-                                        FontSize="13"
-                                        FontAttributes="Bold"
-                                        TextColor="White"
-                                        HorizontalTextAlignment="Center"
-                                        VerticalTextAlignment="Center" />
-                                    <Button
-                                        Text="friendship"
-                                        WidthRequest="105"
-                                        Margin="2"
-                                        FontSize="13"
-                                        BackgroundColor="purple"
-                                        Style="{StaticResource welcomeBtnStyle}" />
-                                </VerticalStackLayout>
-                            </Border>
-                            <Border
-                                StrokeThickness="0">
-                                <Border.StrokeShape>
-                                    <RoundRectangle
-                                        CornerRadius="10" />
-                                </Border.StrokeShape>
-                                <VerticalStackLayout
-                                    Spacing="2"
-                                    HorizontalOptions="Center"
-                                    BackgroundColor="Purple"
-                                    Padding="10,20"
-                                    HeightRequest="250">
-                                    <Border
-                                        Stroke="White"
-                                        StrokeThickness="3.5"
-                                        HeightRequest="150"
-                                        WidthRequest="150"
-                                        HorizontalOptions="Center">
-                                        <Border.StrokeShape>
-                                            <RoundRectangle
-                                                CornerRadius="100" />
-                                        </Border.StrokeShape>
-                                        <Image
-                                            Source="woman_1"
-                                            Aspect="AspectFit"
-                                            HeightRequest="200"
-                                            WidthRequest="200"
-                                            HorizontalOptions="Center"
-                                            VerticalOptions="Center" />
-                                    </Border>
-                                    <Label
-                                        Text="Nika Kara"
-                                        FontSize="13"
-                                        FontAttributes="Bold"
-                                        TextColor="White"
-                                        HorizontalTextAlignment="Center"
-                                        VerticalTextAlignment="Center" />
-                                    <Button
-                                        Text="friendship"
-                                        WidthRequest="105"
-                                        Margin="2"
-                                        FontSize="13"
-                                        BackgroundColor="purple"
-                                        Style="{StaticResource welcomeBtnStyle}" />
-                                </VerticalStackLayout>
-                            </Border>
-                            <Border
-                                StrokeThickness="0">
-                                <Border.StrokeShape>
-                                    <RoundRectangle
-                                        CornerRadius="10" />
-                                </Border.StrokeShape>
-                                <VerticalStackLayout
-                                    Spacing="2"
-                                    HorizontalOptions="Center"
-                                    BackgroundColor="Purple"
-                                    Padding="10,20"
-                                    HeightRequest="250">
-                                    <Border
-                                        Stroke="White"
-                                        StrokeThickness="3.5"
-                                        HeightRequest="150"
-                                        WidthRequest="150"
-                                        HorizontalOptions="Center">
-                                        <Border.StrokeShape>
-                                            <RoundRectangle
-                                                CornerRadius="100" />
-                                        </Border.StrokeShape>
-                                        <Image
-                                            Source="woman_1"
-                                            Aspect="AspectFit"
-                                            HeightRequest="200"
-                                            WidthRequest="200"
-                                            HorizontalOptions="Center"
-                                            VerticalOptions="Center" />
-                                    </Border>
-                                    <Label
-                                        Text="Nika Kara"
-                                        FontSize="13"
-                                        FontAttributes="Bold"
-                                        TextColor="White"
-                                        HorizontalTextAlignment="Center"
-                                        VerticalTextAlignment="Center" />
-                                    <Button
-                                        Text="friendship"
-                                        WidthRequest="105"
-                                        Margin="2"
-                                        FontSize="13"
-                                        BackgroundColor="purple"
-                                        Style="{StaticResource welcomeBtnStyle}" />
-                                </VerticalStackLayout>
-                            </Border>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </Grid>
 
-                        </HorizontalStackLayout>
-                    </ScrollView>
-                </Grid>
+
+            <Grid
+                RowDefinitions="Auto,Auto,Auto,Auto">
                 <Grid
-                    RowDefinitions="Auto,Auto,Auto,Auto">
+                    Grid.Row="0"
+                    RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto"
+                    Padding="0,8"
+                    VerticalOptions="Start">
                     <Grid
                         Grid.Row="0"
-                        RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto"
-                        Padding="0,8"
-                        VerticalOptions="Start">
-                        <Grid
-                            Grid.Row="0"
-                            ColumnDefinitions="40, Auto,*">
-                            <Border
-                                Stroke="Purple"
-                                StrokeThickness="2"
-                                Grid.Column="0"
-                                HeightRequest="50"
-                                WidthRequest="50"
-                                Margin="30,0,0,5">
-                                <Border.StrokeShape>
-                                    <RoundRectangle
-                                        CornerRadius="50" />
-                                </Border.StrokeShape>
-                                <Image
-                                    Source="woman_1"
-                                    Aspect="AspectFit"
-                                    HeightRequest="60"
-                                    WidthRequest="60"
-                                    HorizontalOptions="Center"
-                                    VerticalOptions="Center" />
-                            </Border>
-                            <Grid
-                                Grid.Column="1"
-                                ColumnDefinitions="Auto, *, Auto"
-                                ColumnSpacing="10">
-                                <Label
-                                    Grid.Column="0"
-                                    Text="Nika Kara"
-                                    FontSize="18"
-                                    TextColor="{DynamicResource TextColor}"
-                                    VerticalOptions="Start"
-                                    Padding="38,0,0,0" />
-                                <Label
-                                    Grid.Column="0"
-                                    Text="04 Jan 2025"
-                                    FontSize="13"
-                                    TextColor="{DynamicResource TextColor}"
-                                    FontAttributes="Italic"
-                                    VerticalOptions="End"
-                                    HorizontalTextAlignment="Center"
-                                    Padding="35,0,0,8" />
-                            </Grid>
-                        </Grid>
-                        <Grid
-                            Grid.Row="1"
-                            Padding="0,0">
+                        ColumnDefinitions="40, Auto,*">
+                        <Border
+                            Stroke="Purple"
+                            StrokeThickness="2"
+                            Grid.Column="0"
+                            HeightRequest="50"
+                            WidthRequest="50"
+                            Margin="30,0,0,5">
+                            <Border.StrokeShape>
+                                <RoundRectangle
+                                    CornerRadius="50" />
+                            </Border.StrokeShape>
                             <Image
-                                Source="motorcycle.jpg"
-                                Aspect="Fill" />
-                            <Grid.GestureRecognizers>
-                                <TapGestureRecognizer
-                                    Tapped="GotoPostDetailsPage">
-                                </TapGestureRecognizer>
-                            </Grid.GestureRecognizers>
-                        </Grid>
-                        <Label
-                            Grid.Row="2"
-                            Padding="25,0,0,0"
-                            Text="Some random post text will go here..."
-                            FontSize="17"
-                            TextColor="{DynamicResource TextColor}" />
-                        <BoxView
-                            Grid.Row="3"
-                            HeightRequest="2"
-                            HorizontalOptions="Fill"
-                            Margin="10">
-                            <BoxView.Background>
-                                <LinearGradientBrush
-                                    StartPoint="0,0"
-                                    EndPoint="1,0">
-                                    <GradientStop
-                                        Color="Transparent"
-                                        Offset="0.0" />
-                                    <GradientStop
-                                        Color="Grey"
-                                        Offset="0.5" />
-                                    <GradientStop
-                                        Color="Transparent"
-                                        Offset="1.0" />
-                                </LinearGradientBrush>
-                            </BoxView.Background>
-                        </BoxView>
+                                Source="woman_1"
+                                Aspect="AspectFit"
+                                HeightRequest="60"
+                                WidthRequest="60"
+                                HorizontalOptions="Center"
+                                VerticalOptions="Center" />
+                        </Border>
                         <Grid
-                            Grid.Row="4"
+                            Grid.Column="1"
                             ColumnDefinitions="Auto, *, Auto"
-                            Padding="10,0,15,0"
-                            HorizontalOptions="Start"
-                            Margin="8,0,0,0">
-                            <Grid
-                                ColumnDefinitions="Auto, *,Auto, *, Auto, *, Auto"
-                                Grid.Column="2"
-                                ColumnSpacing="8">
-                                <Grid
-                                    Grid.Column="0">
-                                    <Image
-                                        Grid.Column="0"
-                                        Source="heart_regular_24"
-                                        Aspect="AspectFit"
-                                        HeightRequest="35"
-                                        WidthRequest="33"
-                                        HorizontalOptions="Start"
-                                        VerticalOptions="Center">
-                                        <Image.Behaviors>
-                                            <toolkit:IconTintColorBehavior
-                                                TintColor="red" />
-                                        </Image.Behaviors>
-                                    </Image>
-                                    <Label
-                                        Grid.Column="0"
-                                        Text="like"
-                                        FontSize="13"
-                                        TextColor="{x:DynamicResource TextColor}"
-                                        FontAttributes="Italic"
-                                        VerticalOptions="Center"
-                                        Padding="35,8,0,0" />
-                                </Grid>
-                                <Grid
-                                    Grid.Column="2">
-                                    <Image
-                                        Grid.Column="0"
-                                        Source="share_regular_24"
-                                        Aspect="AspectFit"
-                                        HeightRequest="30"
-                                        WidthRequest="30"
-                                        HorizontalOptions="Start"
-                                        VerticalOptions="Center">
-                                        <Image.Behaviors>
-                                            <toolkit:IconTintColorBehavior
-                                                TintColor="purple" />
-                                        </Image.Behaviors>
-                                    </Image>
-                                    <Label
-                                        Grid.Column="0"
-                                        Text="share"
-                                        FontSize="13"
-                                        TextColor="{x:DynamicResource TextColor}"
-                                        FontAttributes="Italic"
-                                        VerticalOptions="Center"
-                                        Padding="30,8,0,0" />
-                                </Grid>
-                                <Grid
-                                    Grid.Column="4">
-                                    <Image
-                                        Grid.Column="0"
-                                        Source="bookmarks_regular_24"
-                                        Aspect="AspectFit"
-                                        HeightRequest="26"
-                                        WidthRequest="30"
-                                        HorizontalOptions="Start"
-                                        VerticalOptions="Center">
-                                        <Image.Behaviors>
-                                            <toolkit:IconTintColorBehavior
-                                                TintColor="purple" />
-                                        </Image.Behaviors>
-                                    </Image>
-                                    <Label
-                                        Grid.Column="0"
-                                        Text="save"
-                                        FontSize="13"
-                                        TextColor="{x:DynamicResource TextColor}"
-                                        FontAttributes="Italic"
-                                        VerticalOptions="Center"
-                                        Padding="30,8,0,0" />
-                                </Grid>
-                                <Grid
-                                    Grid.Column="6">
-                                    <Image
-                                        Grid.Column="0"
-                                        Source="comments_regular_24"
-                                        Aspect="AspectFit"
-                                        HeightRequest="35"
-                                        WidthRequest="25"
-                                        HorizontalOptions="Start"
-                                        VerticalOptions="Center">
-                                        <Image.Behaviors>
-                                            <toolkit:IconTintColorBehavior
-                                                TintColor="purple" />
-                                        </Image.Behaviors>
-                                    </Image>
-                                    <Label
-                                        Grid.Column="0"
-                                        Text="Comments"
-                                        FontSize="13"
-                                        TextColor="{x:DynamicResource TextColor}"
-                                        FontAttributes="Italic"
-                                        VerticalOptions="Center"
-                                        Padding="28,8,0,0" />
-                                </Grid>
-                            </Grid>
+                            ColumnSpacing="10">
+                            <Label
+                                Grid.Column="0"
+                                Text="Nika Kara"
+                                FontSize="18"
+                                TextColor="{DynamicResource TextColor}"
+                                VerticalOptions="Start"
+                                Padding="38,0,0,0" />
+                            <Label
+                                Grid.Column="0"
+                                Text="04 Jan 2025"
+                                FontSize="13"
+                                TextColor="{DynamicResource TextColor}"
+                                FontAttributes="Italic"
+                                VerticalOptions="End"
+                                HorizontalTextAlignment="Center"
+                                Padding="35,0,0,8" />
                         </Grid>
-                        <BoxView
-                            Grid.Row="5"
-                            HeightRequest="8"
-                            HorizontalOptions="Fill"
-                            Margin="10">
-                            <BoxView.Background>
-                                <LinearGradientBrush
-                                    StartPoint="0,0"
-                                    EndPoint="1,0">
-                                    <GradientStop
-                                        Color="Transparent"
-                                        Offset="0.0" />
-                                    <GradientStop
-                                        Color="LightGrey"
-                                        Offset="0.5" />
-                                    <GradientStop
-                                        Color="Transparent"
-                                        Offset="1.0" />
-                                </LinearGradientBrush>
-                            </BoxView.Background>
-                        </BoxView>
                     </Grid>
-
+                    
+                    
                     <Grid
                         Grid.Row="1"
-                        RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto"
-                        Padding="0,8"
-                        VerticalOptions="Start">
-                        <Grid
-                            Grid.Row="0"
-                            ColumnDefinitions="40, Auto,*">
-                            <Border
-                                Stroke="Purple"
-                                StrokeThickness="2"
-                                Grid.Column="0"
-                                HeightRequest="50"
-                                WidthRequest="50"
-                                Margin="30,0,0,5">
-                                <Border.StrokeShape>
-                                    <RoundRectangle
-                                        CornerRadius="50" />
-                                </Border.StrokeShape>
-                                <Image
-                                    Source="woman_1"
-                                    Aspect="AspectFit"
-                                    HeightRequest="60"
-                                    WidthRequest="60"
-                                    HorizontalOptions="Center"
-                                    VerticalOptions="Center" />
-                            </Border>
-                            <Grid
-                                Grid.Column="1"
-                                ColumnDefinitions="Auto, *, Auto"
-                                ColumnSpacing="10">
-                                <Label
-                                    Grid.Column="0"
-                                    Text="Nika Kara"
-                                    FontSize="18"
-                                    TextColor="{DynamicResource TextColor}"
-                                    VerticalOptions="Start"
-                                    Padding="38,0,0,0" />
-                                <Label
-                                    Grid.Column="0"
-                                    Text="04 Jan 2025"
-                                    FontSize="13"
-                                    TextColor="{DynamicResource TextColor}"
-                                    FontAttributes="Italic"
-                                    VerticalOptions="End"
-                                    HorizontalTextAlignment="Center"
-                                    Padding="35,0,0,8" />
-                            </Grid>
-                        </Grid>
-                        <Grid
-                            Grid.Row="1"
-                            Padding="0,0">
-                            <Image
-                                Source="motorcycle.jpg"
-                                Aspect="Fill" />
-                            <Grid.GestureRecognizers>
-                                <TapGestureRecognizer
-                                    Tapped="GotoPostDetailsPage">
-                                </TapGestureRecognizer>
-                            </Grid.GestureRecognizers>
-                        </Grid>
-                        <Label
-                            Grid.Row="2"
-                            Padding="25,0,0,0"
-                            Text="Some random post text will go here..."
-                            FontSize="17"
-                            TextColor="{DynamicResource TextColor}" />
-                        <BoxView
-                            Grid.Row="3"
-                            HeightRequest="2"
-                            HorizontalOptions="Fill"
-                            Margin="10">
-                            <BoxView.Background>
-                                <LinearGradientBrush
-                                    StartPoint="0,0"
-                                    EndPoint="1,0">
-                                    <GradientStop
-                                        Color="Transparent"
-                                        Offset="0.0" />
-                                    <GradientStop
-                                        Color="Grey"
-                                        Offset="0.5" />
-                                    <GradientStop
-                                        Color="Transparent"
-                                        Offset="1.0" />
-                                </LinearGradientBrush>
-                            </BoxView.Background>
-                        </BoxView>
-                        <Grid
-                            Grid.Row="4"
-                            ColumnDefinitions="Auto, *, Auto"
-                            Padding="10,0,15,0"
-                            HorizontalOptions="Start"
-                            Margin="8,0,0,0">
-                            <Grid
-                                ColumnDefinitions="Auto, *,Auto, *, Auto, *, Auto"
-                                Grid.Column="2"
-                                ColumnSpacing="8">
-                                <Grid
-                                    Grid.Column="0">
-                                    <Image
-                                        Grid.Column="0"
-                                        Source="heart_regular_24"
-                                        Aspect="AspectFit"
-                                        HeightRequest="35"
-                                        WidthRequest="33"
-                                        HorizontalOptions="Start"
-                                        VerticalOptions="Center">
-                                        <Image.Behaviors>
-                                            <toolkit:IconTintColorBehavior
-                                                TintColor="red" />
-                                        </Image.Behaviors>
-                                    </Image>
-                                    <Label
-                                        Grid.Column="0"
-                                        Text="like"
-                                        FontSize="13"
-                                        TextColor="{x:DynamicResource TextColor}"
-                                        FontAttributes="Italic"
-                                        VerticalOptions="Center"
-                                        Padding="35,8,0,0" />
-                                </Grid>
-                                <Grid
-                                    Grid.Column="2">
-                                    <Image
-                                        Grid.Column="0"
-                                        Source="share_regular_24"
-                                        Aspect="AspectFit"
-                                        HeightRequest="30"
-                                        WidthRequest="30"
-                                        HorizontalOptions="Start"
-                                        VerticalOptions="Center">
-                                        <Image.Behaviors>
-                                            <toolkit:IconTintColorBehavior
-                                                TintColor="purple" />
-                                        </Image.Behaviors>
-                                    </Image>
-                                    <Label
-                                        Grid.Column="0"
-                                        Text="share"
-                                        FontSize="13"
-                                        TextColor="{x:DynamicResource TextColor}"
-                                        FontAttributes="Italic"
-                                        VerticalOptions="Center"
-                                        Padding="30,8,0,0" />
-                                </Grid>
-                                <Grid
-                                    Grid.Column="4">
-                                    <Image
-                                        Grid.Column="0"
-                                        Source="bookmarks_regular_24"
-                                        Aspect="AspectFit"
-                                        HeightRequest="26"
-                                        WidthRequest="30"
-                                        HorizontalOptions="Start"
-                                        VerticalOptions="Center">
-                                        <Image.Behaviors>
-                                            <toolkit:IconTintColorBehavior
-                                                TintColor="purple" />
-                                        </Image.Behaviors>
-                                    </Image>
-                                    <Label
-                                        Grid.Column="0"
-                                        Text="save"
-                                        FontSize="13"
-                                        TextColor="{x:DynamicResource TextColor}"
-                                        FontAttributes="Italic"
-                                        VerticalOptions="Center"
-                                        Padding="30,8,0,0" />
-                                </Grid>
-                                <Grid
-                                    Grid.Column="6">
-                                    <Image
-                                        Grid.Column="0"
-                                        Source="comments_regular_24"
-                                        Aspect="AspectFit"
-                                        HeightRequest="35"
-                                        WidthRequest="25"
-                                        HorizontalOptions="Start"
-                                        VerticalOptions="Center">
-                                        <Image.Behaviors>
-                                            <toolkit:IconTintColorBehavior
-                                                TintColor="purple" />
-                                        </Image.Behaviors>
-                                    </Image>
-                                    <Label
-                                        Grid.Column="0"
-                                        Text="Comments"
-                                        FontSize="13"
-                                        TextColor="{x:DynamicResource TextColor}"
-                                        FontAttributes="Italic"
-                                        VerticalOptions="Center"
-                                        Padding="28,8,0,0" />
-                                </Grid>
-                            </Grid>
-                        </Grid>
-                        <BoxView
-                            Grid.Row="5"
-                            HeightRequest="8"
-                            HorizontalOptions="Fill"
-                            Margin="10">
-                            <BoxView.Background>
-                                <LinearGradientBrush
-                                    StartPoint="0,0"
-                                    EndPoint="1,0">
-                                    <GradientStop
-                                        Color="Transparent"
-                                        Offset="0.0" />
-                                    <GradientStop
-                                        Color="LightGrey"
-                                        Offset="0.5" />
-                                    <GradientStop
-                                        Color="Transparent"
-                                        Offset="1.0" />
-                                </LinearGradientBrush>
-                            </BoxView.Background>
-                        </BoxView>
+                        Padding="0,0">
+                        <ff:CachedImage
+                            Source="motorcycle.jpg"
+                            Aspect="Fill"
+                            DownsampleToViewSize="True"
+                            CacheDuration="00:05:00"
+                            />
+                        <Grid.GestureRecognizers>
+                            <TapGestureRecognizer
+                                Tapped="GotoPostDetailsPage">
+                            </TapGestureRecognizer>
+                        </Grid.GestureRecognizers>
                     </Grid>
-
-                    <Grid
+                    
+                    
+                    <Label
                         Grid.Row="2"
-                        RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto"
-                        Padding="0,8"
-                        VerticalOptions="Start">
-                        <Grid
-                            Grid.Row="0"
-                            ColumnDefinitions="40, Auto,*">
-                            <Border
-                                Stroke="Purple"
-                                StrokeThickness="2"
-                                Grid.Column="0"
-                                HeightRequest="50"
-                                WidthRequest="50"
-                                Margin="30,0,0,5">
-                                <Border.StrokeShape>
-                                    <RoundRectangle
-                                        CornerRadius="50" />
-                                </Border.StrokeShape>
-                                <Image
-                                    Source="woman_1"
-                                    Aspect="AspectFit"
-                                    HeightRequest="60"
-                                    WidthRequest="60"
-                                    HorizontalOptions="Center"
-                                    VerticalOptions="Center" />
-                            </Border>
-                            <Grid
-                                Grid.Column="1"
-                                ColumnDefinitions="Auto, *, Auto"
-                                ColumnSpacing="10">
-                                <Label
-                                    Grid.Column="0"
-                                    Text="Nika Kara"
-                                    FontSize="18"
-                                    TextColor="{DynamicResource TextColor}"
-                                    VerticalOptions="Start"
-                                    Padding="38,0,0,0" />
-                                <Label
-                                    Grid.Column="0"
-                                    Text="04 Jan 2025"
-                                    FontSize="13"
-                                    TextColor="{DynamicResource TextColor}"
-                                    FontAttributes="Italic"
-                                    VerticalOptions="End"
-                                    HorizontalTextAlignment="Center"
-                                    Padding="35,0,0,8" />
-                            </Grid>
-                        </Grid>
-                        <Grid
-                            Grid.Row="1"
-                            Padding="0,0">
-                            <Image
-                                Source="motorcycle.jpg"
-                                Aspect="Fill" />
-                            <Grid.GestureRecognizers>
-                                <TapGestureRecognizer
-                                    Tapped="GotoPostDetailsPage">
-                                </TapGestureRecognizer>
-                            </Grid.GestureRecognizers>
-                        </Grid>
-                        <Label
-                            Grid.Row="2"
-                            Padding="25,0,0,0"
-                            Text="Some random post text will go here..."
-                            FontSize="17"
-                            TextColor="{DynamicResource TextColor}" />
-                        <BoxView
-                            Grid.Row="3"
-                            HeightRequest="2"
-                            HorizontalOptions="Fill"
-                            Margin="10">
-                            <BoxView.Background>
-                                <LinearGradientBrush
-                                    StartPoint="0,0"
-                                    EndPoint="1,0">
-                                    <GradientStop
-                                        Color="Transparent"
-                                        Offset="0.0" />
-                                    <GradientStop
-                                        Color="Grey"
-                                        Offset="0.5" />
-                                    <GradientStop
-                                        Color="Transparent"
-                                        Offset="1.0" />
-                                </LinearGradientBrush>
-                            </BoxView.Background>
-                        </BoxView>
-                        <Grid
-                            Grid.Row="4"
-                            ColumnDefinitions="Auto, *, Auto"
-                            Padding="10,0,15,0"
-                            HorizontalOptions="Start"
-                            Margin="8,0,0,0">
-                            <Grid
-                                ColumnDefinitions="Auto, *,Auto, *, Auto, *, Auto"
-                                Grid.Column="2"
-                                ColumnSpacing="8">
-                                <Grid
-                                    Grid.Column="0">
-                                    <Image
-                                        Grid.Column="0"
-                                        Source="heart_regular_24"
-                                        Aspect="AspectFit"
-                                        HeightRequest="35"
-                                        WidthRequest="33"
-                                        HorizontalOptions="Start"
-                                        VerticalOptions="Center">
-                                        <Image.Behaviors>
-                                            <toolkit:IconTintColorBehavior
-                                                TintColor="red" />
-                                        </Image.Behaviors>
-                                    </Image>
-                                    <Label
-                                        Grid.Column="0"
-                                        Text="like"
-                                        FontSize="13"
-                                        TextColor="{x:DynamicResource TextColor}"
-                                        FontAttributes="Italic"
-                                        VerticalOptions="Center"
-                                        Padding="35,8,0,0" />
-                                </Grid>
-                                <Grid
-                                    Grid.Column="2">
-                                    <Image
-                                        Grid.Column="0"
-                                        Source="share_regular_24"
-                                        Aspect="AspectFit"
-                                        HeightRequest="30"
-                                        WidthRequest="30"
-                                        HorizontalOptions="Start"
-                                        VerticalOptions="Center">
-                                        <Image.Behaviors>
-                                            <toolkit:IconTintColorBehavior
-                                                TintColor="purple" />
-                                        </Image.Behaviors>
-                                    </Image>
-                                    <Label
-                                        Grid.Column="0"
-                                        Text="share"
-                                        FontSize="13"
-                                        TextColor="{x:DynamicResource TextColor}"
-                                        FontAttributes="Italic"
-                                        VerticalOptions="Center"
-                                        Padding="30,8,0,0" />
-                                </Grid>
-                                <Grid
-                                    Grid.Column="4">
-                                    <Image
-                                        Grid.Column="0"
-                                        Source="bookmarks_regular_24"
-                                        Aspect="AspectFit"
-                                        HeightRequest="26"
-                                        WidthRequest="30"
-                                        HorizontalOptions="Start"
-                                        VerticalOptions="Center">
-                                        <Image.Behaviors>
-                                            <toolkit:IconTintColorBehavior
-                                                TintColor="purple" />
-                                        </Image.Behaviors>
-                                    </Image>
-                                    <Label
-                                        Grid.Column="0"
-                                        Text="save"
-                                        FontSize="13"
-                                        TextColor="{x:DynamicResource TextColor}"
-                                        FontAttributes="Italic"
-                                        VerticalOptions="Center"
-                                        Padding="30,8,0,0" />
-                                </Grid>
-                                <Grid
-                                    Grid.Column="6">
-                                    <Image
-                                        Grid.Column="0"
-                                        Source="comments_regular_24"
-                                        Aspect="AspectFit"
-                                        HeightRequest="35"
-                                        WidthRequest="25"
-                                        HorizontalOptions="Start"
-                                        VerticalOptions="Center">
-                                        <Image.Behaviors>
-                                            <toolkit:IconTintColorBehavior
-                                                TintColor="purple" />
-                                        </Image.Behaviors>
-                                    </Image>
-                                    <Label
-                                        Grid.Column="0"
-                                        Text="Comments"
-                                        FontSize="13"
-                                        TextColor="{x:DynamicResource TextColor}"
-                                        FontAttributes="Italic"
-                                        VerticalOptions="Center"
-                                        Padding="28,8,0,0" />
-                                </Grid>
-                            </Grid>
-                        </Grid>
-                        <BoxView
-                            Grid.Row="5"
-                            HeightRequest="8"
-                            HorizontalOptions="Fill"
-                            Margin="10">
-                            <BoxView.Background>
-                                <LinearGradientBrush
-                                    StartPoint="0,0"
-                                    EndPoint="1,0">
-                                    <GradientStop
-                                        Color="Transparent"
-                                        Offset="0.0" />
-                                    <GradientStop
-                                        Color="LightGrey"
-                                        Offset="0.5" />
-                                    <GradientStop
-                                        Color="Transparent"
-                                        Offset="1.0" />
-                                </LinearGradientBrush>
-                            </BoxView.Background>
-                        </BoxView>
-                    </Grid>
-
-                    <Grid
+                        Padding="25,0,25,0"
+                        Text="Some random post text will go here...Some random post text will go here..."
+                        FontSize="17"
+                        TextColor="{DynamicResource TextColor}" />
+                    
+                    
+                    <BoxView
                         Grid.Row="3"
-                        RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto"
-                        Padding="0,8"
-                        VerticalOptions="Start">
+                        HeightRequest="2"
+                        HorizontalOptions="Fill"
+                        Margin="10">
+                        <BoxView.Background>
+                            <LinearGradientBrush
+                                StartPoint="0,0"
+                                EndPoint="1,0">
+                                <GradientStop
+                                    Color="Transparent"
+                                    Offset="0.0" />
+                                <GradientStop
+                                    Color="Grey"
+                                    Offset="0.5" />
+                                <GradientStop
+                                    Color="Transparent"
+                                    Offset="1.0" />
+                            </LinearGradientBrush>
+                        </BoxView.Background>
+                    </BoxView>
+                    
+                    
+                    <Grid
+                        Grid.Row="4"
+                        ColumnDefinitions="Auto, *, Auto"
+                        Padding="10,0,15,0"
+                        HorizontalOptions="Start"
+                        Margin="8,0,0,0">
                         <Grid
-                            Grid.Row="0"
-                            ColumnDefinitions="40, Auto,*">
-                            <Border
-                                Stroke="Purple"
-                                StrokeThickness="2"
-                                Grid.Column="0"
-                                HeightRequest="50"
-                                WidthRequest="50"
-                                Margin="30,0,0,5">
-                                <Border.StrokeShape>
-                                    <RoundRectangle
-                                        CornerRadius="50" />
-                                </Border.StrokeShape>
+                            ColumnDefinitions="Auto, *,Auto, *, Auto, *, Auto"
+                            Grid.Column="2"
+                            ColumnSpacing="8">
+                            <Grid
+                                Grid.Column="0">
                                 <Image
-                                    Source="woman_1"
+                                    Grid.Column="0"
+                                    Source="heart_regular_24"
                                     Aspect="AspectFit"
-                                    HeightRequest="60"
-                                    WidthRequest="60"
-                                    HorizontalOptions="Center"
-                                    VerticalOptions="Center" />
-                            </Border>
-                            <Grid
-                                Grid.Column="1"
-                                ColumnDefinitions="Auto, *, Auto"
-                                ColumnSpacing="10">
+                                    HeightRequest="35"
+                                    WidthRequest="33"
+                                    HorizontalOptions="Start"
+                                    VerticalOptions="Center">
+                                    <Image.Behaviors>
+                                        <toolkit:IconTintColorBehavior
+                                            TintColor="red" />
+                                    </Image.Behaviors>
+                                </Image>
                                 <Label
                                     Grid.Column="0"
-                                    Text="Nika Kara"
-                                    FontSize="18"
-                                    TextColor="{DynamicResource TextColor}"
-                                    VerticalOptions="Start"
-                                    Padding="38,0,0,0" />
-                                <Label
-                                    Grid.Column="0"
-                                    Text="04 Jan 2025"
+                                    Text="178"
                                     FontSize="13"
-                                    TextColor="{DynamicResource TextColor}"
-                                    FontAttributes="Italic"
-                                    VerticalOptions="End"
-                                    HorizontalTextAlignment="Center"
-                                    Padding="35,0,0,8" />
+                                    TextColor="{x:DynamicResource TextColor}"
+                                    FontAttributes="Bold"
+                                    VerticalOptions="Center"
+                                    Padding="35,8,0,0" />
                             </Grid>
-                        </Grid>
-                        <Grid
-                            Grid.Row="1"
-                            Padding="0,0">
-                            <Image
-                                Source="motorcycle.jpg"
-                                Aspect="Fill" />
-                            <Grid.GestureRecognizers>
-                                <TapGestureRecognizer
-                                    Tapped="GotoPostDetailsPage">
-                                </TapGestureRecognizer>
-                            </Grid.GestureRecognizers>
-                        </Grid>
-                        <Label
-                            Grid.Row="2"
-                            Padding="25,0,0,0"
-                            Text="Some random post text will go here..."
-                            FontSize="17"
-                            TextColor="{DynamicResource TextColor}" />
-                        <BoxView
-                            Grid.Row="3"
-                            HeightRequest="2"
-                            HorizontalOptions="Fill"
-                            Margin="10">
-                            <BoxView.Background>
-                                <LinearGradientBrush
-                                    StartPoint="0,0"
-                                    EndPoint="1,0">
-                                    <GradientStop
-                                        Color="Transparent"
-                                        Offset="0.0" />
-                                    <GradientStop
-                                        Color="Grey"
-                                        Offset="0.5" />
-                                    <GradientStop
-                                        Color="Transparent"
-                                        Offset="1.0" />
-                                </LinearGradientBrush>
-                            </BoxView.Background>
-                        </BoxView>
-                        <Grid
-                            Grid.Row="4"
-                            ColumnDefinitions="Auto, *, Auto"
-                            Padding="10,0,15,0"
-                            HorizontalOptions="Start"
-                            Margin="8,0,0,0">
                             <Grid
-                                ColumnDefinitions="Auto, *,Auto, *, Auto, *, Auto"
-                                Grid.Column="2"
-                                ColumnSpacing="8">
-                                <Grid
-                                    Grid.Column="0">
-                                    <Image
-                                        Grid.Column="0"
-                                        Source="heart_regular_24"
-                                        Aspect="AspectFit"
-                                        HeightRequest="35"
-                                        WidthRequest="33"
-                                        HorizontalOptions="Start"
-                                        VerticalOptions="Center">
-                                        <Image.Behaviors>
-                                            <toolkit:IconTintColorBehavior
-                                                TintColor="red" />
-                                        </Image.Behaviors>
-                                    </Image>
-                                    <Label
-                                        Grid.Column="0"
-                                        Text="like"
-                                        FontSize="13"
-                                        TextColor="{x:DynamicResource TextColor}"
-                                        FontAttributes="Italic"
-                                        VerticalOptions="Center"
-                                        Padding="35,8,0,0" />
-                                </Grid>
-                                <Grid
-                                    Grid.Column="2">
-                                    <Image
-                                        Grid.Column="0"
-                                        Source="share_regular_24"
-                                        Aspect="AspectFit"
-                                        HeightRequest="30"
-                                        WidthRequest="30"
-                                        HorizontalOptions="Start"
-                                        VerticalOptions="Center">
-                                        <Image.Behaviors>
-                                            <toolkit:IconTintColorBehavior
-                                                TintColor="purple" />
-                                        </Image.Behaviors>
-                                    </Image>
-                                    <Label
-                                        Grid.Column="0"
-                                        Text="share"
-                                        FontSize="13"
-                                        TextColor="{x:DynamicResource TextColor}"
-                                        FontAttributes="Italic"
-                                        VerticalOptions="Center"
-                                        Padding="30,8,0,0" />
-                                </Grid>
-                                <Grid
-                                    Grid.Column="4">
-                                    <Image
-                                        Grid.Column="0"
-                                        Source="bookmarks_regular_24"
-                                        Aspect="AspectFit"
-                                        HeightRequest="26"
-                                        WidthRequest="30"
-                                        HorizontalOptions="Start"
-                                        VerticalOptions="Center">
-                                        <Image.Behaviors>
-                                            <toolkit:IconTintColorBehavior
-                                                TintColor="purple" />
-                                        </Image.Behaviors>
-                                    </Image>
-                                    <Label
-                                        Grid.Column="0"
-                                        Text="save"
-                                        FontSize="13"
-                                        TextColor="{x:DynamicResource TextColor}"
-                                        FontAttributes="Italic"
-                                        VerticalOptions="Center"
-                                        Padding="30,8,0,0" />
-                                </Grid>
-                                <Grid
-                                    Grid.Column="6">
-                                    <Image
-                                        Grid.Column="0"
-                                        Source="comments_regular_24"
-                                        Aspect="AspectFit"
-                                        HeightRequest="35"
-                                        WidthRequest="25"
-                                        HorizontalOptions="Start"
-                                        VerticalOptions="Center">
-                                        <Image.Behaviors>
-                                            <toolkit:IconTintColorBehavior
-                                                TintColor="purple" />
-                                        </Image.Behaviors>
-                                    </Image>
-                                    <Label
-                                        Grid.Column="0"
-                                        Text="Comments"
-                                        FontSize="13"
-                                        TextColor="{x:DynamicResource TextColor}"
-                                        FontAttributes="Italic"
-                                        VerticalOptions="Center"
-                                        Padding="28,8,0,0" />
-                                </Grid>
+                                Grid.Column="2">
+                                <Image
+                                    Grid.Column="0"
+                                    Source="comments_regular_24"
+                                    Aspect="AspectFit"
+                                    HeightRequest="35"
+                                    WidthRequest="25"
+                                    HorizontalOptions="Start"
+                                    VerticalOptions="Center">
+                                    <Image.Behaviors>
+                                        <toolkit:IconTintColorBehavior
+                                            TintColor="purple" />
+                                    </Image.Behaviors>
+                                </Image>
+                                <Label
+                                    Grid.Column="0"
+                                    Text="52"
+                                    FontSize="13"
+                                    TextColor="{x:DynamicResource TextColor}"
+                                    FontAttributes="Bold"
+                                    VerticalOptions="Center"
+                                    Padding="30,8,0,0" />
+                            </Grid>
+                            <Grid
+                                Grid.Column="4">
+                                <Image
+                                    Grid.Column="0"
+                                    Source="share_regular_24"
+                                    Aspect="AspectFit"
+                                    HeightRequest="30"
+                                    WidthRequest="30"
+                                    HorizontalOptions="Start"
+                                    VerticalOptions="Center">
+                                    <Image.Behaviors>
+                                        <toolkit:IconTintColorBehavior
+                                            TintColor="purple" />
+                                    </Image.Behaviors>
+                                </Image>
+                                <Label
+                                    Grid.Column="0"
+                                    Text="share"
+                                    FontSize="13"
+                                    TextColor="{x:DynamicResource TextColor}"
+                                    FontAttributes="Italic"
+                                    VerticalOptions="Center"
+                                    Padding="30,8,0,0" />
+                            </Grid>
+                            <Grid
+                                Grid.Column="6">
+                                <Image
+                                    Grid.Column="0"
+                                    Source="bookmarks_regular_24"
+                                    Aspect="AspectFit"
+                                    HeightRequest="26"
+                                    WidthRequest="30"
+                                    HorizontalOptions="Start"
+                                    VerticalOptions="Center">
+                                    <Image.Behaviors>
+                                        <toolkit:IconTintColorBehavior
+                                            TintColor="purple" />
+                                    </Image.Behaviors>
+                                </Image>
+                                <Label
+                                    Grid.Column="0"
+                                    Text="save"
+                                    FontSize="13"
+                                    TextColor="{x:DynamicResource TextColor}"
+                                    FontAttributes="Italic"
+                                    VerticalOptions="Center"
+                                    Padding="30,8,0,0" />
                             </Grid>
                         </Grid>
-                        <BoxView
-                            Grid.Row="5"
-                            HeightRequest="8"
-                            HorizontalOptions="Fill"
-                            Margin="10">
-                            <BoxView.Background>
-                                <LinearGradientBrush
-                                    StartPoint="0,0"
-                                    EndPoint="1,0">
-                                    <GradientStop
-                                        Color="Transparent"
-                                        Offset="0.0" />
-                                    <GradientStop
-                                        Color="LightGrey"
-                                        Offset="0.5" />
-                                    <GradientStop
-                                        Color="Transparent"
-                                        Offset="1.0" />
-                                </LinearGradientBrush>
-                            </BoxView.Background>
-                        </BoxView>
                     </Grid>
+                    
+                    
+                    <BoxView
+                        Grid.Row="5"
+                        HeightRequest="8"
+                        HorizontalOptions="Fill"
+                        Margin="10">
+                        <BoxView.Background>
+                            <LinearGradientBrush
+                                StartPoint="0,0"
+                                EndPoint="1,0">
+                                <GradientStop
+                                    Color="Transparent"
+                                    Offset="0.0" />
+                                <GradientStop
+                                    Color="LightGrey"
+                                    Offset="0.5" />
+                                <GradientStop
+                                    Color="Transparent"
+                                    Offset="1.0" />
+                            </LinearGradientBrush>
+                        </BoxView.Background>
+                    </BoxView>
                 </Grid>
-            </VerticalStackLayout>
-        </ScrollView>
-        <!--<Border
-            Grid.Row="6"
-            HeightRequest="50"
-            WidthRequest="50"
-            VerticalOptions="End"
-            HorizontalOptions="End"
-            Margin="0,0,25,30"
-            BackgroundColor="Purple"
-            StrokeShape="RoundRectangle 50"
-            StrokeThickness="0">
-            <Grid>
-                <Image
-                    Source="plus_large_24"
-                    HeightRequest="28"
-                    HorizontalOptions="Center"
-                    VerticalOptions="Center">
-                    <Image.Behaviors>
-                        <toolkit:IconTintColorBehavior
-                            TintColor="White" />
-                    </Image.Behaviors>
-                </Image>
             </Grid>
-            <Border.GestureRecognizers>
-                <TapGestureRecognizer
-                    Tapped="GotoAddPostPage" />
-            </Border.GestureRecognizers>
-        </Border>-->
-    </Grid>
-</ContentPage>
+        </VerticalStackLayout>
+    </ScrollView>
+</base:BaseView>

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="WhiteLemonMauiUI.Pages.ComponetViews.ButtomSheetComponet"
+    xmlns:viewModel="clr-namespace:WhiteLemonMauiUI.Pages.ComponetViewModels"
+    Title="ButtomSheetComponet"
+    Shell.PresentationMode="ModalAnimated"
+    BackgroundColor="Transparent"
+    Shell.BackgroundColor="Purple">
+
+    <Grid
+        RowDefinitions="550, *">
+        <VerticalStackLayout
+            Padding="20,0,20,0"
+            Grid.Row="1"
+            BackgroundColor="Purple">
+            <BoxView
+                HeightRequest="3"
+                WidthRequest="80"
+                HorizontalOptions="Fill"
+                VerticalOptions="Start"
+                Margin="0,30">
+                <BoxView.Background>
+                    <LinearGradientBrush
+                        StartPoint="0,0"
+                        EndPoint="1,0">
+                        <GradientStop
+                            Color="Transparent"
+                            Offset="0.0" />
+                        <GradientStop
+                            Color="Grey"
+                            Offset="0.5" />
+                        <GradientStop
+                            Color="Transparent"
+                            Offset="1.0" />
+                    </LinearGradientBrush>
+                </BoxView.Background>
+            </BoxView>
+            <Border
+                Stroke="Grey"
+                Margin="0,15">
+                <Border.StrokeShape>
+                    <RoundRectangle
+                        CornerRadius="20" />
+                </Border.StrokeShape>
+                <VerticalStackLayout
+                    Spacing="20"
+                    Padding="20">
+                    <Button
+                        Margin="0"
+                        HorizontalOptions="Start"
+                        Text="Gallery"
+                        WidthRequest="130"
+                        FontSize="12"
+                        BackgroundColor="Purple"
+                        Style="{StaticResource welcomeBtnStyle}"
+                        Command="{Binding PickPhotoCommand}" />
+                    <Button
+                        Margin="0"
+                        HorizontalOptions="Start"
+                        Text="Camera"
+                        WidthRequest="130"
+                        FontSize="12"
+                        BackgroundColor="Purple"
+                        Style="{StaticResource welcomeBtnStyle}"
+                        Command="{Binding TakePhotoCommand}" />
+                </VerticalStackLayout>
+            </Border>
+        </VerticalStackLayout>
+        <Grid.GestureRecognizers>
+            <SwipeGestureRecognizer
+                Direction="Down"
+                Command="{Binding CloseModalCommand}" />
+        </Grid.GestureRecognizers>
+    </Grid>
+</ContentPage>

@@ -1,9 +1,8 @@
-﻿using WhiteLemon.API.Interfaces;
-using SixLabors.ImageSharp;
+﻿using SixLabors.ImageSharp;
+using SixLabors.ImageSharp.Formats.Gif;
 using SixLabors.ImageSharp.Formats.Jpeg;
 using SixLabors.ImageSharp.Formats.Png;
-using SixLabors.ImageSharp.Formats.Gif;
-using SixLabors.ImageSharp.Formats;
+using WhiteLemon.API.Interfaces;
 
 namespace WhiteLemon.API.Services
 {
@@ -62,12 +61,14 @@ namespace WhiteLemon.API.Services
                 return null; // Επιστροφή null αν η φωτογραφία είναι κενή ή μηδενική
             }
 
-            // Δημιουργούμε το μονοπάτι του φάκελου όπου θα αποθηκευτεί η φωτογραφία.
             // Creating the folder path where the photoBytes will be stored.
+            // Δημιουργούμε το μονοπάτι του φάκελου όπου θα αποθηκευτεί η φωτογραφία.
+
             var targetFolderPath = Path.Combine(this._webHostEnvironment.WebRootPath, Path.Combine(folderPaths));
 
-            // Αν ο φάκελος δεν υπάρχει, τον δημιουργούμε.
             // If the folder doesn't exist, we create it.
+            // Αν ο φάκελος δεν υπάρχει, τον δημιουργούμε.
+
             if (!Directory.Exists(targetFolderPath))
             {
                 Directory.CreateDirectory(targetFolderPath);
@@ -77,15 +78,18 @@ namespace WhiteLemon.API.Services
 
             using (var ms = new MemoryStream(photoBytes))
             {
+                // This method detects the image format
+                // Load the image from the memory stream
+                // Αυτή η μέθοδος εντοπίζει το φορμά της εικόνας
                 // Φορτώνουμε την εικόνα από το memory stream
-                var format = Image.DetectFormat(ms); // Αυτή η μέθοδος εντοπίζει το φορμά της εικόνας
+                var format = Image.DetectFormat(ms); 
 
                 extension = format switch
                 {
                     JpegFormat _ => ".jpg",
                     PngFormat _ => ".png",
                     GifFormat _ => ".gif",
-                    _ => ".jpg" // Προεπιλογή σε .jpg αν δεν αναγνωρίζεται
+                    _ => ".jpg" 
                 };
             }
 
@@ -99,11 +103,8 @@ namespace WhiteLemon.API.Services
             // Συνδυάζουμε το μονοπάτι του φακέλου και το νέο όνομα της φωτογραφίας για να δημιουργήσουμε το πλήρες μονοπάτι.
             var fullPhotoPath = Path.Combine(targetFolderPath, newPhotoName);
 
-            // Open the file and copy the photoBytes data.
-            // Ανοίγουμε το αρχείο και αντιγράφουμε τα δεδομένα της φωτογραφίας.
 
-          
-          
+            // Save the file data to the destination.
             // Αποθηκεύουμε τα δεδομένα του αρχείου στον προορισμό.
             using (var stream = new FileStream(fullPhotoPath, FileMode.Create))
             {

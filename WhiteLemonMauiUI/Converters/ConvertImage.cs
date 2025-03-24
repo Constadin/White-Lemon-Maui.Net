@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Diagnostics;
 
 namespace WhiteLemonMauiUI.Converters
 {
@@ -17,6 +11,7 @@ namespace WhiteLemonMauiUI.Converters
                 if (string.IsNullOrEmpty(imageUrl))
                     return string.Empty;
 
+                // Download the image from the URL
                 // Κατεβάζουμε την εικόνα από το URL
                 using (HttpClient client = new HttpClient())
                 {
@@ -24,9 +19,12 @@ namespace WhiteLemonMauiUI.Converters
 
                     if (response.IsSuccessStatusCode)
                     {
+                        // Save the image as a byte array
                         // Αποθηκεύουμε την εικόνα ως byte array
                         byte[] imageBytes = await response.Content.ReadAsByteArrayAsync();
 
+
+                        // Encode the image to Base64
                         // Κωδικοποιούμε την εικόνα σε Base64
                         return Convert.ToBase64String(imageBytes);
                     }

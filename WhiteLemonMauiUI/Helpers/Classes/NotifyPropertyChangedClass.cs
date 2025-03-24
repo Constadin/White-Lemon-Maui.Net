@@ -9,6 +9,7 @@ namespace WhiteLemonMauiUI.Helpers.Classes
     /// </summary>
     public class NotifyPropertyChangedClass : INotifyPropertyChanged
     {
+        //Processing the event for property change notification
         // Επεξεργασία του event για ειδοποίηση αλλαγής ιδιοτήτων
         public event PropertyChangedEventHandler? PropertyChanged;
 
@@ -24,15 +25,16 @@ namespace WhiteLemonMauiUI.Helpers.Classes
         /// <returns>True if the value has changed, otherwise false.</returns>
         protected bool SetPropertyValue<T>(ref T propertyStore, T value, [CallerMemberName] string? propertyName = null, Action? onChanged = null)
         {
+            //// If the new value differs from the stored value
             // Αν η νέα τιμή διαφέρει από την αποθηκευμένη τιμή
             if (!EqualityComparer<T>.Default.Equals(propertyStore, value))
             {
-                propertyStore = value; // Ενημέρωση της ιδιοκτησίας
-                onChanged?.Invoke(); // Εκτέλεση της προαιρετικής δράσης
-                this.OnPropertyChanged(propertyName); // Ειδοποίηση της αλλαγής
-                return true; // Επιστροφή αληθές, καθώς η τιμή άλλαξε
+                propertyStore = value;                   // Update the property // Ενημέρωση της ιδιοκτησίας
+                onChanged?.Invoke();                    // Perform the optional action// Εκτέλεση της προαιρετικής δράσης
+                OnPropertyChanged(propertyName);       // Notification of change// Ειδοποίηση της αλλαγής
+                return true;                          // Return true, as the value changed// Επιστροφή αληθές, καθώς η τιμή άλλαξε
             }
-            return false; // Επιστροφή ψευδές, αν η τιμή δεν άλλαξε
+            return false;                           // Return false if the value did not change// Επιστροφή ψευδές, αν η τιμή δεν άλλαξε
         }
 
         /// <summary>
@@ -42,6 +44,7 @@ namespace WhiteLemonMauiUI.Helpers.Classes
         /// <param name="propertyName">The name of the property that changed.</param>
         protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
         {
+            // Notify the event if there is a listener
             // Ειδοποίηση του event αν υπάρχει ακροατής
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }

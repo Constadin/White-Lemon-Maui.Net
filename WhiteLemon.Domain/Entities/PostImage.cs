@@ -28,7 +28,7 @@ namespace WhiteLemon.Domain.Entities
         /// URL of the image associated with the post.
         /// Η διεύθυνση URL της εικόνας που σχετίζεται με την δημοσίευση.
         /// </summary>
-        public Uri? ImageUrl { get; set; }
+        public string? ImageUrl { get; set; }
 
         // 🔗 Relationship 
         /// <summary>

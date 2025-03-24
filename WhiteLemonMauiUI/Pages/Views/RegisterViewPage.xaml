@@ -3,6 +3,7 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:controls="clr-namespace:WhiteLemonMauiUI.Controls"
+    xmlns:ff="clr-namespace:FFImageLoading.Maui;assembly=FFImageLoading.Maui"
     x:Class="WhiteLemonMauiUI.Pages.Views.RegisterViewPage"
     xmlns:base="clr-namespace:WhiteLemonMauiUI.Helpers.Views"
     xmlns:viewModel="clr-namespace:WhiteLemonMauiUI.Pages.ViewModels"
@@ -10,7 +11,6 @@
     Shell.FlyoutBehavior="Disabled"
     Title="Register"
     BackgroundColor="{DynamicResource InitializeColorStart}">
-
 
 
     <ScrollView
@@ -48,13 +48,15 @@
                         </Border.StrokeShape>
                         <Image
                             Source="splash_icon.svg"
-                            Aspect="Fill"
+                            Aspect="AspectFill"
                             HeightRequest="80"
                             WidthRequest="82"
                             HorizontalOptions="End"
-                            VerticalOptions="Center" />
+                            VerticalOptions="Center"/>
                     </Border>
                 </Border>
+                
+                
                 <Label
                     Grid.Row="2"
                     Text="User registration"
@@ -64,6 +66,8 @@
                     FontSize="25"
                     TextColor="{DynamicResource TextColor}"
                     Margin="5" />
+                
+                
                 <VerticalStackLayout
                     Grid.Row="3"
                     Spacing="8"
@@ -81,15 +85,17 @@
                             <Grid>
                                 <Button
                                     BackgroundColor="Transparent"
-                                    Command="{Binding TakePhotoCommand}" />
+                                    Command="{Binding ChoosePhotoCommand}"/>
 
-                                <Image
-                                    Source="{Binding PhotoUrl}"
+                                <ff:CachedImage
+                                    Source="{Binding PhotoUrl, Mode=TwoWay}"
                                     HeightRequest="55"
                                     WidthRequest="55"
                                     Aspect="AspectFill"
                                     HorizontalOptions="Center"
-                                    VerticalOptions="Center" />
+                                    VerticalOptions="Center"
+                                    DownsampleToViewSize="True"
+                                    CacheDuration="00:05:00"/>
                             </Grid>
                         </Border>
                     </HorizontalStackLayout>
@@ -179,6 +185,8 @@
                             IsChecked="{Binding IsPasswordHidden, Mode=TwoWay}" />
                     </HorizontalStackLayout>
                 </VerticalStackLayout>
+                
+                
                 <VerticalStackLayout
                     Grid.Row="5"
                     Margin="0,30,0,0"
