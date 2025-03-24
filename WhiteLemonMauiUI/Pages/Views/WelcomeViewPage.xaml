@@ -40,6 +40,8 @@
                 FontSize="20"
                 TextColor="White" />
         </Grid>
+        
+        
         <Button
             Grid.Row="3"
             Text="Get Started"

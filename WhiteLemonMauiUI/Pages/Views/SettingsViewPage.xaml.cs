@@ -36,7 +36,7 @@ public partial class SettingsViewPage : ContentPage
             await Shell.Current.GoToAsync(nameof(SupportViewPage), animate: true);
         });
     }
-    
+
     private async void GotoPrivacyPolicyPage(object sender, TappedEventArgs e)
     {
         await NavigationGuard.SafeNavigateAsyncGuard(async () =>
@@ -45,13 +45,13 @@ public partial class SettingsViewPage : ContentPage
         });
     }
     private async void GoToLoginPage(object sender, TappedEventArgs e)
-    {       
+    {
 
         await NavigationGuard.SafeNavigateAsyncGuard(async () =>
         {
-            
+
             await Shell.Current.GoToAsync($"///{nameof(LoginViewPage)}", true);
-            
+
         });
 
     }

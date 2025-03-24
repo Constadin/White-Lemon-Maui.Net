@@ -14,13 +14,13 @@
         <Grid
             ColumnDefinitions="Auto, 80,*, Auto"
             Padding="10,0,15,0">
+
             <Label
                 Grid.Column="0"
                 Text="Posts"
                 TextColor="White"
                 FontSize="20"
                 VerticalTextAlignment="Center" />
-
             <Grid
                 ColumnDefinitions="Auto, *,Auto"
                 Grid.Column="3"
@@ -62,6 +62,8 @@
                             HorizontalOptions="Center" />
                     </Grid>
                 </Border>
+
+
                 <Border
                     Grid.Column="2"
                     HeightRequest="35"
@@ -91,15 +93,17 @@
                         </Image.GestureRecognizers>
                     </Image>
                 </Border>
-
             </Grid>
         </Grid>
     </Shell.TitleView>
-    <ScrollView>
+
+
+    <ScrollView
+        VerticalScrollBarVisibility="Never">
         <VerticalStackLayout
             HeightRequest="1000">
             <Grid
-                RowDefinitions="Auto,*, Auto">
+                RowDefinitions="Auto,*">
                 <Label
                     Grid.Row="0"
                     Text="Top Rated Posts"
@@ -144,7 +148,7 @@
                                         HorizontalOptions="Center"
                                         VerticalOptions="Center"
                                         DownsampleToViewSize="True"
-                                        CacheDuration="00:05:00"/>
+                                        CacheDuration="00:05:00" />
                                 </Border>
                                 <Label
                                     Text="{Binding Name}"
@@ -157,11 +161,10 @@
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
                 </CollectionView>
-
             </Grid>
 
             <Grid
-                RowDefinitions="Auto,*, Auto">
+                RowDefinitions="Auto,*">
                 <Label
                     Grid.Row="0"
                     Text="Suggested for you"
@@ -216,7 +219,7 @@
                                             VerticalOptions="Center"
                                             DownsampleToViewSize="True"
                                             CacheDuration="00:05:00"
-                                            FadeAnimationDuration="200" />
+                                            />
                                     </Border>
                                     <Label
                                         Text="{Binding Name}"
@@ -291,6 +294,8 @@
                                 Padding="35,0,0,8" />
                         </Grid>
                     </Grid>
+                    
+                    
                     <Grid
                         Grid.Row="1"
                         Padding="0,0">
@@ -299,19 +304,23 @@
                             Aspect="Fill"
                             DownsampleToViewSize="True"
                             CacheDuration="00:05:00"
-                            FadeAnimationDuration="200" />
+                            />
                         <Grid.GestureRecognizers>
                             <TapGestureRecognizer
                                 Tapped="GotoPostDetailsPage">
                             </TapGestureRecognizer>
                         </Grid.GestureRecognizers>
                     </Grid>
+                    
+                    
                     <Label
                         Grid.Row="2"
                         Padding="25,0,25,0"
                         Text="Some random post text will go here...Some random post text will go here..."
                         FontSize="17"
                         TextColor="{DynamicResource TextColor}" />
+                    
+                    
                     <BoxView
                         Grid.Row="3"
                         HeightRequest="2"
@@ -333,6 +342,8 @@
                             </LinearGradientBrush>
                         </BoxView.Background>
                     </BoxView>
+                    
+                    
                     <Grid
                         Grid.Row="4"
                         ColumnDefinitions="Auto, *, Auto"
@@ -441,6 +452,8 @@
                             </Grid>
                         </Grid>
                     </Grid>
+                    
+                    
                     <BoxView
                         Grid.Row="5"
                         HeightRequest="8"

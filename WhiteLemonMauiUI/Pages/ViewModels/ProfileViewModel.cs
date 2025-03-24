@@ -15,7 +15,7 @@ namespace WhiteLemonMauiUI.Pages.ViewModels
         private string? _userName;
         private string? _message;
         private byte[]? _photoUser;
-        private readonly string? _defaultUserImage = Const.DefaultUserImage;    
+        private readonly string? _defaultUserImage = Const.DefaultUserImage;
         private string? _selectedImage;
         private bool _isPasswordHidden = true;
         #endregion
@@ -32,7 +32,7 @@ namespace WhiteLemonMauiUI.Pages.ViewModels
 
         public ICommand UpdateUserIcommand { get; }
         public ICommand ChangePhotoCommand { get; }
-        public Guid CurrentUserId => this._dataSourceServices.CurrentUserId;
+        public Guid CurrentUserId => _dataSourceServices.CurrentUserId;
 
         public bool IsPasswordHidden
         {
@@ -42,7 +42,7 @@ namespace WhiteLemonMauiUI.Pages.ViewModels
         public string? UserName
         {
             get => this._dataSourceServices.CurrentUserName;
-            set => this.SetPropertyValue(ref this._userName, value);
+            set => SetPropertyValue(ref this._userName, value);
         }
 
         public string? Email
@@ -70,14 +70,14 @@ namespace WhiteLemonMauiUI.Pages.ViewModels
             set => SetPropertyValue(ref this._selectedImage, value);
         }
 
-        public string? PhotoUrl => string.IsNullOrEmpty(SelectedImage) ? this._defaultUserImage : SelectedImage;
+        public string? PhotoUrl => string.IsNullOrEmpty(this.SelectedImage) ? this._defaultUserImage : this.SelectedImage;
         #endregion
 
         #region Lifecycle Methods
 
         public void OnAppearing()
         {
-          
+
         }
 
         public void OnDisappearing()
@@ -87,11 +87,11 @@ namespace WhiteLemonMauiUI.Pages.ViewModels
 
         public void ClearViewModel()
         {
-            UserName = null;
-            Email = null;
-            Message = null;
-            PhotoUser = null;
-            SelectedImage = null;
+            this.UserName = null;
+            this.Email = null;
+            this.Message = null;
+            this.PhotoUser = null;
+            this.SelectedImage = null;
         }
 
         public async Task TakePhotoAsync()
@@ -114,12 +114,12 @@ namespace WhiteLemonMauiUI.Pages.ViewModels
                     using (var memoryStream = new MemoryStream())
                     {
                         await stream.CopyToAsync(memoryStream);
-                        this.PhotoUser = memoryStream.ToArray();
+                        PhotoUser = memoryStream.ToArray();
 
                         // Encode it in Base64
                         // Την κωδικοποιήσουμε σε Base64
 
-                        var base64Photo = Convert.ToBase64String(this.PhotoUser);
+                        var base64Photo = Convert.ToBase64String(PhotoUser);
 
                         this.SelectedImage = base64Photo;
                     }
@@ -133,11 +133,11 @@ namespace WhiteLemonMauiUI.Pages.ViewModels
 
             try
             {
-                this.ShowActivityIndicatorPopup();
+                ShowActivityIndicatorPopup();
 
                 await Task.Yield();
 
-                string? finalDefaultUserImage = this.PhotoUrl;
+                string? finalDefaultUserImage = PhotoUrl;
 
                 if (this.PhotoUrl == Const.DefaultUserImage)
                 {
@@ -149,13 +149,13 @@ namespace WhiteLemonMauiUI.Pages.ViewModels
 
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 //serilog
             }
             finally
             {
-                this.HidActivityIndicatorPopup();
+                HidActivityIndicatorPopup();
 
             }
         }

@@ -55,6 +55,8 @@
                             VerticalOptions="Center"/>
                     </Border>
                 </Border>
+                
+                
                 <Label
                     Grid.Row="2"
                     Text="User registration"
@@ -64,6 +66,8 @@
                     FontSize="25"
                     TextColor="{DynamicResource TextColor}"
                     Margin="5" />
+                
+                
                 <VerticalStackLayout
                     Grid.Row="3"
                     Spacing="8"
@@ -81,7 +85,7 @@
                             <Grid>
                                 <Button
                                     BackgroundColor="Transparent"
-                                    Command="{Binding TakePhotoCommand}" />
+                                    Command="{Binding ChoosePhotoCommand}"/>
 
                                 <ff:CachedImage
                                     Source="{Binding PhotoUrl, Mode=TwoWay}"
@@ -181,6 +185,8 @@
                             IsChecked="{Binding IsPasswordHidden, Mode=TwoWay}" />
                     </HorizontalStackLayout>
                 </VerticalStackLayout>
+                
+                
                 <VerticalStackLayout
                     Grid.Row="5"
                     Margin="0,30,0,0"

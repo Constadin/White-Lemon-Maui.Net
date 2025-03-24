@@ -5,7 +5,7 @@ using WhiteLemonMauiUI.Users.Interfaces;
 using WhiteLemonMauiUI.Users.ModelsDto;
 
 namespace WhiteLemonMauiUI.Pages.ViewModels
-{   
+{
     public class DiscoverPeopleViewModel : BaseViewModel
     {
         #region Fields
@@ -20,8 +20,8 @@ namespace WhiteLemonMauiUI.Pages.ViewModels
         }
 
         #region Properties
-        public Guid CurrentUserId => this._dataSourceServices.CurrentUserId;
-        public ObservableCollection<PreloadUserLimit> DiscoverPeopleUsers => this._dataSourceServices.DiscoverPeopleUsers;
+        public Guid CurrentUserId => _dataSourceServices.CurrentUserId;
+        public ObservableCollection<PreloadUserLimit> DiscoverPeopleUsers => _dataSourceServices.DiscoverPeopleUsers;
         public string? Message
         {
             get => this._message;
@@ -41,7 +41,7 @@ namespace WhiteLemonMauiUI.Pages.ViewModels
                 // If there is no data, we call the PreloadDataAsync method to load it
                 // Αν δεν υπάρχουν δεδομένα, καλούμε τη μέθοδο PreloadDataAsync για να τα φορτώσουμε
 
-                await this._dataSourceServices.PreLoadDataAsync(this.CurrentUserId, Const.PreloadLimit, string.Empty, string.Empty, string.Empty);
+                await this._dataSourceServices.PreLoadDataAsync(CurrentUserId, Const.PreloadLimit, string.Empty, string.Empty, string.Empty);
             }
         }
 
@@ -52,8 +52,8 @@ namespace WhiteLemonMauiUI.Pages.ViewModels
 
         public void ClearViewModel()
         {
-            this.Message = null;
-            this.DiscoverPeopleUsers.Clear();
+            Message = null;
+            DiscoverPeopleUsers.Clear();
         }
 
         #endregion

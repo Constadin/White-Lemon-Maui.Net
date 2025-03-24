@@ -1,5 +1,3 @@
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.FileProviders;
 using WhiteLemon.API.ConfigApi;
 using WhiteLemon.API.Endpoints;
 

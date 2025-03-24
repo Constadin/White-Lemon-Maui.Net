@@ -10,20 +10,29 @@ namespace WhiteLemonMauiUI
     /// </summary>
     public static class ThemeManager
     {
-        private const string ThemeKey = "theme"; // Το κλειδί για το τρέχον θέμα.
-        private const string PrevThemeKey = "previous-theme"; // Το κλειδί για το προηγούμενο θέμα.
+        // The key for the current topic.
+        // Το κλειδί για το τρέχον θέμα.
+        private const string ThemeKey = "theme";
 
+        // Το κλειδί για το προηγούμενο θέμα.
+        // Το κλειδί για το προηγούμενο θέμα.
+        private const string PrevThemeKey = "previous-theme";
+
+
+        // Dictionary that associates topic names with their ResourceDictionaries.
         // Λεξικό που συσχετίζει ονόματα θεμάτων με τα ResourceDictionaries τους.
         private static readonly IDictionary<string, ResourceDictionary> _themesMap =
             new Dictionary<string, ResourceDictionary>
             {
-                [nameof(Themes.Light)] = new Themes.Light(), // Προσθήκη του Default θέματος.
+                [nameof(Themes.Light)] = new Themes.Light(), // Add  Default Theme.
                 [nameof(Themes.Dark)] = new Themes.Dark()   // Προσθήκη του Dark θέματος.
             };
 
-        // Στατικός κατασκευαστής, εκτελείται όταν φορτώνεται η κλάση.
+    
         static ThemeManager()
         {
+
+            // Subscribe to the event that notifies when the device theme changes
             // Εγγραφή στο γεγονός που ειδοποιεί όταν αλλάζει το θέμα της συσκευής.
             if (Application.Current != null)
             {
@@ -37,9 +46,11 @@ namespace WhiteLemonMauiUI
         /// </summary>
         public static void Initialize()
         {
+            // Gets the saved theme from preferences.
             // Παίρνει το αποθηκευμένο θέμα από τις προτιμήσεις.
             var selectedTheme = Preferences.Default.Get<string>(ThemeKey, string.Empty);
 
+            // If no theme is set and the device is in Dark Mode, selects Dark.
             // Αν δεν έχει οριστεί θέμα και η συσκευή είναι σε Dark Mode, επιλέγει το Dark.
             if (string.IsNullOrEmpty(selectedTheme) || Application.Current?
                 .PlatformAppTheme == AppTheme.Dark)
@@ -51,6 +62,7 @@ namespace WhiteLemonMauiUI
                 selectedTheme = nameof(Themes.Light);
             }
 
+            // Applies the selected theme or Default if none exists.
             // Εφαρμόζει το θέμα που επιλέχθηκε ή το Default αν δεν υπάρχει.
             SetTheme(selectedTheme ?? nameof(Themes.Light));
 
@@ -58,12 +70,14 @@ namespace WhiteLemonMauiUI
             UpdateStatusBarColor(selectedTheme ?? nameof(Themes.Light));
         }
 
+        // Event that is triggered when the selected theme changes.
         // Γεγονός που ενεργοποιείται όταν αλλάζει το επιλεγμένο θέμα.
         public static event EventHandler? SelectedThemeChanged;
 
         // Επιστρέφει τα διαθέσιμα ονόματα θεμάτων.
         public static string[] ThemeNames => _themesMap.Keys.ToArray();
 
+        // Επιστρέφει τα διαθέσιμα ονόματα θεμάτων.
         // Αποθηκεύει το τρέχον επιλεγμένο θέμα.
         public static string SelectedTheme { get; set; } = nameof(Themes.Light);
 
@@ -73,22 +87,28 @@ namespace WhiteLemonMauiUI
         /// </summary>
         private static void Current_RequestedThemeChanged(object? sender, AppThemeChangedEventArgs e)
         {
-            // Αν η συσκευή αλλάξει σε Dark Mode.
+            // If the device switches to Dark Mode..
+            // Αν η συσκευή αλλάξει σε Dark Mode.   
             if (e.RequestedTheme == AppTheme.Dark)
-            {
+            {  
+                // If the current theme is not already Dark, it saves the previous theme.
                 // Αν το τρέχον θέμα δεν είναι ήδη το Dark, αποθηκεύει το προηγούμενο θέμα.
                 if (SelectedTheme != nameof(Themes.Dark))
                 {
                     Preferences.Default.Set(PrevThemeKey, SelectedTheme);
                 }
+
+                // Sets Dark Mode.
                 // Θέτει το Dark Mode.
                 SetTheme(nameof(Themes.Dark));
             }
             else
             {
+                //// Gets the previous topic or Default if it doesn't exist.
                 // Παίρνει το προηγούμενο θέμα ή το Default αν δεν υπάρχει.
                 var prevTheme = Preferences.Default.Get<string>(PrevThemeKey, nameof(Themes.Light));
 
+                // Raises the previous topic.
                 // Θέτει το προηγούμενο θέμα.
                 SetTheme(prevTheme);
             }
@@ -101,13 +121,18 @@ namespace WhiteLemonMauiUI
         /// <param name="themeName">The name of the theme to be applied.</param>
         public static void SetTheme(string themeName)
         {
+            // If the selected theme is already the same, it does nothing.
             // Αν το επιλεγμένο θέμα είναι ήδη το ίδιο, δεν κάνει τίποτα.
             if (SelectedTheme == themeName)
                 return;
 
+
+            // Gets the ResourceDictionary of the theme to be applied.
             // Παίρνει το ResourceDictionary του θέματος που πρέπει να εφαρμοστεί.
             var themeToBeApplied = _themesMap[themeName];
 
+
+            // Clears the existing ResourceDictionaries and adds the new one.
             // Καθαρίζει τα υπάρχοντα ResourceDictionaries και προσθέτει το νέο.
             Application.Current?.Resources.MergedDictionaries.Clear();
             Application.Current?.Resources.MergedDictionaries.Add(themeToBeApplied);
@@ -115,12 +140,15 @@ namespace WhiteLemonMauiUI
             // Ενημερώνει το επιλεγμένο θέμα.
             SelectedTheme = themeName;
 
+            // Triggers the event that notifies about the topic change.
             // Ενεργοποιεί το γεγονός που ενημερώνει για την αλλαγή θέματος.
             SelectedThemeChanged?.Invoke(null, EventArgs.Empty);
 
+            // Saves the selected theme to preferences.
             // Αποθηκεύει το επιλεγμένο θέμα στις προτιμήσεις.
             Preferences.Default.Set<string>(ThemeKey, themeName);
 
+            // Updates the status bar color based on the theme.
             // Ενημερώνει το χρώμα της γραμμής κατάστασης με βάση το θέμα.
             UpdateStatusBarColor(themeName);
         }

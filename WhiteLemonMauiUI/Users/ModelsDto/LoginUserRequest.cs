@@ -8,7 +8,7 @@ namespace WhiteLemonMauiUI.Users.ModelsDto
     /// Αντικείμενο μεταφοράς δεδομένων (DTO) που αντιπροσωπεύει τα δεδομένα απάντησης για έναν χρήστη.
     /// </summary>
     public record class LoginUserRequest
-    {   
+    {
         /// <summary>
         /// The email address of the user.
         /// Η διεύθυνση email του χρήστη.

@@ -3,6 +3,7 @@ using FFImageLoading.Maui;
 using Microsoft.Extensions.Logging;
 using WhiteLemon.Shared.Constants;
 using WhiteLemonMauiUI.Api.ApiConfigMaui;
+using WhiteLemonMauiUI.Pages.ComponetViewModels;
 using WhiteLemonMauiUI.Pages.ViewModels;
 
 namespace WhiteLemonMauiUI
@@ -16,6 +17,7 @@ namespace WhiteLemonMauiUI
                 .UseMauiApp<App>()
                 .UseMauiCommunityToolkit()
                 .UseFFImageLoading()
+
                 .ConfigureFonts(fonts =>
                 {
                     //fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
@@ -34,6 +36,8 @@ namespace WhiteLemonMauiUI
             builder.Services.AddSingleton<HomePageViewModel>();
             builder.Services.AddSingleton<DiscoverPeopleViewModel>();
             builder.Services.AddSingleton<ProfileViewModel>();
+            builder.Services.AddSingleton<AddPostViewModel>();
+            builder.Services.AddSingleton<ButtomSheetComponetViewModel>();
 
             // Add HttpClient with Custom Handler
             // Προσθήκη HttpClient με Custom Handler
@@ -58,7 +62,7 @@ namespace WhiteLemonMauiUI
             // Καταχώρηση άλλων υπηρεσιών 
 
             builder.Services.RegisterUiServices();
-            
+
 
 #if DEBUG
             builder.Logging.AddDebug();
@@ -71,7 +75,6 @@ namespace WhiteLemonMauiUI
         //devtunnels.ms
         private static void ConfigureRefit(IServiceCollection services)
         {
-            var baseApiUrl = "https://05rgtd5d-7091.euw.devtunnels.ms";
         }
 
     }

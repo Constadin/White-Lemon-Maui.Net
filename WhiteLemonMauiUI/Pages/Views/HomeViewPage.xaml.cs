@@ -4,7 +4,7 @@ using WhiteLemonMauiUI.Pages.ViewModels;
 namespace WhiteLemonMauiUI.Pages.Views
 {
     public partial class HomeViewPage : BaseView
-    {  
+    {
         private HomePageViewModel _homePageViewModel;
         public HomeViewPage(HomePageViewModel homePageViewModel)
         {
@@ -14,7 +14,7 @@ namespace WhiteLemonMauiUI.Pages.Views
             this.BindingContext = this._homePageViewModel;
         }
 
-        protected  override void OnAppearing()
+        protected override void OnAppearing()
         {
             base.OnAppearing();
             ThemeManager.Initialize();

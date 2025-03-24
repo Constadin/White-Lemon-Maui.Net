@@ -1,6 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
-
-namespace WhiteLemonMauiUI.Users.ModelsDto
+﻿namespace WhiteLemonMauiUI.Users.ModelsDto
 {
     /// <summary>
     /// Data Transfer Object (DTO) that represents the response data for a user.

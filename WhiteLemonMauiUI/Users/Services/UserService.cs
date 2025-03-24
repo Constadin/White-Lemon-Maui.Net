@@ -23,7 +23,7 @@ namespace WhiteLemonMauiUI.Users.Services
         public UserService(IApiService apiService)
         {
             // Αν η υπηρεσία API είναι null, ρίχνουμε εξαίρεση
-            this._apiService = apiService ?? throw new ArgumentNullException(nameof(apiService));
+            _apiService = apiService ?? throw new ArgumentNullException(nameof(apiService));
         }
 
         /// <summary>
@@ -51,7 +51,7 @@ namespace WhiteLemonMauiUI.Users.Services
                     return ServiceResult<ResponseRegisterUserDto>.FailureResult(default, errorMessages);
                 }
 
-                  
+
                 // Κλήση στο API με το MultipartFormDataContent
                 var response = await _apiService.PostAsync<ServiceResult<ResponseRegisterUserDto>>(
                     $"{ApiConfig.BaseAddress}/api/user/register", model);
@@ -99,8 +99,8 @@ namespace WhiteLemonMauiUI.Users.Services
                 }
 
                 // Κλήση στο API για Login χρήστη
-                 var result = await this._apiService.PostAsync< ServiceResult<ResponseLoginUserDto>> (
-                    $"{ApiConfig.BaseAddress}/api/user/login", model);
+                var result = await _apiService.PostAsync<ServiceResult<ResponseLoginUserDto>>(
+                   $"{ApiConfig.BaseAddress}/api/user/login", model);
 
                 // Έλεγχος αν το πρώτο ServiceResult είναι επιτυχές και αν το Data δεν είναι null
                 if (!result.Success || result.Data == null)
@@ -126,6 +126,38 @@ namespace WhiteLemonMauiUI.Users.Services
 
         }
 
+        public async Task<ServiceResult<ResponsePostedDto>> AddPostUserAsync(PostDto model)
+        {
+            try
+            {
+                // Κλήση στο API για Login χρήστη
+                var result = await _apiService.PostAsync<ServiceResult<ResponsePostedDto>>(
+                    $"{ApiConfig.BaseAddress}/api/user/add-post", model);
+
+                // Έλεγχος αν το πρώτο ServiceResult είναι επιτυχές και αν το Data δεν είναι null
+                if (!result.Success || result.Data == null)
+                {
+                    return ServiceResult<ResponsePostedDto>.FailureResult(default, result.ErrorMessage);
+                }
+
+                // Επιστρέφουμε τα δεδομένα του χρήστη από το ServiceResult
+                return result.Data;
+            }
+            catch (HttpRequestException ex)
+            {
+                // Αν παρουσιαστεί σφάλμα κατά τη διάρκεια της κλήσης του API
+                return ServiceResult<ResponsePostedDto>.FailureResult(
+                    default, $"Network error occurred. Unable to connect to the server.{ex.Message}");
+            }
+            catch (Exception ex)
+            {
+                // Γενικότερο σφάλμα, επιστρέφουμε μήνυμα σφάλματος
+                return ServiceResult<ResponsePostedDto>.FailureResult(
+                    default, $"An error occurred: {ex.Message}");
+            }
+
+        }
+
         public async Task<ServiceResult<ResponsePreloadDataDto>> PreloadDataUserAsync(Guid currentUser, int preloadLimit)
         {
             try
@@ -137,8 +169,8 @@ namespace WhiteLemonMauiUI.Users.Services
                 };
 
                 // Κλήση στο API για Login χρήστη
-                var result = await this._apiService.PostAsync<ServiceResult<ResponsePreloadDataDto>>(
-                    $"{ApiConfig.BaseAddress}/api/user/preloadData", requestData);
+                var result = await _apiService.PostAsync<ServiceResult<ResponsePreloadDataDto>>(
+                    $"{ApiConfig.BaseAddress}/api/user/preload-data", requestData);
 
                 // Έλεγχος αν το πρώτο ServiceResult είναι επιτυχές και αν το Data δεν είναι null
                 if (!result.Success || result.Data == null)

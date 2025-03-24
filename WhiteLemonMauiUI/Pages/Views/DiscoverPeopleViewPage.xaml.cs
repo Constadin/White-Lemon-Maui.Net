@@ -27,7 +27,7 @@ public partial class DiscoverPeopleViewPage : BaseView, INotifyPropertyChanged
         {
             this._explicitNav = value;
             OnPropertyChanged(nameof(ExplicitNav));
-            this.HandleNavigation();
+            HandleNavigation();
         }
     }
 

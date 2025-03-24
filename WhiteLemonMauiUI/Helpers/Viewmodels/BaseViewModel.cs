@@ -38,7 +38,7 @@ namespace WhiteLemonMauiUI.Helpers.Viewmodels
         /// <param name="serviceProvider">The service provider for dependency injection.</param>
         public BaseViewModel(IServiceProvider serviceProvider)
         {
-            this.ServiceProvider = serviceProvider;
+            ServiceProvider = serviceProvider;
         }
 
         /// <summary>
@@ -50,9 +50,12 @@ namespace WhiteLemonMauiUI.Helpers.Viewmodels
         /// <param name="popupType">The type of the dialog (e.g., warning, error, success).</param>
         protected void ShowDialog(string? title, string? message, string popupType)
         {
+            // Create the dialog
             // Δημιουργούμε το dialog
-            var dialog = new DialogPopUp(title??string.Empty, message??string.Empty, popupType);
+            var dialog = new DialogPopUp(title ?? string.Empty, message ?? string.Empty, popupType);
 
+
+            // We notify that the dialog should appear
             // Ειδοποιούμε ότι πρέπει να εμφανιστεί το dialog
             ShowAlertDialogEvent?.Invoke(this, dialog);
         }
@@ -65,6 +68,8 @@ namespace WhiteLemonMauiUI.Helpers.Viewmodels
         {
             var popup = new ActivityIndicatorPopUp();
             this._currentPopup = popup;
+
+            // We notify that the activity indicator should be displayed
             // Ειδοποιούμε ότι πρέπει να εμφανιστεί το activity indicator
             ShowActivityIndicatorEvent?.Invoke(this, this._currentPopup);
         }
@@ -77,6 +82,7 @@ namespace WhiteLemonMauiUI.Helpers.Viewmodels
         {
             if (this._currentPopup != null)
             {
+                // Notify that the activity indicator should be hidden
                 // Ειδοποιούμε ότι πρέπει να κρυφτεί το activity indicator
                 HideActivityIndicatorEvent?.Invoke(this, this._currentPopup);
 

@@ -19,7 +19,7 @@ public partial class WelcomeViewPage : ContentPage
 
         await NavigationGuard.SafeNavigateAsyncGuard(async () =>
         {
-            await Shell.Current.GoToAsync($"///{nameof(LoginViewPage)}",true);
+            await Shell.Current.GoToAsync($"///{nameof(LoginViewPage)}", true);
         });
 
     }

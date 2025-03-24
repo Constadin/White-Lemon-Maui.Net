@@ -17,19 +17,21 @@ namespace WhiteLemonMauiUI.Users.Services
 
         public ObservableCollection<PreloadUserLimit> DiscoverPeopleUsers { get; private set; } = new ObservableCollection<PreloadUserLimit>();
 
+        public ObservableCollection<PreloadUserLimit> RecentUseImages { get; private set; } = new ObservableCollection<PreloadUserLimit>();
+
         private readonly IUserService _userService;
 
         public DataSourceService(IUserService userService)
         {
-            this._userService = userService;
+            _userService = userService;
         }
 
         public async Task PreLoadDataAsync(Guid currentUserId, int preloadLimit, string currentProfilePhoto, string currentUserName, string currentUserEmail)
         {
-            this.CurrentUserId = currentUserId;
-            this.CurrentProfilePhoto = $"{ApiConfig.BaseAddress}{currentProfilePhoto}";
-            this.CurrentUserName = currentUserName;
-            this.CurentUserEmail = currentUserEmail;
+            CurrentUserId = currentUserId;
+            CurrentProfilePhoto = $"{ApiConfig.BaseAddress}{currentProfilePhoto}";
+            CurrentUserName = currentUserName;
+            CurentUserEmail = currentUserEmail;
 
             try
             {
@@ -37,22 +39,34 @@ namespace WhiteLemonMauiUI.Users.Services
 
                 if (result.Success && result.Data != null)
                 {
-                    this.TopRatedUsers.Clear();
+                    TopRatedUsers.Clear();
                     foreach (var user in result.Data.topRatedUsers)
                     {
-                        this.TopRatedUsers.Add(new PreloadUserLimit(user.UserId, user.Name, user.FullPhotoUrl, user.MostLikedPostId));
+                        TopRatedUsers.Add(new PreloadUserLimit(user.UserId, user.Name, user.FullPhotoUrl, user.MostLikedPostId));
                     }
 
-                    this.DiscoverPeopleUsers.Clear();
+                    await Task.Delay(1000);
+
+                    DiscoverPeopleUsers.Clear();
                     foreach (var user in result.Data.topRatedUsers)
                     {
-                        this.DiscoverPeopleUsers.Add(new PreloadUserLimit(user.UserId, user.Name, user.FullPhotoUrl, null));
+                        DiscoverPeopleUsers.Add(new PreloadUserLimit(user.UserId, user.Name, user.FullPhotoUrl, null));
                     }
 
-                    this.SuggestedUsers.Clear();
+                    await Task.Delay(1000);
+
+                    RecentUseImages.Clear();
+                    foreach (var user in result.Data.topRatedUsers.Take(12))
+                    {
+                        RecentUseImages.Add(new PreloadUserLimit(user.UserId, user.Name, user.FullPhotoUrl, null));
+                    }
+
+                    await Task.Delay(1000);
+
+                    SuggestedUsers.Clear();
                     foreach (var user in result.Data.suggestedUsers.Take(5))
                     {
-                        this.SuggestedUsers.Add(new PreloadUserLimit(user.UserId, user.Name, user.FullPhotoUrl, null));
+                        SuggestedUsers.Add(new PreloadUserLimit(user.UserId, user.Name, user.FullPhotoUrl, null));
                     }
 
                 }

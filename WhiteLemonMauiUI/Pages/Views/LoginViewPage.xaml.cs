@@ -21,7 +21,7 @@ public partial class LoginViewPage : BaseView
 
         this._loginViewModel.OnAppearing();
     }
-    protected  override void OnDisappearing()
+    protected override void OnDisappearing()
     {
         base.OnDisappearing();
 

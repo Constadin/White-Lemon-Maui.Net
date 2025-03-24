@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Identity;
-using System.Linq;
 using WhiteLemon.API.Models;
 using WhiteLemon.Application.DTOs;
 using WhiteLemon.Application.Interfaces;
@@ -134,7 +133,7 @@ namespace WhiteLemon.Application.Services
                 // Δημιουργία του DTO με τις δύο λίστες χρηστών.
                 var responsePreloadData = new ResponsePreloadDataDto(
                     topRatedUsers.Select(u => new PreloadUserLimit(u.Item1.Id, u.Item1.Name, u.Item1.PhotoUrl, u.Item2)).ToList(),
-                    suggestedUsers.Select(u => new PreloadUserLimit(u.Id, u.Name, u.PhotoUrl, null)).ToList() 
+                    suggestedUsers.Select(u => new PreloadUserLimit(u.Id, u.Name, u.PhotoUrl, null)).ToList()
                 );
 
                 // Return the result with success.
@@ -146,6 +145,67 @@ namespace WhiteLemon.Application.Services
                 // Return an error result in case of failure.
                 // Επιστροφή σφάλματος σε περίπτωση αποτυχίας.
                 return ServiceResult<ResponsePreloadDataDto>.FailureResult($"Error loading data: {ex.Message}");
+            }
+        }
+
+        public async Task<ServiceResult<ResponsePostedDto>> AddPostAsync(PostDto post)
+        {
+            try
+            {
+
+                if (post.UserId == Guid.Empty)
+                {
+                    return ServiceResult<ResponsePostedDto>.FailureResult("Invalid user data.");
+                }
+
+                Post postEntity = new Post
+                {
+                    Id = post.Id,
+                    UserId = post.UserId,
+                    Title = post.Title,
+                    Content = post.Content,
+                    CreatedAt = post.CreatedAt,
+                    ModifiedOn = post.ModifiedOn,
+                    PostImages = post.PostImages?.Select(pi => new PostImage
+                    {
+                        Id = Guid.NewGuid(),
+                        PostId = post.Id,
+                        ImageUrl = pi.ImageUrl
+                    }).ToList() ?? new List<PostImage>()
+                };
+
+
+                // Add the post to the database
+                // Προσθήκη του post στη βάση δεδομένων
+                var savedPost = await _userRepository.UserPostAsync(postEntity);
+
+                if (savedPost == null)
+                {
+                    return ServiceResult<ResponsePostedDto>.FailureResult("Failed to retrieve post after save.");
+                }
+
+                // Prepare ResponsePostedDto with the necessary data
+                // Προετοιμασία του ResponsePostedDto με τα απαραίτητα δεδομένα
+                var responsePostedDto = new ResponsePostedDto
+                (
+                    savedPost.UserId,
+                    savedPost.Id,
+                    savedPost.User.Name,
+                    savedPost.Title ?? string.Empty,
+                    savedPost.CreatedAt,
+                    savedPost.PostImages.Select(pi => new PostImageDto
+                    (
+                        pi.Id,
+                        pi.PostId,
+                        pi.ImageUrl ?? string.Empty
+                    )).ToList()
+                );
+
+                return ServiceResult<ResponsePostedDto>.SuccessResult(responsePostedDto, "Posted successfully.");
+            }
+            catch (Exception ex)
+            {
+                return ServiceResult<ResponsePostedDto>.FailureResult($"An error occurred: {ex.Message}");
             }
         }
 

@@ -46,10 +46,10 @@
 
 	
 	<ItemGroup>
-		<!-- App Icon -->
+		 <!--App Icon--> 
 		<MauiIcon Include="Resources\AppIcon\appicon.svg" Color="#9307f7" TintColor="White" />
 
-		<!-- Splash Screen -->
+		 <!--Splash Screen--> 
 		<MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#9307f7" TintColor="White" BaseSize="128,128" />
 
 		<!-- Images -->
@@ -61,6 +61,13 @@
 
 		<!-- Raw Assets (also remove the "Resources\Raw" prefix) -->
 		<MauiAsset Include="Resources\Raw\**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)" />
+	</ItemGroup>
+
+	
+
+	
+	<ItemGroup>
+	  <AndroidResource Remove="Platforms\Android\Resources\values\styles.xml" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -79,15 +86,23 @@
 	  <MauiXaml Update="Helpers\Views\DialogPopUp.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Pages\ComponetViews\ButtomSheetComponet.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	</ItemGroup>
 
 	<ItemGroup>
 	  <Folder Include="Helpers\Viewmodels\" />
-	  <Folder Include="Pages\ContentViews\" />
 	</ItemGroup>
 
 	<ItemGroup>
 	  <ProjectReference Include="..\WhiteLemon.Shared\WhiteLemon.Shared.csproj" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <Compile Update="Pages\ComponetViews\ButtomSheetComponet.xaml.cs">
+	    <DependentUpon>ButtomSheetComponet.xaml</DependentUpon>
+	  </Compile>
+	</ItemGroup>
+	
 </Project>

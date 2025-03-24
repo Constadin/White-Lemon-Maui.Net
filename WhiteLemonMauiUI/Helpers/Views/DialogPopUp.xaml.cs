@@ -48,24 +48,24 @@ namespace WhiteLemonMauiUI.Helpers.Views
         {
             InitializeComponent();
 
-    
+
             this.TitleText = title;
             this.MessageText = message;
             this.PopupType = popupType;
 
-    
+
             TitleLabel.Text = TitleText;
             MessageLabel.Text = MessageText;
 
-     
-            this.SetPopupIcon();
 
-     
+            SetPopupIcon();
+
+
             OkCommand = new Command(() => Close());
 
-            this.BindingContext = this;
+            BindingContext = this;
 
-            this.AutoClose();
+            AutoClose();
         }
 
         private async void AutoClose()
@@ -85,23 +85,23 @@ namespace WhiteLemonMauiUI.Helpers.Views
         {
             string iconSource = string.Empty;
 
-         
+
             switch (PopupType.ToLower())
             {
                 case "warning":
-                    iconSource = "warning_regular_24.svg"; 
+                    iconSource = "warning_regular_24.svg";
                     break;
                 case "error":
                     iconSource = "error_regular_24.svg";
                     break;
                 case "success":
-                    iconSource = "success_regular_24.svg"; 
+                    iconSource = "success_regular_24.svg";
                     break;
                 case "notification":
-                    iconSource = "notification_regular_24.svg"; 
+                    iconSource = "notification_regular_24.svg";
                     break;
                 default:
-                    iconSource = ""; 
+                    iconSource = "";
                     break;
             }
 

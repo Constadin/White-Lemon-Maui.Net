@@ -17,10 +17,10 @@ namespace WhiteLemonMauiUI.Api.Services
         /// Initializes a new instance of the <see cref="ApiService"/> class.
         /// Αρχικοποιεί μια νέα περίπτωση της κλάσης <see cref="ApiService"/>.
         /// </summary>
-        /// <param name="httpClient">The HTTP client used for making requests.</param>
+        /// <param name="httpClientFactory">The HTTP client used for making requests.</param>
         public ApiService(IHttpClientFactory httpClientFactory)
         {
-            this._httpClient = httpClientFactory.CreateClient(Const.NameOfCliendApi);
+            _httpClient = httpClientFactory.CreateClient(Const.NameOfCliendApi);
         }
 
         /// <summary>
@@ -34,9 +34,10 @@ namespace WhiteLemonMauiUI.Api.Services
         {
             try
             {
+                // Sends the GET request to the specified URI
                 // Στέλνει το GET αίτημα στην καθορισμένη URI
                 var response = await _httpClient.GetAsync(uri);
-                
+
                 if (!response.IsSuccessStatusCode)
                 {
                     var error = await response.Content.ReadAsStringAsync();
@@ -53,11 +54,13 @@ namespace WhiteLemonMauiUI.Api.Services
             }
             catch (HttpRequestException httpEx)
             {
+                // Returns failure in case of HTTP exception
                 // Επιστρέφει αποτυχία σε περίπτωση HTTP εξαίρεσης
                 return ServiceResult<T>.FailureResult(default, $"HTTP Error: {httpEx.Message}");
             }
             catch (Exception ex)
             {
+                // Returns failure if an exception occurs during the request
                 // Επιστρέφει αποτυχία αν προκύψει εξαίρεση κατά τη διάρκεια της αίτησης
                 return ServiceResult<T>.FailureResult(default, $"Error fetching data: {ex.Message}");
             }
@@ -75,8 +78,9 @@ namespace WhiteLemonMauiUI.Api.Services
         {
             try
             {
+                // Sends the POST request to the specified URI with the model as the body
                 // Στέλνει το POST αίτημα στην καθορισμένη URI με το μοντέλο ως σώμα
-                var response = await _httpClient.PostAsJsonAsync(uri, model);
+                var response = await this._httpClient.PostAsJsonAsync(uri, model);
 
 
                 if (!response.IsSuccessStatusCode)
@@ -95,21 +99,22 @@ namespace WhiteLemonMauiUI.Api.Services
             }
             catch (HttpRequestException httpEx)
             {
+                // Log the error with more information
                 // Καταγραφή του σφάλματος με περισσότερες πληροφορίες
                 var errorMessage = $"HTTP Error: {httpEx.Message}";
 
+                // You can add more information like the URL or headers
                 // Μπορείς να προσθέσεις περισσότερες πληροφορίες όπως την URL ή τα headers
                 if (httpEx.InnerException != null)
                 {
                     errorMessage += $"\nInner Exception: {httpEx.InnerException.Message}";
                 }
-
-                // Εδώ μπορείς να καταγράψεις τα αίτια του λάθους σε αρχείο ή σε κονσόλα
-                Debug.WriteLine(errorMessage);  // Μπορείς να το αντικαταστήσεις με Log
+                              
                 return ServiceResult<T>.FailureResult(default, errorMessage);
             }
             catch (Exception ex)
             {
+                // Returns failure in case of any other exception
                 // Επιστρέφει αποτυχία σε περίπτωση οποιασδήποτε άλλης εξαίρεσης
                 return ServiceResult<T>.FailureResult(default, $"Error posting data: {ex.Message}");
             }

@@ -66,5 +66,14 @@ namespace WhiteLemon.Domain.Interfaces
         /// <param name="limit">The maximum number of users to return.</param>
         /// <returns>A list of users who are not friends with the current user, limited by the specified 'limit'.</returns>
         Task<List<User>> GetUsersNotFriendsAsync(Guid currentUserId, int limit);
+
+
+        /// <summary>
+        /// Adds a new Post to the database.
+        /// Προσθέτει έναν νέο Post στη βάση δεδομένων.
+        /// </summary>
+        /// <param name="post">The post to be added.
+        /// Post που θα προστεθεί.</param>
+        Task<Post?> UserPostAsync(Post post);
     }
 }

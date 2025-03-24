@@ -1,4 +1,3 @@
-using CommunityToolkit.Maui.Views;
 using WhiteLemonMauiUI.Helpers.Views;
 using WhiteLemonMauiUI.Pages.ViewModels;
 
@@ -25,11 +24,12 @@ public partial class RegisterViewPage : BaseView
 
         this._registerViewModel.OnAppearing();
     }
-        
+
     protected override void OnDisappearing()
     {
         base.OnDisappearing();
 
         this._registerViewModel.OnDisappearing();
     }
+
 }

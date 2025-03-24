@@ -1,5 +1,4 @@
-﻿using System.Diagnostics;
-using WhiteLemonMauiUI.Pages.Views;
+﻿using WhiteLemonMauiUI.Pages.Views;
 
 namespace WhiteLemonMauiUI
 {

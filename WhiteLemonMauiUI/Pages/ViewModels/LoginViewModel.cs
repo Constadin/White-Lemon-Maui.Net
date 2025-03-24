@@ -63,7 +63,7 @@ namespace WhiteLemonMauiUI.Pages.ViewModels
 
         public void OnDisappearing()
         {
-            this.ClearViewModel();
+            ClearViewModel();
         }
         public void ClearViewModel()
         {
@@ -75,7 +75,7 @@ namespace WhiteLemonMauiUI.Pages.ViewModels
         {
             try
             {
-                this.ShowActivityIndicatorPopup();
+                ShowActivityIndicatorPopup();
 
                 await Task.Yield();
 
@@ -85,13 +85,13 @@ namespace WhiteLemonMauiUI.Pages.ViewModels
 
                 if (result.Success)
                 {
-                    this.HidActivityIndicatorPopup();
+                    HidActivityIndicatorPopup();
 
                     if (result.Data != null)
                     {
-                        this.Message = result.Message;
+                        Message = result.Message;
 
-                        this.ShowDialog("Success", result.Message, "success");
+                        ShowDialog("Success", result.Message, "success");
 
                         var userName = result.Data.Name ?? string.Empty;
                         var userEmail = result.Data.Email ?? string.Empty;
@@ -106,18 +106,18 @@ namespace WhiteLemonMauiUI.Pages.ViewModels
                 }
                 else
                 {
-                    this.Message = result.ErrorMessage;
-                    this.ShowDialog("Error", Message, "error");
-                    this.HidActivityIndicatorPopup();
+                    Message = result.ErrorMessage;
+                    ShowDialog("Error", Message, "error");
+                    HidActivityIndicatorPopup();
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 //serilog
             }
             finally
             {
-                this.HidActivityIndicatorPopup();
+                HidActivityIndicatorPopup();
             }
         }
         private async Task ToRegisterPageAsync()

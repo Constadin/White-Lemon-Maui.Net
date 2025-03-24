@@ -112,6 +112,8 @@
                 </HorizontalStackLayout>
             </StackLayout>
         </Grid>
+        
+        
         <VerticalStackLayout
             Grid.Row="1"
             HorizontalOptions="Center"

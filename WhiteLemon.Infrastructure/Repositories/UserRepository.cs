@@ -141,15 +141,34 @@ namespace WhiteLemon.Infrastructure.Repositories
                 .Take(limit) // Περιορισμός στον αριθμό των χρηστών
                 .ToListAsync();
 
-            //limit = limit / 2;
-
-            //return await _context.Set<User>()
-            //  .Where(u => u.Id != currentUserId)
-            //  .OrderBy(u => u.CreatedAt)  // Βρίσκουμε τους πιο πρόσφατους χρήστες
-            //  .Take(limit)
-            //  .ToListAsync();
         }
 
+        /// <summary>
+        /// Adds a new Post to the database.
+        /// Προσθέτει έναν νέο Post στη βάση δεδομένων.
+        /// </summary>
+        /// <param name="post">The post to be added.
+        /// Post που θα προστεθεί.</param>
+        public async Task<Post?> UserPostAsync(Post post)
+        {
+            await _context.Set<Post>().AddAsync(post);
+            await _context.SaveChangesAsync();
+
+            // 🔹 Επιστροφή του post με τις σχετικές πληροφορίες φορτωμένες
+
+            var savedPost = await _context.Posts
+                .Include(p => p.User)             // 🔗 Φόρτωση χρήστη
+                .Include(p => p.PostImages)      // 🔗 Φόρτωση εικόνων
+                .FirstOrDefaultAsync(p => p.Id == post.Id);
+
+            if (savedPost is null)
+            {
+                // Log το πρόβλημα και δώσε επιλογή για fallback
+                return null;
+            }
+
+            return savedPost;
+        }
 
     }
 }

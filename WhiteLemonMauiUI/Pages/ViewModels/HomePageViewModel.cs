@@ -1,5 +1,4 @@
 ﻿using System.Collections.ObjectModel;
-using System.Threading.Tasks;
 using WhiteLemon.Shared.Constants;
 using WhiteLemonMauiUI.Helpers.Viewmodels;
 using WhiteLemonMauiUI.Users.Interfaces;
@@ -24,9 +23,9 @@ namespace WhiteLemonMauiUI.Pages.ViewModels
 
         #region Properties
 
-        public Guid CurrentUserId => this._dataSourceServices.CurrentUserId;
-        public ObservableCollection<PreloadUserLimit> TopRatedUsers => this._dataSourceServices.TopRatedUsers;
-        public ObservableCollection<PreloadUserLimit> SuggestedUsers => this._dataSourceServices.SuggestedUsers;
+        public Guid CurrentUserId => _dataSourceServices.CurrentUserId;
+        public ObservableCollection<PreloadUserLimit> TopRatedUsers => _dataSourceServices.TopRatedUsers;
+        public ObservableCollection<PreloadUserLimit> SuggestedUsers => _dataSourceServices.SuggestedUsers;
         public string? Message
         {
             get => this._message;
@@ -47,13 +46,13 @@ namespace WhiteLemonMauiUI.Pages.ViewModels
                 // If there is no data, we call the PreloadDataAsync method to load it
                 // Αν δεν υπάρχουν δεδομένα, καλούμε τη μέθοδο PreloadDataAsync για να τα φορτώσουμε
 
-                await this._dataSourceServices.PreLoadDataAsync(this.CurrentUserId, Const.PreloadLimit, string.Empty, string.Empty, string.Empty);
+                await this._dataSourceServices.PreLoadDataAsync(CurrentUserId, Const.PreloadLimit, string.Empty, string.Empty, string.Empty);
             }
         }
 
         public void OnDisappearing()
         {
-           //this.ClearViewModel();
+            //this.ClearViewModel();
         }
 
         public void ClearViewModel()

@@ -64,6 +64,7 @@
         </Grid>
     </Shell.TitleView>
 
+    
     <Grid
         RowDefinitions="Auto,Auto, *">
         <BoxView
@@ -87,6 +88,8 @@
                 </LinearGradientBrush>
             </BoxView.Background>
         </BoxView>
+        
+        
         <VerticalStackLayout
             Background="Purple"
             Grid.Row="1"

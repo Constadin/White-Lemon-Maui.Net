@@ -33,5 +33,13 @@ namespace WhiteLemon.Application.Interfaces
         /// <param name="preloadLimit">The number of users to be preloaded.</param>
         /// <returns>A <see cref="ServiceResult{ResponsePreloadDataDto}"/> containing the preloaded user data.</returns>
         Task<ServiceResult<ResponsePreloadDataDto>> PreloadDataAsync(Guid currentUserId, int preloadLimit);
+
+        /// <summary>
+        /// Registers a new user and returns a result with the user data.
+        /// Καταχωρεί έναν νέο χρήστη και επιστρέφει το αποτέλεσμα με τα δεδομένα του χρήστη.
+        /// </summary>
+        /// <param name="userDto">The user data for registration.</param>
+        /// <returns>A <see cref="ServiceResult{ResponseRegisterUserDto}"/> containing the user data or error message.</returns>
+        Task<ServiceResult<ResponsePostedDto>> AddPostAsync(PostDto post);
     }
 }
